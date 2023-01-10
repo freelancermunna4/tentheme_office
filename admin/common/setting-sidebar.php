@@ -19,11 +19,6 @@
               <span class="text-red-600"><i class="fa-solid fa-chart-line"></i></span>
               <span>Limit Setting</span>
             </a>
-            <a href="./deposits.php"
-              class="p-4 gap-x-3 flex items-center border-b border-gray-200 hover:bg-white cursor-pointer text-base font-medium text-cyan-800">
-              <span class="text-gray-700"><i class="fa-solid fa-building-columns"></i></span>
-              <span>Deposits</span>
-            </a>
             <a href="./pages.php"
               class="p-4 gap-x-3 flex items-center border-b border-gray-200 hover:bg-white cursor-pointer text-base font-medium text-cyan-800">
               <span class="text-gray-700"><i class="fa-solid fa-building-columns"></i></span>
