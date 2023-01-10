@@ -109,10 +109,8 @@
                 </div>
 
                 <div>
-                  <a id="show_added_popup" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-                  <a target="_blank" href="<?php echo $data['link']?>">
-                    <span>Live</span>
-                    <span>Preview</span>
+                  <a id="show_added_popup" href="#<?php echo $data['id']?>"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
+                  <a target="_blank" href="<?php echo $data['link']?>"><span>Live</span><span>Preview</span>
                   </a>
                 </div>
               </div>
@@ -264,7 +262,6 @@
 
   <!-- Cart Popup -->
   <div class="fixed inset-0 m-auto w-full h-full hidden items-center justify-center z-50 cart_added_popup">
-
     <div onclick="dismis_cart_added_popup()"
       class="fixed inset-0 m-auto w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-30">
     </div>
@@ -303,8 +300,7 @@
         <a onclick="dismis_cart_added_popup()"
           class="bg-gray-100 text-gray-800 font-normal px-4 py-2 rounded shadow cursor-pointer">Keep
           Browsing</a>
-        <a href="cart.php"
-          class="shadow bg-green-600 text-white px-4 py-2 rounded focus:ring-2 ring-offset-1 ring-green-600">To to
+        <a href="#" class="shadow bg-green-600 text-white px-4 py-2 rounded focus:ring-2 ring-offset-1 ring-green-600">To to
           Checkout</a>
       </div>
 
@@ -312,10 +308,11 @@
   </div>
   <!-- Cart Popup --->
 
-  <script>
-    show_added_popup
+  <script>    
     $("#show_added_popup").on("click",function(){
+      var show_added_popup =  $("#show_added_popup").attr("href");
       $(".cart_added_popup").show();
+      console.log(show_added_popup);
 
     });
   </script>
