@@ -109,7 +109,7 @@
                 </div>
 
                 <div>
-                  <a id="show_added_popup" href="#<?php echo $data['id']?>"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
+                  <a id="show_added_popup" href="#<?php echo $data['id']?>"><i class="fa-solid fa-cart-shopping"></i></a>
                   <a target="_blank" href="<?php echo $data['link']?>"><span>Live</span><span>Preview</span>
                   </a>
                 </div>
@@ -308,12 +308,13 @@
   </div>
   <!-- Cart Popup --->
 
-  <script>    
+  <script>
     $("#show_added_popup").on("click",function(){
-      var show_added_popup =  $("#show_added_popup").attr("href");
+      // var show_added_popup =  $("#show_added_popup").attr("href");
+      // var show_added_popup = show_added_popup.substring(1, show_added_popup.length);
+      // console.log(show_added_popup);
+      
       $(".cart_added_popup").show();
-      console.log(show_added_popup);
-
     });
   </script>
 
