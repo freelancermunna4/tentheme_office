@@ -7,15 +7,13 @@ $id = $_COOKIE['user_id'];
 }else{
 $id = 0;
 }
-if(isset($_SESSION['user_id'])){
-$id = $_SESSION['user_id'];
-}
-  $website = _fetch("website","id=1");
-  $person = _fetch("person","id=$id");
+
+$website = _fetch("website","id=1");
+$person = _fetch("person","id=$id");
 
 
- $cr_url = $_SERVER['SCRIPT_NAME'];
- $cr_url = substr($cr_url,strrpos($cr_url,'/')+1);
+$cr_url = $_SERVER['SCRIPT_NAME'];
+$cr_url = substr($cr_url,strrpos($cr_url,'/')+1);
 
 
 ?>
@@ -140,7 +138,9 @@ $id = $_SESSION['user_id'];
 
               <a href="cart.php" class="mr-1 relative flex items-center gap-x-1 text-sm">
                 <i class="fa-solid fa-cart-shopping"></i>
-                <span class="cart_items_wrapper"> </span>
+                <span class="cart_items_wrapper">
+                  <?php echo $cart_number = mysqli_num_rows(_get("cart","pid=$id"));?>
+                </span>
               </a>
               <small><?php echo $person['name']?></small>
               <img class="w-7 h-7 rounded-full" src="admin/upload/<?php echo $person['file_name']?>"/>

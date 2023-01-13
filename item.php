@@ -2,11 +2,28 @@
 <?php include("common/header.php");?>
 <!-- Header area -->
 <?php 
-if(isset($_GET['id'])){
-  $id = $_GET['id'];
+if(isset($_GET['product_id'])){
+  $product_id = $_GET['product_id'];
+  $data = _fetch("products","id=$product_id");
 }
-$data = _fetch("products","id=$id");
-
+  if(isset($_GET['cart'])){
+    if($id<1){
+      $err = "Please Login or SignIn First";
+    }else{
+      $cart_id = $_GET['cart'];
+      $check = _fetch("cart","pid=$id AND cart_id=$cart_id");
+      if($check){
+      $err = "Already Added. Please Add New.";
+      header("location:cart.php?err=$err");
+      }else{
+        $insert = _insert("cart","pid,cart_id,time","$id,$cart_id,$time");
+        if($insert){
+          $msg = "Successfully Added in Cart. Please Checkout";
+          header("location:cart.php?msg=$msg");
+        }
+      }
+    }
+  }
 ?>
     <!-- Sub Header -->
     <div class="container space-y-6 pt-12">
@@ -448,7 +465,7 @@ $data = _fetch("products","id=$id");
               <?php echo $data['mini_content']?>
               </ul>
 
-              <a href="cart.php?id=<?php echo $data['id']?>"
+              <a href="?id=<?php echo $data['id']?>&&cart=<?php echo $data['id']?>"
                 class="w-full h-11 flex items-center justify-center rounded focus:ring-2 ring-green-600 ring-offset-2 bg-green-600 text-white gap-x-2">
                 <i class="fa-solid fa-cart-shopping"></i>
                 <span>Buy Now</span>

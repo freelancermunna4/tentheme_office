@@ -1,5 +1,3 @@
-This is Munna
-
 <!-- Header area -->
 <?php include("common/header.php");?>
 <!-- Header area -->
@@ -7,6 +5,26 @@ This is Munna
 <?php include("common/slider.php");?>
 <!-- Slider -->
 </header>
+<?php
+  if(isset($_GET['cart'])){
+    if($id<1){
+      $err = "Please Login or SignIn First";
+    }else{
+      $cart_id = $_GET['cart'];
+      $check = _fetch("cart","pid=$id AND cart_id=$cart_id");
+      if($check){
+      $err = "Already Added. Please Add New.";
+      }else{
+        $insert = _insert("cart","pid,cart_id,time","$id,$cart_id,$time");
+        if($insert){
+          $msg = "Successfully Added in Cart. Please Checkout";
+          header("location:index.php?msg=$msg");
+        }
+      }
+    }
+  }
+?>
+
 
   <main style="min-height: calc(100vh - 80px)">
     <div class="flex items-start">
@@ -67,11 +85,11 @@ This is Munna
           $second_last = $total_no_of_pages - 1;
           }
           while($data = mysqli_fetch_assoc($products)){
-            $autor_id = $data['pid'];
-            $autor = _fetch("person","id=$autor_id");
+            $author_id = $data['pid'];
+            $author = _fetch("person","id=$author_id");
           ?>
             <div class="item">
-              <a href="item.php?id=<?php echo $data['id']?>" class="item_link"></a>
+              <a href="item.php?product_id=<?php echo $data['id']?>" class="item_link"></a>
               <div>
                 <img class="w-full h-auto rounded"
                   src="admin/upload/<?php echo $data['file_name1']?>"/>
@@ -79,7 +97,7 @@ This is Munna
 
               <div>
                 <h3 style="padding-left:13px"><?php echo $data['title']?></h3>
-                <p style="padding-left:13px"><small> <i>by</i> <a href="index.php?autor=<?php echo $autor['name']?>"><?php echo $autor['name']?></a></small></p>
+                <p style="padding-left:13px"><small> <i>by</i> <a href="index.php?author=<?php echo $author['name']?>"><?php echo $author['name']?></a></small></p>
                 <ul class="list_icon">
                   <?php echo $data['mini_content']?>
                 </ul>
@@ -111,7 +129,7 @@ This is Munna
                 </div>
 
                 <div>
-                  <a id="show_added_popup" href="#<?php echo $data['id']?>"><i class="fa-solid fa-cart-shopping"></i></a>
+                  <a id="show_added_popup" href="?cart=<?php echo $data['id']?>"><i class="fa-solid fa-cart-shopping cart_btn"></i></a>
                   <a target="_blank" href="<?php echo $data['link']?>"><span>Live</span><span>Preview</span>
                   </a>
                 </div>
@@ -119,45 +137,6 @@ This is Munna
 
             </div>
           <?php }?>
-
-
-            <!-- Paginations -->
-            <!-- <div class="col-span-12 flex flex-col-reverse sm:flex-row gap-6 sm:gap-0 items-center justify-between py-6">
-              <div class="flex items-center justify-center flex-wrap gap-1 w-fit">
-                <a href="#"
-                  class="px-4 py-2 text-gray-500 bg-gray-300 hover:bg-[#f75389] hover:text-white rounded-l-sm">
-                  <i class="fa-solid fa-arrow-left"></i>
-                </a>
-
-                <a href="#" class="px-4 py-2 text-gray-700 bg-gray-200 hover:bg-[#f75389] hover:text-white">
-                  1
-                </a>
-                <a href="#" class="px-4 py-2 text-gray-700 bg-gray-200 hover:bg-[#f75389] hover:text-white">
-                  2
-                </a>
-                <a href="#" class="px-4 py-2 text-gray-700 bg-gray-200 hover:bg-[#f75389] hover:text-white">
-                  3
-                </a>
-                <a href="#" class="px-4 py-2 text-gray-700 bg-gray-200 hover:bg-[#f75389] hover:text-white">
-                  4
-                </a>
-                <a href="#" class="px-4 py-2 text-gray-700 bg-gray-200 hover:bg-[#f75389] hover:text-white">
-                  5
-                </a>
-                <a href="#" class="px-4 py-2 text-gray-700 bg-gray-200 hover:bg-[#f75389] hover:text-white">
-                  ...
-                </a>
-                <a href="#" class="px-4 py-2 text-gray-700 bg-gray-200 hover:bg-[#f75389] hover:text-white">
-                  11
-                </a>
-                <a href="#"
-                  class="px-4 py-2 text-gray-500 bg-gray-300 hover:bg-[#f75389] hover:text-white rounded-r-sm">
-                  <i class="fa-solid fa-arrow-right"></i>
-                </a>
-              </div>
-
-              <div>Page 1 of 12</div>
-            </div> -->
 
 
             <?php if(isset($pagination)){?>
@@ -311,21 +290,10 @@ This is Munna
   <!-- Cart Popup --->
 
   <script>
-    $("#show_added_popup").on("click",function(){
-      // var show_added_popup =  $("#show_added_popup").attr("href");
-      // var show_added_popup = show_added_popup.substring(1, show_added_popup.length);
-      // console.log(show_added_popup);
-      
-      $(".cart_added_popup").show();
-    });
+    // $("#show_added_popup").on("click",function(){      
+    //   $(".cart_added_popup").show();
+    // });
   </script>
-
-
-
-
-  <br>
-  <br>
-  <br>
 
   <!-- Header area -->
 <?php include("common/footer.php");?>

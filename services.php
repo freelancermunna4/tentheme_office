@@ -10,16 +10,12 @@
     <div class="flex items-start">
       <div class="container flex flex-col lg:flex-row gap-y-5 py-12 lg:gap-y-0 lg:gap-x-6 sm:items-start">
 
-
         <!-- Body Content -->
         <!-- services -->
         <div class="w-full space-y-6">
-
-
         <!-- filter -->
         <?php include("common/filter.php");?>
         <!-- filter -->
-
 
         <?php 
           if(isset($_GET['src'])){
@@ -76,7 +72,7 @@
           <div class="grid grid-cols-12 gap-x-6 p-6 bg-white item_shadow">
             <div class="col-span-5">
               <div>
-                <a href="service-single.php?id=<?php echo $data['id']?>">
+                <a href="service.php?id=<?php echo $data['id']?>">
                 <img class="rounded"
                   src="admin/upload/<?php echo $data['file_name1']?>">
                 </a>
@@ -85,12 +81,12 @@
 
             <div class="col-span-7 w-full">
               <div class="flex flex-col gap-y-2">
-                <a href="service-single.php?id=<?php echo $data['id']?>">
+                <a href="service.php?service_id=<?php echo $data['id']?>">
                   <h3 class="text-xl font-semibold tracking-wide mb-2"><?php echo $data['title']?></h3>
                 </a>
                 <div class="w-full flex gap-x-6">
                   <ul class="list_icon space-y-2 pl-2 text-gray-700 w-[420px]">
-                    <a href="service-single.php?id=<?php echo $data['id']?>">
+                    <a href="service.php?id=<?php echo $data['id']?>">
                       <?php echo $data['mini_content']?>
                     </a>
                   </ul>
@@ -100,7 +96,7 @@
                       <h3 class="text-semibold text-xl font-semibold tracking-wide"> TK. <?php echo $data['sell_price']?> </h3>
                       <p><?php echo $data['sell']?> Sales</p>
                     </div>
-                    <a href="service-single.php?id=<?php echo $data['id']?>"
+                    <a href="service.php?id=<?php echo $data['id']?>"
                       class="w-fit px-6 border shadow-sm py-2 border-cyan-700 hover:bg-cyan-900 rounded hover:text-white text-cyan-900 text-sm focus:ring-2 focus:border-transparent flex items-center gap-x-2">
                       <i class="fa-solid fa-cart-shopping"></i>
                       <span>Buy Now</span>
