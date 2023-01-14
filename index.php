@@ -6,25 +6,17 @@
 <!-- Slider -->
 </header>
 <?php
-
-
   // unset($_SESSION['cart']);  
 if(isset($_SESSION['cart'])){
   $my_cart = $_SESSION['cart'];
-  print_r($my_cart);
 
 }
   if(isset($_GET['cart'])){
     $cart_id = $_GET['cart'];
 
     if($id<1){
-        if(isset($_SESSION['cart'])){
-          $my_cart = $_SESSION['cart'];
-         echo $check_cart = array_search($cart_id,$my_cart);      
-        }
-        // echo $check_cart;
-        exit;
-        if(empty($check_cart)){
+        $check_cart = array_search($cart_id,$my_cart); 
+        if(!empty($check_cart)){
         $err = "Already added this item";
         header("location:index.php?err=$err");
       }else{

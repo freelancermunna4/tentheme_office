@@ -53,18 +53,51 @@ if(isset($_GET['cart'])){
           <!-- Cart Items -->
           <div class="border">
             <?php
-            $my_cart = $_SESSION['cart'];
-            print_r($my_cart);
+            if(isset($_SESSION['cart'])){
+              $my_cart = $_SESSION['cart'];
+            if($id<1){              
+              $total_price = 0;
+              for($i=0;$i<count($my_cart);$i++){
+                $product_id = $my_cart[$i];
+                $product = _fetch("products","id=$product_id");
+                $total_price += $product['sell_price'];
+              ?>
 
+            <div class="flex items-center justify-between gap-x-8 px-5 py-10 border-t relative">
+              <a href="?cart=<?php echo $data['id'];?>" class="text-gray-500 absolute w-fit h-fit top-2 right-2 text-xl">
+                <i class="fa-solid fa-times"></i>
+              </a>
+              <a target="_blank" href="item.php?product_id=<?php echo $product['id'];?>"><img style="width:150px;border-radius:5px" src="admin/upload/<?php echo $product['file_name1'];?>" alt=""></a>
+              <div class="space-y-2">
+                <a target="_blank" href="item.php?product_id=<?php echo $product['id'];?>" class="text-xl tracking-wide font-semibold text-blue-500">
+                  <?php echo $product['title'];?>
+                </a>
+                <div class="flex gap-x-6 text-gray-600">
+                  <p>
+                    <b>License:</b>
+                    <span> Regular License </span>
+                  </p>
+                  <p>
+                    <b>Support:</b>
+                    <span> 6 months support </span>
+                  </p>
+                </div>
+              </div>
 
-exit;
-
+              <h3 class="flex items-start gap-x-0.5">
+                <span>৳</span>
+                <span class="text-4xl font-semibold"><?php echo $product['sell_price'];?></span>
+              </h3>
+            </div>
+            
+            <?php }}}else{
             $cart = _get("cart","pid=$id");
             $total_price = 0;
             while($data = mysqli_fetch_assoc($cart)){
               $cart_id = $data['cart_id'];
               $product = _fetch("products","id=$cart_id");
               $total_price += $product['sell_price'];
+            
             ?>
             <div class="flex items-center justify-between gap-x-8 px-5 py-10 border-t relative">
               <a href="?cart=<?php echo $data['id'];?>" class="text-gray-500 absolute w-fit h-fit top-2 right-2 text-xl">
@@ -92,7 +125,7 @@ exit;
                 <span class="text-4xl font-semibold"><?php echo $product['sell_price'];?></span>
               </h3>
             </div>
-            <?php }?>
+            <?php }}?>
 
           </div>       
 
