@@ -53,6 +53,12 @@ if(isset($_GET['cart'])){
           <!-- Cart Items -->
           <div class="border">
             <?php
+            $my_cart = $_SESSION['cart'];
+            print_r($my_cart);
+
+
+exit;
+
             $cart = _get("cart","pid=$id");
             $total_price = 0;
             while($data = mysqli_fetch_assoc($cart)){

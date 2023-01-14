@@ -1,4 +1,3 @@
-This is munna from office
 <!-- Header area -->
 <?php include("common/header.php");?>
 <!-- Header area -->
@@ -7,11 +6,32 @@ This is munna from office
 <!-- Slider -->
 </header>
 <?php
+
+
+  // unset($_SESSION['cart']);  
+if(isset($_SESSION['cart'])){
+  $my_cart = $_SESSION['cart'];
+  print_r($my_cart);
+
+}
   if(isset($_GET['cart'])){
+    $cart_id = $_GET['cart'];
+
     if($id<1){
-      $err = "Please Login or SignIn First";
+        if(isset($_SESSION['cart'])){
+          $my_cart = $_SESSION['cart'];
+         echo $check_cart = array_search($cart_id,$my_cart);      
+        }
+        // echo $check_cart;
+        exit;
+        if(empty($check_cart)){
+        $err = "Already added this item";
+        header("location:index.php?err=$err");
+      }else{
+        $cart_arr = $_SESSION['cart'][] = $cart_id;
+        header("location:index.php");
+      }
     }else{
-      $cart_id = $_GET['cart'];
       $check = _fetch("cart","pid=$id AND cart_id=$cart_id");
       if($check){
       $err = "Already Added. Please Add New.";

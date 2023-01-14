@@ -60,25 +60,28 @@
               <label class="mb-2 block" for="new_password">Select Payment Method</label>
               <select id="method" name="method" class="w-full h-11 flex items-center rounded bg-white outline-none ring-2 ring-gray-200 disabled:bg-gray-200 disabled:cursor-not-allowed focus:ring-blue-600 text-gray-800 px-4">
                 <Option value="" style="display:none;">Select</Option>
-                <Option value="1111111">Bkash</Option>
-                <Option value="3333332">Nogod</Option>
-                <Option value="444444">Rocket</Option>
+                <?php
+                $payment = _getAll("payment");
+                while($data = mysqli_fetch_assoc($payment)){ ?>
+                <Option value="<?php echo $data['pmn_info'];?>"><?php echo $data['pmn_method'];?></Option>
+                <?php }?>
               </select>
               <div style="display: flex;">
-                <div id="mtd_number" style="background:#2563EB;color:#fff;margin-top:10px;padding:10px;border-radius:5px 0px 0px 5px;width:90%">01784489515</div>
+                <div id="mtd_number" style="background:#2563EB;color:#fff;margin-top:10px;padding:10px;border-radius:5px 0px 0px 5px;width:90%;"></div>
                 <div style="background:#2563EB;color:#fff;margin-top:10px;padding:10px;border-radius:0px 5px 5px 0px;width:10%" id="copy">Copy <i class="fa-regular fa-paste"></i></div>
               </div>
             </div>
-    <script>
-    $("#mtd_number").hide();   
-    $("#copy").hide();   
-    $("#method").on("change",function(){
-    $("#mtd_number").show();
-    $("#copy").show();
-        var value =  $("#method").val();
-        $("#mtd_number").text("Payment Number is: "+value);
-    });
-    </script>
+
+            <script>
+            $("#mtd_number").hide();   
+            $("#copy").hide();   
+            $("#method").on("change",function(){
+            $("#mtd_number").show();
+            $("#copy").show();
+                var value =  $("#method").val();
+                $("#mtd_number").text(value);
+            });
+            </script>
 
             <div class="col-span-12"><label class="mb-2 block" for="new_password">Payment Address</label><input required=""
                 name="pmn_address" type="text" placeholder="Payment Address"
