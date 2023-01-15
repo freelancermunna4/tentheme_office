@@ -2,19 +2,36 @@
 <?php include("common/header.php");?>
 <!-- Header area -->
 <?php 
+$array = [1=>'one', 2=>'two', 3=>'there'];
+$array = array_flip($array);
+
 if(isset($_GET['cart'])){
   $cart_id = $_GET['cart'];
-  if($cart_id == "All"){
-    $delete = _delete("cart","pid=$id");
-  }else{
-    $delete = _delete("cart","pid=$id AND id=$cart_id");
+  if($id<1){
+    if(isset($_SESSION['cart'])){
+      $cart_arr = array_flip($_SESSION['cart']);      
+      if($cart_id == "All"){
+        unset($_SESSION['cart']);
+      }else{
+        $cart_id = $cart_arr[$cart_id];
+        unset($_SESSION['cart'][$cart_id]);
+      }
+    }
+    }else{
+    if($cart_id == "All"){
+      $delete = _delete("cart","pid=$id");
+    }else{
+      $delete = _delete("cart","pid=$id AND id=$cart_id");
+    }
+  
+    if($delete){
+      $msg = "Cart Unset Successfull";
+      header("location:cart.php?msg=$msg");
+    }else{
+      echo "somethings error;";
+    }
   }
-  if($delete){
-    $msg = "Cart Unset Successfull";
-    header("location:cart.php?msg=$msg");
-  }else{
-    echo "somethings error;";
-  }
+
 }
 ?>
     <!-- Sub Header -->
@@ -64,7 +81,7 @@ if(isset($_GET['cart'])){
               ?>
 
             <div class="flex items-center justify-between gap-x-8 px-5 py-10 border-t relative">
-              <a href="?cart=<?php echo $data['id'];?>" class="text-gray-500 absolute w-fit h-fit top-2 right-2 text-xl">
+              <a href="?cart=<?php echo $my_cart[$i];?>" class="text-gray-500 absolute w-fit h-fit top-2 right-2 text-xl">
                 <i class="fa-solid fa-times"></i>
               </a>
               <a target="_blank" href="item.php?product_id=<?php echo $product['id'];?>"><img style="width:150px;border-radius:5px" src="admin/upload/<?php echo $product['file_name1'];?>" alt=""></a>
