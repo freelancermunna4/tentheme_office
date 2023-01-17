@@ -226,10 +226,7 @@
 </div>
 </div>
 </main>
-
 <!-- All Popup -->
-
-
 <script src="js/app.js"></script>
 
 

@@ -435,3 +435,48 @@ if (all_method_name) {
     });
   });
 }
+
+// ------------pop up message-----------
+// Popup Message
+// const popup_message = document.getElementById("popup_message");
+// function show_popup_message(message) {
+//   popup_message.innerHTML += `
+//   <div class="flex_center gap-2 fixed top-20 right-16 z-50 p-2 rounded bg-green-600 text-white">
+//   <span>✔</span>
+//   <span>${message}</span>
+//   </div>
+//   `;
+//   setTimeout(() => {
+//     popup_message.innerHTML = "";
+//   }, 1500);
+// }
+
+window.addEventListener('DOMContentLoaded', () => {
+  const popup_msg = document.getElementById("popup_msg");
+  if (popup_msg) {
+    popup_msg.innerHTML = `
+  <div id="popup_msg" style="position: fixed; top: 100px; right: 20px; z-index:999; background:#31B0D5; color:white; display:flex; padding:12px; align-items:center; gap:6px; border-radius: 5px; line-height: 0px; ">
+  <span style="font-size:18px;"> 
+  <i class="fa-solid fa-check"></i>
+  </span>
+  <h6 style="background:black;color:white;">
+  ${popup_msg?.dataset?.text} </div>
+  </h6> `
+    setTimeout(() => {
+      popup_msg.innerHTML = ''
+    }, popup_msg?.dataset?.time || 2000)}
+
+    const error_msg = document.getElementById("error_msg");
+    if (error_msg) {
+      error_msg.innerHTML = `
+    <div id="error_msg" style="position: fixed; top: 100px; right: 20px; z-index:999; background:red; color:white; display:flex; padding:12px; align-items:center; gap:6px; border-radius: 5px; line-height: 0px; ">
+    <span style="font-size:18px;"> 
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    </span>
+    <h6 style="background:black;color:white;">
+    ${error_msg?.dataset?.text} </div>
+    </h6> `
+      setTimeout(() => {
+        error_msg.innerHTML = ''
+      }, error_msg?.dataset?.time || 2000)}
+  })

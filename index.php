@@ -1,3 +1,4 @@
+
 <!-- Header area -->
 <?php include("common/header.php");?>
 <!-- Header area -->
@@ -311,3 +312,4 @@ if(isset($_SESSION['cart'])){
   <!-- Header area -->
 <?php include("common/footer.php");?>
 <!-- Header area -->
+

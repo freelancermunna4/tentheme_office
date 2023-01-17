@@ -90,6 +90,7 @@
   <!-- Footer -->
 
   <script src="assets/js/app.js"></script>
+  <?php if (isset($_GET['msg'])) {?><div id="popup_msg" data-text="<?php echo $_GET['msg']; ?>"></div><?php } ?>
+  <?php if (isset($_GET['err'])) {?><div id="error_msg" data-text="<?php echo $_GET['err']; ?>"></div><?php } ?>
 </body>
-
 </html>

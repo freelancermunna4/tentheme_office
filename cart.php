@@ -31,7 +31,6 @@ if(isset($_GET['cart'])){
       echo "somethings error;";
     }
   }
-
 }
 ?>
     <!-- Sub Header -->
@@ -143,7 +142,6 @@ if(isset($_GET['cart'])){
               </h3>
             </div>
             <?php }}?>
-
           </div>       
 
       </div>
@@ -171,3 +169,4 @@ if(isset($_GET['cart'])){
 <!-- Header area -->
   <?php include("common/footer.php");?>
 <!-- Header area -->
+<?php if (isset($_GET['msg'])) { ?><div id="munna" data-text="<?php echo $_GET['msg']; ?>"></div><?php } ?>
