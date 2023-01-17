@@ -58,30 +58,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="border-b">
-                        <td class="text-sm text-gray-900 font-light px-6 py-4">
-                          <div class="break-words w-[320px] overflow-hidden">
-                            <h3 class="text-lg font-semibold tracking-wide">
-                              Lorem ipsum, dolor sit amet
-                            </h3>
-                          </div>
-                        </td>
-
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          22 Days
-                        </td>
-
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          Never
-                        </td>
-
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          <a href="#"
-                            class="block bg-[#f75389] text-white px-4 py-2 rounded shadow focus:ring-2 ring-[#f75389] ring-offset-1">Download
-                            Item</a>
-                        </td>
-
-                      </tr>
+                      <?php 
+                      $cart = _get("cart","pid=$id AND status=1");
+                      while($data = mysqli_fetch_assoc($cart)){
+                        $cart_id = $data['cart_id'];
+                        $product = _fetch("products","id=$cart_id");
+                      ?>
                       <tr class="border-b">
                         <td class="text-sm text-gray-900 font-light px-6 py-4">
                           <div class="break-words w-[320px] overflow-hidden">
@@ -104,8 +86,8 @@
                             class="block bg-[#f75389] text-white px-4 py-2 rounded shadow focus:ring-2 ring-[#f75389] ring-offset-1">Download
                             Item</a>
                         </td>
-
                       </tr>
+                      <?php }?>
                   </table>
 
 

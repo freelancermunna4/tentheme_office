@@ -15,13 +15,11 @@
           class="text-white px-4 py-1.5 rounded shadow-sm" href="index.php">
           <i class="fa-solid fa-house"></i>
         </a>
-
         <small class="text-xs"> <i class="fa-solid fa-chevron-right"></i></small>
 
         <a style="background-image: conic-gradient(from 1turn, #0e9479, #16a085)"
           class="text-white px-4 py-1.5 rounded shadow-sm" href="checkout.php"> checkout
         </a>
-
       </div>
 
     </div>
@@ -234,8 +232,13 @@
 
         <?php 
         if(isset($_POST['submit'])){
-           $total_amount = $_POST['total_amount'];
-           $cart = _get("cart","pid=$id AND status=0");
+          $total_amount = $_POST['total_amount'];
+          $balance = _update("person","balance=balance-$total_amount","id=$id");
+          $update = _update("cart","status=1","pid=$id");
+          if($update && $balance){
+            $msg = "Congratulanions for Purchase.";
+            header("location:dashboard.php?msg=$msg");
+          }
         }
         ?>
         <form action="" method="POST">
@@ -283,7 +286,6 @@
   </div>
 
 
-   
 <!-- Header area -->
 <?php include("common/footer.php");?>
 <!-- Header area -->
