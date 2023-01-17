@@ -50,10 +50,9 @@
                   <table>
                     <thead class="border-b">
                       <tr>
-                        <th scope="col" class="text-base font-semibold text-gray-900  px-6 py-4 text-left">Product</th>
-                        <th scope="col" class="text-base font-semibold text-gray-900  px-6 py-4 text-left">Downloads
-                          remaining</th>
-                        <th scope="col" class="text-base font-semibold text-gray-900  px-6 py-4 text-left">Expires</th>
+                        <th scope="col" class="text-base font-semibold text-gray-900  px-6 py-4 text-left">Title</th>
+                        <th scope="col" class="text-base font-semibold text-gray-900  px-6 py-4 text-left">Date</th>
+                        <th scope="col" class="text-base font-semibold text-gray-900  px-6 py-4 text-left">Price</th>
                         <th scope="col" class="text-base font-semibold text-gray-900  px-6 py-4 text-left">Download</th>
                       </tr>
                     </thead>
@@ -67,24 +66,13 @@
                       <tr class="border-b">
                         <td class="text-sm text-gray-900 font-light px-6 py-4">
                           <div class="break-words w-[320px] overflow-hidden">
-                            <h3 class="text-lg font-semibold tracking-wide">
-                             adipisicing elit. Consequuntur, provident doloremque.
-                            </h3>
+                            <h3 class="text-lg font-semibold tracking-wide"><?php echo $product['title']?></h3>
                           </div>
                         </td>
-
+                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><?php $time = $data['time']; echo date("d-M-y",$time);?></td>
+                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">৳ <?php echo $product['sell_price']?></td>
                         <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          22 Days
-                        </td>
-
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          Never
-                        </td>
-
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          <a href="#"
-                            class="block bg-[#f75389] text-white px-4 py-2 rounded shadow focus:ring-2 ring-[#f75389] ring-offset-1">Download
-                            Item</a>
+                          <a href="#" class="block bg-[#f75389] text-white px-4 py-2 rounded shadow focus:ring-2 ring-[#f75389] ring-offset-1">Download</a>
                         </td>
                       </tr>
                       <?php }?>
