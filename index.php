@@ -25,7 +25,7 @@ if(isset($_SESSION['cart'])){
         header("location:index.php");
       }
     }else{
-      $check = _fetch("cart","pid=$id AND cart_id=$cart_id");
+      $check = _fetch("cart","pid=$id AND cart_id=$cart_id AND status=0");
       if($check){
       $err = "Already Added. Please Add New.";
       }else{

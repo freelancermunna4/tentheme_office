@@ -210,7 +210,7 @@
           <div class="py-5 space-y-4">
 
             <?php
-            $cart = _get("cart","pid=$id");
+            $cart = _get("cart","pid=$id AND status=0");
             $total_price = 0;
             while($data = mysqli_fetch_assoc($cart)){
               $cart_id = $data['cart_id'];
@@ -232,11 +232,22 @@
 
         </div>
 
+        <?php 
+        if(isset($_POST['submit'])){
+           $total_amount = $_POST['total_amount'];
+           $cart = _get("cart","pid=$id AND status=0");
+        }
+        ?>
+        <form action="" method="POST">
+          <input type="hidden" name="total_amount" value="<?php echo $total_price;?>">
+          <button type="submit" name="submit" class="w-full py-3 shadow-lg rounded bg-blue-600 text-white focus:ring-2 ring-blue-600 ring-offset-1">Pay Now</button>
+        </form>     
+        
+        
         <div class="py-5 text-center flex items-center gap-x-2 justify-center text-gray-500">
           <i class="fa-solid fa-lock"></i>
           <p>Secure checkout</p>
         </div>
-
         <div class="p-5 rounded text-white space-y-4"
           style="background: linear-gradient(144deg,#1C004B 0,#020B2D 100%);">
           <h2 class="text-3xl">Need Help?</h2>

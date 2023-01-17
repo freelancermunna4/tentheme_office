@@ -139,7 +139,7 @@ $cr_url = substr($cr_url,strrpos($cr_url,'/')+1);
               <a href="cart.php" class="mr-1 relative flex items-center gap-x-1 text-sm">
                 <i class="fa-solid fa-cart-shopping"></i>
                 <span class="cart_items_wrapper">
-                  <?php echo $cart_number = mysqli_num_rows(_get("cart","pid=$id"));?>
+                  <?php echo $cart_number = mysqli_num_rows(_get("cart","pid=$id AND status=0"));?>
                 </span>
               </a>
               <small><?php echo $person['name']?></small>
@@ -175,8 +175,6 @@ $cr_url = substr($cr_url,strrpos($cr_url,'/')+1);
           </div>
         </li>
         <?php }?>
-
-
 
       </ul>
     </div>

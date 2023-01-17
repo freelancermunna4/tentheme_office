@@ -19,9 +19,9 @@ if(isset($_GET['cart'])){
     }
     }else{
     if($cart_id == "All"){
-      $delete = _delete("cart","pid=$id");
+      $delete = _delete("cart","pid=$id AND status=0 ");
     }else{
-      $delete = _delete("cart","pid=$id AND id=$cart_id");
+      $delete = _delete("cart","pid=$id AND status=0  AND id=$cart_id");
     }
   
     if($delete){
@@ -107,7 +107,7 @@ if(isset($_GET['cart'])){
             </div>
             
             <?php }}}else{
-            $cart = _get("cart","pid=$id");
+            $cart = _get("cart","pid=$id AND status=0");
             $total_price = 0;
             while($data = mysqli_fetch_assoc($cart)){
               $cart_id = $data['cart_id'];
