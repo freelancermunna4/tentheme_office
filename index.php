@@ -237,11 +237,6 @@ if(isset($_SESSION['cart'])){
                     </ul>
                   </div>
                 <?php }?>
-
-
-
-
-
             <!-- Paginations -->
 
           </div>

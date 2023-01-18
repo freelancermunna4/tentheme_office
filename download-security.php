@@ -23,11 +23,6 @@ if (isset($_GET['file_id'])) {
                 header('Pragma: public');
                 header('Content-Length: ' . filesize('admin/upload/' . $file['file_name']));
                 readfile('admin/upload/' . $file['file_name']);
-        
-                // Now update downloads count
-                // $newCount = $file['downloads'] + 1;
-                // $updateQuery = "UPDATE files SET downloads=$newCount WHERE id=$id";
-                // mysqli_query($conn, $updateQuery);
                 exit;
             }
         }
