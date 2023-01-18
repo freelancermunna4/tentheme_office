@@ -17,6 +17,10 @@ if(isset($_POST['submit'])){
     $time = time();
 
 
+  $file_name = $_FILES['file']['name'];
+  $file_tmp = $_FILES['file']['tmp_name'];
+  move_uploaded_file($file_tmp,"upload/$file_name");
+
   $file_name1 = $_FILES['file1']['name'];
   $file_tmp1 = $_FILES['file1']['tmp_name'];
   move_uploaded_file($file_tmp1,"upload/$file_name1");
@@ -32,8 +36,9 @@ if(isset($_POST['submit'])){
   $file_name4 = $_FILES['file4']['name'];
   $file_tmp4 = $_FILES['file4']['tmp_name'];
   move_uploaded_file($file_tmp4,"upload/$file_name4");
+ 
 
-    $insert = _insert("products","pid, title, link, regular_price, sell_price, category, mini_content, content, description,status, file_name1, file_name2, file_name3, file_name4, time","'$pid', '$title', '$link', '$regular_price', '$sell_price', '$category', '$mini_content', '$content', '$description','$status','$file_name1','$file_name2','$file_name3','$file_name4', '$time'");
+  $insert = _insert("products","pid, title, link, regular_price, sell_price, category, mini_content, content, description,status, file_name, file_name1, file_name2, file_name3, file_name4, time","'$pid', '$title', '$link', '$regular_price', '$sell_price', '$category', '$mini_content', '$content', '$description','$status','$file_name','$file_name1','$file_name2','$file_name3','$file_name4', '$time'");
 
     if($insert){
       $msg = "Successfully Inserted";
@@ -108,6 +113,11 @@ if(isset($_POST['submit'])){
             <input name="file2" style="width:25%;padding-top:10px" class="input" type="file" id="product Link">
             <input name="file3" style="width:25%;padding-top:10px" class="input" type="file" id="product Link">
             <input name="file4" style="width:25%;padding-top:10px" class="input" type="file" id="product Link">
+          </div>
+
+          <div style="padding-top:33px">
+            <label for="product">Upload Product</label>
+            <input name="file" style="padding-top:10px;" class="input" type="file">
           </div>
 
           <div style="padding-top:33px">
