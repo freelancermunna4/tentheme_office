@@ -25,11 +25,11 @@ if(isset($_SESSION['cart'])){
         header("location:index.php");
       }
     }else{
-      $check = _fetch("cart","pid=$id AND cart_id=$cart_id AND status=0");
+      $check = _fetch("cart","pid=$id AND type='product' AND cart_id=$cart_id AND status=0");
       if($check){
       $err = "Already Added. Please Add New.";
       }else{
-        $insert = _insert("cart","pid,cart_id,time","$id,$cart_id,$time");
+        $insert = _insert("cart","pid,cart_id,type,time","$id,$cart_id,'product',$time");
         if($insert){
           $msg = "Successfully Added in Cart. Please Checkout";
           header("location:index.php?msg=$msg");

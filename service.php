@@ -310,6 +310,7 @@ $data = _fetch("service","id=$id");
 
           <div class="w-full sticky top-0 pt-12">
             <!-- Price&Cart-Button area -->
+            <form action="service-checkout.php" method="POST">
             <div style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
           rgba(0, 0, 0, 0.06) 0px 0px 0px 1px !important;" class="w-full border p-6 space-y-5">
               <div class="flex justify-between items-center relative">
@@ -327,68 +328,16 @@ $data = _fetch("service","id=$id");
                     <h4 class="text-xl font-semibold tracking-wide items_price"><?php echo $data['sell_price']?></h4>
                   </div>
                 </div>
-
-                <!-- <div
-                  class="hidden item_licenses absolute top-[115%] inset-x-0 z-40 max-w-[350px] border shadow bg-white rounded">
-                  <div data-title="Regular License" data-price="33" data-oldprice="44"
-                    class="item_license p-5 border-b cursor-pointer hover:bg-gray-100 group">
-                    <div class="flex justify-between items-center">
-                      <h4 class="text-base font-semibold">Regular License</h4>
-                      <h2 class="flex items-start">
-                        <small>$</small>
-                        <span class="text-xl font-semibold text-gray-900">33</span>
-                      </h2>
-                    </div>
-                    <p class="text-gray-600 py-1 text-sm font-normal">
-                      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum reiciendis beatae, nulla maxime
-                      animi accusamus.
-                    </p>
-
-                    <div
-                      class="absolute -top-2 -z-10 rounded left-4 w-4 h-4 bg-white group-hover:bg-gray-100 border-l border-t transform rotate-45">
-                    </div>
-                  </div>
-
-                  <div data-title="Regular License" data-price="250" data-oldprice="400"
-                    class="item_license p-5 border-b cursor-pointer hover:bg-gray-100">
-                    <div class="flex justify-between items-center">
-                      <h4 class="text-base font-semibold">Extended License</h4>
-                      <h2 class="flex items-start">
-                        <small>$</small>
-                        <span class="text-xl font-semibold text-gray-900">300</span>
-                      </h2>
-                    </div>
-                    <p class="text-gray-600 py-1 text-sm font-normal">
-                      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum reiciendis beatae, nulla maxime
-                      animi accusamus.
-                    </p>
-                  </div>
-
-                  <div class="px-5 py-3">
-                    <a href="#" class="text-blue-500 hover:underline text-center block text-sm">View license details</a>
-                  </div>
-                </div> -->
-
               </div>
-
-
               <div class="w-full border-b"> </div>
-
-
               <ul class="space-y-2 text-sm">
               <?php echo $data['mini_content']?>
               </ul>
-
-              <a href="cart.php?id=<?php echo $data['id']?>"
-                class="w-full h-11 flex items-center justify-center rounded focus:ring-2 ring-green-600 ring-offset-2 bg-green-600 text-white gap-x-2">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span>Buy Now</span>
-              </a>
-
+              <input type="hidden" name="service_id" value="<?php echo $data['id']?>">
+              <button type="submit" class="w-full h-11 flex items-center justify-center rounded focus:ring-2 ring-green-600 ring-offset-2 bg-green-600 text-white gap-x-2"><i class="fa-solid fa-cart-shopping"></i><span>Buy Now</span></button>
             </div>
-
+            </form>
             <br>
-
             <!-- Necessary Information -->
             <div style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
           rgba(0, 0, 0, 0.06) 0px 0px 0px 1px !important;" class="border bg-white p-4 space-y-4">

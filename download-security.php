@@ -2,7 +2,7 @@
 // Downloads files
 if (isset($_GET['file_id'])) {
     $file_id = $_GET['file_id'];
-    $check = _fetch("cart","cart_id=$file_id AND pid=$id");
+    $check = _fetch("cart","cart_id=$file_id AND type='product' AND pid=$id");
     
     if($id<1){
         $msg = "Something is error";

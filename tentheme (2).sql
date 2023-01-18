@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 18, 2023 at 11:27 AM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.2
+-- Generation Time: Jan 18, 2023 at 06:37 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -38,7 +37,7 @@ CREATE TABLE `blog` (
   `content` longtext NOT NULL,
   `status` varchar(255) NOT NULL,
   `time` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `blog`
@@ -65,17 +64,23 @@ CREATE TABLE `cart` (
   `id` int(255) NOT NULL,
   `pid` int(255) NOT NULL,
   `cart_id` int(255) NOT NULL,
-  `status` int(255) NOT NULL DEFAULT '0',
+  `type` varchar(255) NOT NULL,
+  `duration` varchar(255) NOT NULL,
+  `status` int(255) NOT NULL DEFAULT 0,
   `time` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `cart`
 --
 
-INSERT INTO `cart` (`id`, `pid`, `cart_id`, `status`, `time`) VALUES
-(18, 1, 48, 1, 1673947545),
-(19, 1, 6, 0, 1674036166);
+INSERT INTO `cart` (`id`, `pid`, `cart_id`, `type`, `duration`, `status`, `time`) VALUES
+(18, 1, 48, 'product', '', 1, 1673947545),
+(19, 1, 6, 'product', '', 1, 1674036166),
+(20, 1, 48, 'product', '', 1, 1673947545),
+(21, 1, 58, 'product', '', 1, 1674060175),
+(22, 1, 9, 'service', '', 0, 0),
+(23, 1, 8, 'service', '', 0, 1674062944);
 
 -- --------------------------------------------------------
 
@@ -87,7 +92,7 @@ CREATE TABLE `category` (
   `id` int(255) NOT NULL,
   `category` varchar(255) NOT NULL,
   `time` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `category`
@@ -111,13 +116,13 @@ INSERT INTO `category` (`id`, `category`, `time`) VALUES
 CREATE TABLE `comment` (
   `post_id` int(255) NOT NULL,
   `id` int(11) NOT NULL,
-  `parent_id` int(255) NOT NULL DEFAULT '0',
+  `parent_id` int(255) NOT NULL DEFAULT 0,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `content` varchar(255) NOT NULL,
   `img` varchar(255) NOT NULL DEFAULT 'img.png',
   `time` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `comment`
@@ -149,7 +154,7 @@ CREATE TABLE `deposit` (
   `amount` int(255) NOT NULL,
   `status` varchar(255) NOT NULL DEFAULT 'Pending',
   `time` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `deposit`
@@ -175,7 +180,7 @@ CREATE TABLE `mail` (
   `security` varchar(255) NOT NULL,
   `contact_mail` varchar(255) NOT NULL,
   `reply_mail` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `mail`
@@ -196,7 +201,7 @@ CREATE TABLE `pages` (
   `title` varchar(255) NOT NULL,
   `content` longtext NOT NULL,
   `description` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `pages`
@@ -222,7 +227,7 @@ CREATE TABLE `payment` (
   `pmn_method` varchar(255) NOT NULL,
   `pmn_info` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `payment`
@@ -253,14 +258,14 @@ CREATE TABLE `person` (
   `balance` int(255) NOT NULL,
   `terms` varchar(255) NOT NULL DEFAULT 'Desline',
   `time` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `person`
 --
 
 INSERT INTO `person` (`id`, `name`, `phone`, `address`, `email`, `password`, `role`, `file_name`, `balance`, `terms`, `time`) VALUES
-(1, 'Admin', '1234558', 'Sirajganj, Dhaka, Bangladesh', 'admin@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', '634af2216fb544.83705756.jpg', 9400, 'Desline', 1670579900),
+(1, 'Admin', '1234558', 'Sirajganj, Dhaka, Bangladesh', 'admin@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', '634af2216fb544.83705756.jpg', 300, 'Desline', 1670579900),
 (6, 'munna', '1234558', 'Sirajganj, Dhaka, Bangladesh', 'munna@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'User', 'avatar.jpg', 200, '', 1670579900);
 
 -- --------------------------------------------------------
@@ -290,7 +295,7 @@ CREATE TABLE `products` (
   `file_name3` varchar(255) NOT NULL DEFAULT 'image.png',
   `file_name4` varchar(255) NOT NULL DEFAULT 'image.png',
   `time` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `products`
@@ -331,7 +336,7 @@ CREATE TABLE `service` (
   `file_name3` varchar(255) NOT NULL DEFAULT 'image.png',
   `file_name4` varchar(255) NOT NULL DEFAULT 'image.png',
   `time` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `service`
@@ -364,7 +369,7 @@ CREATE TABLE `slider` (
   `link1` varchar(255) NOT NULL,
   `link2` varchar(255) NOT NULL,
   `file_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `slider`
@@ -401,7 +406,7 @@ CREATE TABLE `team` (
   `file` varchar(255) NOT NULL DEFAULT 'avatar.jpg',
   `status` varchar(255) NOT NULL,
   `time` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `team`
@@ -435,7 +440,7 @@ CREATE TABLE `website` (
   `linkedin` varchar(255) NOT NULL,
   `file_name` varchar(255) NOT NULL,
   `favicon_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `website`
@@ -546,7 +551,7 @@ ALTER TABLE `blog`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `category`

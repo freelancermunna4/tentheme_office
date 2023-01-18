@@ -208,7 +208,7 @@
           <div class="py-5 space-y-4">
 
             <?php
-            $cart = _get("cart","pid=$id AND status=0");
+            $cart = _get("cart","pid=$id AND type='product' AND status=0");
             $total_price = 0;
             while($data = mysqli_fetch_assoc($cart)){
               $cart_id = $data['cart_id'];

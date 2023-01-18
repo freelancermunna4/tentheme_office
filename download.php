@@ -67,13 +67,11 @@
                       $previous_page = $page_no - 1;
                       $next_page = $page_no + 1;
                       $adjacents = "2";          
-                      $cart = _get("cart","pid=$id AND status=1 ORDER BY id DESC LIMIT $offset, $total_records_per_page");
-                      $total_records = mysqli_num_rows(_get("cart","pid=$id AND status=1"));
+                      $cart = _get("cart","pid=$id AND type='product' AND status=1 ORDER BY id DESC LIMIT $offset, $total_records_per_page");
+                      $total_records = mysqli_num_rows(_get("cart","pid=$id AND type='product' AND status=1"));
                       $total_no_of_pages = ceil($total_records / $total_records_per_page);
                       $second_last = $total_no_of_pages - 1;
 
-
-                      // $cart = _get("cart","pid=$id AND status=1");
                       while($data = mysqli_fetch_assoc($cart)){
                         $cart_id = $data['cart_id'];
                         $product = _fetch("products","id=$cart_id");
@@ -203,8 +201,8 @@
                             }else{
                               echo "<li><a href='?page_no=$counter'>$counter</a></li>";
                             }                   
-                                    }
-                                }
+                          }
+                        }
                       }
                     ?>
                         
