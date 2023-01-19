@@ -7,7 +7,7 @@
 
       <!-- Page Name Title -->
       <h3 class="text-4xl font-medium tracking-wide">
-        Download
+        Order
       </h3>
 
       <!-- Page Tree Links -->
@@ -21,13 +21,13 @@
         <small class="text-xs"> <i class="fa-solid fa-chevron-right"></i></small>
 
         <a style="background-image: conic-gradient(from 1turn, #0e9479, #16a085)"
-          class="text-white px-4 py-1.5 rounded shadow-sm" href="download.php"> download
+          class="text-white px-4 py-1.5 rounded shadow-sm" href="contact.php"> order
         </a>
 
       </div>
 
     </div>
-  </header> 
+  </header>
 
 
   <main style="min-height: calc(100vh - 80px)">
@@ -39,26 +39,37 @@
         <!-- Dashboard Sidebar -->
 
         <!-- Body Content -->
-        <div class="w-full bg-white shadow rounded-sm overflow-hidden">
+        <div class="w-full overflow-hidden bg-white shadow rounded-sm">
 
-          <div class="px-5 py-4 text-blue-600 text-2xl font-medium tracking-wide border-b">Dashboard</div>
+          <div class="px-5 py-4 text-blue-600 text-2xl font-medium tracking-wide border-b">Orders</div>
+
 
           <div class="flex flex-col">
-            <div class="overflow-x-auto">
-              <div class="py-2 inline-block min-w-full">
-                <div class="max-w-full overflow-x-auto">
-                  <table>
+            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+              <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="overflow-hidden">
+                  <table class="min-w-full">
                     <thead class="border-b">
                       <tr>
-                        <th scope="col" class="text-base font-semibold text-gray-900  px-6 py-4 text-left">Image</th>
-                        <th scope="col" class="text-base font-semibold text-gray-900  px-6 py-4 text-left">Title</th>
-                        <th scope="col" class="text-base font-semibold text-gray-900  px-6 py-4 text-left">Date</th>
-                        <th scope="col" class="text-base font-semibold text-gray-900  px-6 py-4 text-left">Price</th>
-                        <th scope="col" class="text-base font-semibold text-gray-900  px-6 py-4 text-left">Download</th>
+                        <th scope="col" class="text-base font-semibold text-gray-900  px-6 py-4 text-left">
+                          Service Name
+                        </th>
+                        <th scope="col" class="text-base font-semibold text-gray-900  px-6 py-4 text-left">
+                          Date
+                        </th>
+                        <th scope="col" class="text-base font-semibold text-gray-900  px-6 py-4 text-left">
+                          Status
+                        </th>
+                        <th scope="col" class="text-base font-semibold text-gray-900  px-6 py-4 text-left">
+                          Total
+                        </th>
+                        <th scope="col" class="text-base font-semibold text-gray-900  px-6 py-4 text-left">
+                          Actions
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
-                      <?php 
+                    <?php 
                       $pagination = "ON";
                       if (isset($_GET['page_no']) && $_GET['page_no']!="") {
                       $page_no = $_GET['page_no'];} else {$page_no = 1;}
@@ -67,35 +78,47 @@
                       $previous_page = $page_no - 1;
                       $next_page = $page_no + 1;
                       $adjacents = "2";          
-                      $cart = _get("cart","pid=$id AND type='product' AND status=1 ORDER BY id DESC LIMIT $offset, $total_records_per_page");
-                      $total_records = mysqli_num_rows(_get("cart","pid=$id AND type='product' AND status=1"));
+                      $cart = _get("cart","pid=$id AND type='service' ORDER BY id DESC LIMIT $offset, $total_records_per_page");
+                      $total_records = mysqli_num_rows(_get("cart","pid=$id AND type='service'"));
                       $total_no_of_pages = ceil($total_records / $total_records_per_page);
                       $second_last = $total_no_of_pages - 1;
 
                       while($data = mysqli_fetch_assoc($cart)){
                         $cart_id = $data['cart_id'];
-                        $product = _fetch("products","id=$cart_id");
+                        $service = _fetch("service","id=$cart_id");
                       ?>
                       <tr class="border-b">
-                        <td class="text-sm text-gray-900 font-light px-6 py-4">
-                          <img src="admin/upload/<?php echo $product['file_name1']?>">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#f75389]">
+                          <?php echo $service['title']?>
                         </td>
-                        <td class="text-sm text-gray-900 font-light px-6 py-4"><div class="break-words w-[320px] overflow-hidden"><a href="item.php?product_id=<?php echo $product['id']?>"><h3 class="text-lg font-semibold tracking-wide"><?php echo $product['title']?></h3></a></div></td>
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><?php $time = $data['time']; echo date("d-M-y",$time);?></td>
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">৳ <?php echo $product['sell_price']?></td>
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><a href="download-security.php?file_id=<?php echo $product['id']?>" class="block bg-[#f75389] text-white px-4 py-2 rounded shadow focus:ring-2 ring-[#f75389] ring-offset-1">Download</a></td>
-                        <!-- <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><a href="admin/upload/<?php echo $product['file_name']?>" download="<?php echo $product['title']?>" class="block bg-[#f75389] text-white px-4 py-2 rounded shadow focus:ring-2 ring-[#f75389] ring-offset-1">Download</a></td> -->
+                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                          <?php $service_time = $data['time']; echo date("d-M-y",$service_time);?>
+                        </td>
+                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                          On Hold
+                        </td>
+                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                        ৳ <?php echo $service['sell_price']?>
+                        </td>
+                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+
+                          <div class="flex itmes-center justify-start gap-x-1">
+                            <a class="block text-sm font-semibold tracking-wide text-[#f75389]" href="#">View</a>
+                            <span>|</span>
+                            <a class="block text-sm font-semibold tracking-wide text-[#f75389]" href="#">Open Ticket</a>
+                          </div>
+                        </td>
                       </tr>
                       <?php }?>
                   </table>
+                <br>
 
 
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <?php if(isset($pagination)){?>
+
+
+                <!-- Paginations -->
+                <?php if(isset($pagination)){?>
                 <style>
                 .paginations{width:900px;}
                 .paginations>ul>li{list-style: none;display: inline-block;line-height: 2.5;}
@@ -180,6 +203,11 @@
                   </div>
                 <?php }?>
           <!-- Paginations -->
+
+                </div>
+              </div>
+            </div>
+          </div>
 
         </div>
 
