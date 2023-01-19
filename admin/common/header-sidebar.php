@@ -121,6 +121,29 @@
           </li>
         </ul>
       </div>
+      <hr class="my-0">      
+
+      <!-- Sidebar Item -> products -->
+      <div class="sidebar_item overflow-hidden">
+        <button class="ds_title" data-ref="withdraw"><span class="text-xs transition-all text-pink-600"><i
+              class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">Withdraw</span><span
+            class="text-xs opacity-50 transition-all"><i class="fa-solid fa-chevron-up"></i></span>
+        </button>
+        <ul class="ds_ul transition-all" data-ref="withdraw">
+          <li>
+            <a href="./pending-withdraw.php">
+              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
+              <span>Pending Request</span>
+            </a>
+          </li>
+          <li>
+            <a href="./success-withdraw.php">
+              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
+              <span>Published Request</span>
+            </a>
+          </li>
+        </ul>
+      </div>
       <hr class="my-0">
       
 

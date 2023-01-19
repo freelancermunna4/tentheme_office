@@ -41,7 +41,7 @@
           <div class="bg-white p-8 rounded-md w-full">
             <div class=" flex items-center justify-between pb-6">
               <div>
-                <h2 class="text-gray-600 font-semibold">All Deposits</h2>
+                <h2 class="text-gray-600 font-semibold">Withdraw Request</h2>
               </div>
               <div class="flex items-center justify-between">
                 <div class="flex bg-gray-50 items-center p-2 rounded-md">
@@ -53,7 +53,7 @@
                   </svg>
                   <input class="bg-gray-50 outline-none ml-1 block " type="text" name="" id="" placeholder="search...">
                 </div>
-                <div class="lg:ml-40 ml-10 space-x-8"><a href="deposit.php" class="btn_blue">Deposit Now</a></div>
+                <div class="lg:ml-40 ml-10 space-x-8"><a href="withdraw-now.php" class="btn_blue">Withdraw Now</a></div>
               </div>
             </div>
             <div>
@@ -64,7 +64,6 @@
                       <tr>
                         <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Method</th>
                         <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Payment Address</th>
-                        <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Transectio Id</th>
                         <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Time</th>
                         <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Amount</th>
                         <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Status</th>
@@ -81,8 +80,8 @@
                     $previous_page = $page_no - 1;
                     $next_page = $page_no + 1;
                     $adjacents = "2";          
-                    $deposits = _get("deposit","pid=$id ORDER BY id DESC LIMIT $offset, $total_records_per_page");
-                    $total_records = mysqli_num_rows(_get("deposit","pid=$id"));
+                    $deposits = _get("withdraw","pid=$id ORDER BY id DESC LIMIT $offset, $total_records_per_page");
+                    $total_records = mysqli_num_rows(_get("withdraw","pid=$id"));
                     $total_no_of_pages = ceil($total_records / $total_records_per_page);
                     $second_last = $total_no_of_pages - 1;
 
@@ -95,9 +94,6 @@
                         </td>
                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <p class="text-gray-900 whitespace-no-wrap"><?php echo $data['pmn_address']?></p>
-                        </td>
-                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p class="text-gray-900 whitespace-no-wrap"><?php echo $data['tr_id']?></p>
                         </td>
                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <p class="text-gray-900 whitespace-no-wrap"><?php echo date("d-M-y h:ia",$data['time']);?></p>

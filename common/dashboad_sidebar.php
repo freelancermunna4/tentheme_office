@@ -75,6 +75,15 @@
                 </a>
               </li>
 
+              <li>
+                <a href="withdraw.php"
+                  class="text-sm flex items-center justify-start w-full gap-2 text-[#2a3744] hover:bg-[#2a3744] hover:text-white rounded-sm p-2 uppercase">
+                  <span class="text-xs"><i class="fa-solid fa-money-bill-transfer"></i>
+                  </span>
+                  <span>Withdraw</span>
+                </a>
+              </li>
+
             </ul>
           </div>
 
