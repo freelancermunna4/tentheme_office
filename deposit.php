@@ -48,11 +48,17 @@
               $pmn_address = $_POST['pmn_address'];
               $tr_id = $_POST['tr_id'];
               $amount = $_POST['amount'];
+              $min_deposit = $limit_setting['deposit'];
+              if($amount>=$min_deposit){
                 $insert = _insert("deposit","pid,method,pmn_address,tr_id,amount,time","$id,'$method','$pmn_address','$tr_id','$amount','$time'");
                 if($insert){
                   $msg = "Deposit Successfully";
                   header("location:deposits.php?msg=$msg");
                 }
+              }else{
+                $err = "Set Minimum Deposit $min_deposit";
+                header("location:deposits.php?err=$err");
+              }                
             }
           ?>
           <form action="" method="POST" class="grid grid-cols-12 gap-y-6 p-5">

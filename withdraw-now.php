@@ -47,16 +47,22 @@
               $pmn_address = $_POST['pmn_address'];
               $amount = $_POST['amount'];
               $balance = $person['balance'];
+              $min_withdraw = $limit_setting['withdraw'];
               if($balance>=$amount){
+                if($amount>=$min_withdraw){
                 $insert = _insert("withdraw","pid,method,pmn_address,amount,time","$id,'$method','$pmn_address','$amount','$time'");
                 if($insert){
                   $msg = "Withdraw Request Successfully";
                   header("location:withdraw.php?msg=$msg");
                 }
               }else{                
-                $err = "Please Insert Valid Amount";
+                $err = "Minimum Withdraw $min_withdraw";
                 header("location:withdraw.php?err=$err");
-              }                
+              }
+            }else{                
+              $err = "Please Insert Valid Amount";
+              header("location:withdraw.php?err=$err");
+            }              
             }
           ?>
           <form action="" method="POST" class="grid grid-cols-12 gap-y-6 p-5">

@@ -8,8 +8,9 @@ $id = $_COOKIE['user_id'];
 $id = 0;
 }
 
-$website = _fetch("website","id=1");
 $person = _fetch("person","id=$id");
+$website = _fetch("website","id=1");
+$limit_setting = _fetch("limit_setting","id=$id");
 
 
 $cr_url = $_SERVER['SCRIPT_NAME'];
