@@ -42,16 +42,21 @@
             <span class="text-2xl font-medium tracking-wide">Withdraw Request</span>
           </div>
           <?php
-          $err = "";
             if(isset($_POST['submit'])){
               $method = $_POST['method'];
               $pmn_address = $_POST['pmn_address'];
               $amount = $_POST['amount'];
+              $balance = $person['balance'];
+              if($balance>=$amount){
                 $insert = _insert("withdraw","pid,method,pmn_address,amount,time","$id,'$method','$pmn_address','$amount','$time'");
                 if($insert){
                   $msg = "Withdraw Request Successfully";
                   header("location:withdraw.php?msg=$msg");
                 }
+              }else{                
+                $err = "Please Insert Valid Amount";
+                header("location:withdraw.php?err=$err");
+              }                
             }
           ?>
           <form action="" method="POST" class="grid grid-cols-12 gap-y-6 p-5">
