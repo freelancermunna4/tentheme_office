@@ -10,8 +10,6 @@
   // unset($_SESSION['cart']);  
 if(isset($_SESSION['cart'])){
   $my_cart = $_SESSION['cart'];
-
-}
   if(isset($_GET['cart'])){
     $cart_id = $_GET['cart'];
 
@@ -36,6 +34,7 @@ if(isset($_SESSION['cart'])){
         }
       }
     }
+  }
   }
 ?>
 

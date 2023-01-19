@@ -118,6 +118,10 @@ $cr_url = substr($cr_url,strrpos($cr_url,'/')+1);
 
         <?php if($id<1){?>
         <li>
+          <a class="flex items-center px-3 h-[44px]" href="cart.php">Cart</a>
+        </li>
+        <li>
+        <li>
           <a class="flex items-center px-3 h-[44px]" href="signup.php">Signup</a>
         </li>
         <li>
