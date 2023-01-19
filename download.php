@@ -80,11 +80,10 @@
                         <td class="text-sm text-gray-900 font-light px-6 py-4">
                           <img src="admin/upload/<?php echo $product['file_name1']?>">
                         </td>
-                        <td class="text-sm text-gray-900 font-light px-6 py-4"><div class="break-words w-[320px] overflow-hidden"><a href="item.php?product_id=<?php echo $product['id']?>"><h3 class="text-lg font-semibold tracking-wide"><?php echo $product['title']?></h3></a></div></td>
+                        <td class="text-sm text-gray-900 font-light px-6 py-4"><div class="break-words w-[320px] overflow-hidden"><a target="_blank" href="item.php?product_id=<?php echo $product['id']?>"><h3 class="text-lg font-semibold tracking-wide"><?php echo $product['title']?></h3></a></div></td>
                         <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><?php $time = $data['time']; echo date("d-M-y",$time);?></td>
                         <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">৳ <?php echo $product['sell_price']?></td>
                         <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><a href="download-security.php?file_id=<?php echo $product['id']?>" class="block bg-[#f75389] text-white px-4 py-2 rounded shadow focus:ring-2 ring-[#f75389] ring-offset-1">Download</a></td>
-                        <!-- <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><a href="admin/upload/<?php echo $product['file_name']?>" download="<?php echo $product['title']?>" class="block bg-[#f75389] text-white px-4 py-2 rounded shadow focus:ring-2 ring-[#f75389] ring-offset-1">Download</a></td> -->
                       </tr>
                       <?php }?>
                   </table>
