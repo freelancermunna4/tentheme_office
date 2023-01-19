@@ -1,5 +1,6 @@
+<?php if (isset($_GET['msg'])) {?><div id="popup_msg" data-text="<?php echo $_GET['msg']; ?>"></div><?php } ?>
+<?php if (isset($_GET['err'])) {?><div id="error_msg" data-text="<?php echo $_GET['err']; ?>"></div><?php } ?>
 <?php include("admin/config/functions.php");
-
 if(isset($_SESSION['user_id'])){
 $id = $_SESSION['user_id'];
 }elseif(isset($_COOKIE['user_id'])){
@@ -15,12 +16,10 @@ $limit_setting = _fetch("limit_setting","id=$id");
 
 $cr_url = $_SERVER['SCRIPT_NAME'];
 $cr_url = substr($cr_url,strrpos($cr_url,'/')+1);
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <!--
       theme name: Bangladeshi Software
