@@ -24,13 +24,7 @@
     global $conn;
     $query = "$table";
     return mysqli_query($conn,$query);
-    }
-    //made by php_munna    
-    function _deleteid($table,$id){
-    global $conn;
-    $query = "DELETE FROM $table WHERE id=$id";
-    return mysqli_query($conn,$query);
-    }
+    }   
     //made by php_munna     
     function _delete($table,$condition){
     global $conn;
@@ -56,7 +50,6 @@
     // $query = _getAll("brand");
     // $query = _get("brand","id=8");
 
-    // $query = _deleteid("brand",7);
     // $query = _delete("brand","id=7");
 
     // $query = _insert("brand","name","'value'");
@@ -94,6 +87,17 @@
     }
 
     $time = time();
+
+    
+    function sort_str($string, $word_count = 10) {
+      $string = explode(' ', $string);
+      if (empty($string) == false) {
+          $string = array_chunk($string, $word_count);
+          $string = $string[0];
+      }
+      $string = implode(' ', $string);
+      echo $string;
+  }
 
 
 

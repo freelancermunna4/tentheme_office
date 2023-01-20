@@ -61,29 +61,43 @@
             }            
           }
           ?>
+          <div class="chat_area col-12 p-5">
+          <div class="chatting">
+            <div class="person">
+                <div class="img">
+                    <img src="admin/upload/avatar.jpg" alt="">
+                    <p>Moderator</p>
+                </div>
+                <div class="message">
+                    <div class="content">
+                      Lorem ipsum dolot.
+                    </div>
+                    <p>11-22-33</p>
+                </div>
+            </div>
+
+<!--            
+            <div class="me">
+                <div class="img">
+                    <img src="admin/upload/avatar.jpg" alt="">
+                    <p>Moderator</p>
+                </div>
+                <div class="message">
+                    <div class="content">
+                      Lorem ipsum dolot.
+                    </div>
+                    <p>11-22-33</p>
+                </div>
+            </div> -->
+
+
+          </div>
+          </div>
+
+   
+
+
           <form class="grid grid-cols-12 gap-y-6 p-5" action="" method="POST" enctype="multipart/form-data">
-            <div class="col-span-12"><label class="mb-2 block" for="subject">Subject</label>
-              <input name="subject" required="" type="text" placeholder="Subject..."
-                class="w-full h-11 flex items-center rounded bg-white outline-none ring-2 ring-gray-200 disabled:bg-gray-200 disabled:cursor-not-allowed focus:ring-blue-600 text-gray-800 px-4"
-                id="subject">
-            </div>
-
-
-            <div class="col-span-12"><label class="mb-2 block" for="subject">Select Order</label>
-              <select name="select"
-                class="border-8 border-white bg-white ring-2 ring-gray-200 focus:ring-blue-600 w-full h-11 rounded outline-none">
-                <?php 
-                $cart = _get("cart","pid=$id AND type='service'");
-                while($data = mysqli_fetch_assoc($cart)){
-                  $cart_id = $data['cart_id']; 
-                  $service = _fetch("service","id=$cart_id");
-                  ?>
-                  <option value="<?php echo $service['id']?>"><?php echo $service['title']?></option>                  
-              <?php }?>
-              </select>
-            </div>
-
-
             <div class="col-span-12"><label class="mb-2 block" for="message">Your Message</label>
               <textarea name="textarea" required="" type="text" placeholder="Message..."
                 class="w-full min-h-[100px] p-3 flex items-center rounded bg-white outline-none ring-2 ring-gray-200 disabled:bg-gray-200 disabled:cursor-not-allowed focus:ring-blue-600 text-gray-800 px-4 summernote"
@@ -129,6 +143,6 @@
       });
 </script>
 
-  <!-- Header area -->
+<!-- Header area -->
   <?php include("common/footer.php");?>
 <!-- Header area -->

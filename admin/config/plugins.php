@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 
     // <!-- ===================Ago time=========== -->
     function time_elapsed_string($datetime, $full = false) {

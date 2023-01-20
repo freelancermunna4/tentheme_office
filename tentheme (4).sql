@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 19, 2023 at 12:22 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.2
+-- Generation Time: Jan 20, 2023 at 08:18 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -38,7 +37,7 @@ CREATE TABLE `blog` (
   `content` longtext NOT NULL,
   `status` varchar(255) NOT NULL,
   `time` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `blog`
@@ -67,9 +66,9 @@ CREATE TABLE `cart` (
   `cart_id` int(255) NOT NULL,
   `type` varchar(255) NOT NULL,
   `duration` varchar(255) NOT NULL,
-  `status` int(255) NOT NULL DEFAULT '0',
+  `status` int(255) NOT NULL DEFAULT 0,
   `time` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `cart`
@@ -93,7 +92,7 @@ CREATE TABLE `category` (
   `id` int(255) NOT NULL,
   `category` varchar(255) NOT NULL,
   `time` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `category`
@@ -117,13 +116,13 @@ INSERT INTO `category` (`id`, `category`, `time`) VALUES
 CREATE TABLE `comment` (
   `post_id` int(255) NOT NULL,
   `id` int(11) NOT NULL,
-  `parent_id` int(255) NOT NULL DEFAULT '0',
+  `parent_id` int(255) NOT NULL DEFAULT 0,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `content` varchar(255) NOT NULL,
   `img` varchar(255) NOT NULL DEFAULT 'img.png',
   `time` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `comment`
@@ -155,15 +154,34 @@ CREATE TABLE `deposit` (
   `amount` int(255) NOT NULL,
   `status` varchar(255) NOT NULL DEFAULT 'Pending',
   `time` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `deposit`
 --
 
 INSERT INTO `deposit` (`id`, `pid`, `method`, `pmn_address`, `tr_id`, `amount`, `status`, `time`) VALUES
-(16, 1, '3333332', 'sdfsdfsdf', '3343', 1000, 'Success', 1672894705),
+(16, 1, '3333332', 'sdfsdfsdf', '3343', 800, 'Success', 1672894705),
 (17, 1, '3333332', 'sdfsdfsdf', '3343', 1000, 'Pending', 1672894705);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `limit_setting`
+--
+
+CREATE TABLE `limit_setting` (
+  `id` int(255) NOT NULL,
+  `deposit` int(255) NOT NULL,
+  `withdraw` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `limit_setting`
+--
+
+INSERT INTO `limit_setting` (`id`, `deposit`, `withdraw`) VALUES
+(1, 1000, 500);
 
 -- --------------------------------------------------------
 
@@ -181,7 +199,7 @@ CREATE TABLE `mail` (
   `security` varchar(255) NOT NULL,
   `contact_mail` varchar(255) NOT NULL,
   `reply_mail` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `mail`
@@ -202,7 +220,7 @@ CREATE TABLE `pages` (
   `title` varchar(255) NOT NULL,
   `content` longtext NOT NULL,
   `description` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `pages`
@@ -228,7 +246,7 @@ CREATE TABLE `payment` (
   `pmn_method` varchar(255) NOT NULL,
   `pmn_info` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `payment`
@@ -259,7 +277,7 @@ CREATE TABLE `person` (
   `balance` int(255) NOT NULL,
   `terms` varchar(255) NOT NULL DEFAULT 'Desline',
   `time` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `person`
@@ -267,7 +285,7 @@ CREATE TABLE `person` (
 
 INSERT INTO `person` (`id`, `name`, `phone`, `address`, `email`, `password`, `role`, `file_name`, `balance`, `terms`, `time`) VALUES
 (1, 'Admin', '1234558', 'Sirajganj, Dhaka, Bangladesh', 'admin@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', '634af2216fb544.83705756.jpg', 189, 'Desline', 1670579900),
-(6, 'munna', '1234558', 'Sirajganj, Dhaka, Bangladesh', 'munna@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'User', 'avatar.jpg', 200, '', 1670579900);
+(6, 'munna', '1234558', 'Sirajganj, Dhaka, Bangladesh', 'munna@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'User', 'avatar.jpg', 200, '', 1674106983);
 
 -- --------------------------------------------------------
 
@@ -296,7 +314,7 @@ CREATE TABLE `products` (
   `file_name3` varchar(255) NOT NULL DEFAULT 'image.png',
   `file_name4` varchar(255) NOT NULL DEFAULT 'image.png',
   `time` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `products`
@@ -337,7 +355,7 @@ CREATE TABLE `service` (
   `file_name3` varchar(255) NOT NULL DEFAULT 'image.png',
   `file_name4` varchar(255) NOT NULL DEFAULT 'image.png',
   `time` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `service`
@@ -370,7 +388,7 @@ CREATE TABLE `slider` (
   `link1` varchar(255) NOT NULL,
   `link2` varchar(255) NOT NULL,
   `file_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `slider`
@@ -407,7 +425,7 @@ CREATE TABLE `team` (
   `file` varchar(255) NOT NULL DEFAULT 'avatar.jpg',
   `status` varchar(255) NOT NULL,
   `time` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `team`
@@ -418,6 +436,31 @@ INSERT INTO `team` (`id`, `name`, `qualification`, `facebook`, `whatsapp`, `link
 (23, 'Md Munna Hasan', 'PHP Developer', 'https://www.facebook.com/', '0123456789', 'https://www.linkedin.com/', 'admin@gmail.com', '<span style=\"font-family: \"Open Sans\", Arial, sans-serif; font-size: 14px; text-align: justify;\">standard dummy text ever since the 1500s, when an unknown printer took a galley of type a</span>', '<p><span style=\"font-family: \"Open Sans\", Arial, sans-serif; font-size: 14px; text-align: justify;\">standard dummy text ever since the 1500s, when an unknown printer took a galley of type a</span><span style=\"font-family: \"Open Sans\", Arial, sans-serif; font-size: 14px; text-align: justify;\">standard dummy text ever since the 1500s, when an unknown printer took a galley of type a</span><span style=\"font-family: \"Open Sans\", Arial, sans-serif; font-size: 14px; text-align: justify;\">standard dummy text ever since the 1500s, when an unknown printer took a galley of type a</span><br></p>', '633f4454a0e0b90ba9645ea6_FigDone-Cool-Square.png', 'Published', 1673258415),
 (24, 'Md Munna Hasan', 'PHP Developer', 'https://www.facebook.com/', '0123456789', 'https://www.linkedin.com/', 'admin@gmail.com', '<span style=\"font-family: \"Open Sans\", Arial, sans-serif; font-size: 14px; text-align: justify;\">standard dummy text ever since the 1500s, when an unknown printer took a galley of type a</span>', '<p><span style=\"font-family: \"Open Sans\", Arial, sans-serif; font-size: 14px; text-align: justify;\">standard dummy text ever since the 1500s, when an unknown printer took a galley of type a</span><span style=\"font-family: \"Open Sans\", Arial, sans-serif; font-size: 14px; text-align: justify;\">standard dummy text ever since the 1500s, when an unknown printer took a galley of type a</span><span style=\"font-family: \"Open Sans\", Arial, sans-serif; font-size: 14px; text-align: justify;\">standard dummy text ever since the 1500s, when an unknown printer took a galley of type a</span><br></p>', '633f4454a0e0b90ba9645ea6_FigDone-Cool-Square.png', 'Published', 1673258415),
 (25, 'Md Munna Hasan', 'PHP Developer', 'https://www.facebook.com/', '0123456789', 'https://www.linkedin.com/', 'admin@gmail.com', '<span style=\"font-family: \"Open Sans\", Arial, sans-serif; font-size: 14px; text-align: justify;\">standard dummy text ever since the 1500s, when an unknown printer took a galley of type a</span>', '<p><span style=\"font-family: \"Open Sans\", Arial, sans-serif; font-size: 14px; text-align: justify;\">standard dummy text ever since the 1500s, when an unknown printer took a galley of type a</span><span style=\"font-family: \"Open Sans\", Arial, sans-serif; font-size: 14px; text-align: justify;\">standard dummy text ever since the 1500s, when an unknown printer took a galley of type a</span><span style=\"font-family: \"Open Sans\", Arial, sans-serif; font-size: 14px; text-align: justify;\">standard dummy text ever since the 1500s, when an unknown printer took a galley of type a</span><br></p>', '633f4454a0e0b90ba9645ea6_FigDone-Cool-Square.png', 'Published', 1673258415);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tickets`
+--
+
+CREATE TABLE `tickets` (
+  `id` int(255) NOT NULL,
+  `ticket_id` int(255) NOT NULL,
+  `pid` int(255) NOT NULL,
+  `service_id` int(255) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `message` longtext NOT NULL,
+  `file_name` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL DEFAULT 'Pending',
+  `time` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tickets`
+--
+
+INSERT INTO `tickets` (`id`, `ticket_id`, `pid`, `service_id`, `subject`, `message`, `file_name`, `status`, `time`) VALUES
+(1, 8418720, 1, 9, 'Full WordPress Full WordPress Website DesignFull WordPress Website DesignFull WordPress Website DesignFull WordPress Website DesignFull WordPress Website DesignFull WordPress Website DesignFull WordPress ', '<p>sdfdsfdsf</p>', '', 'Pending', 1674226032);
 
 -- --------------------------------------------------------
 
@@ -441,7 +484,7 @@ CREATE TABLE `website` (
   `linkedin` varchar(255) NOT NULL,
   `file_name` varchar(255) NOT NULL,
   `favicon_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `website`
@@ -464,7 +507,7 @@ CREATE TABLE `withdraw` (
   `amount` int(255) NOT NULL,
   `status` varchar(255) NOT NULL DEFAULT 'Pending',
   `time` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `withdraw`
@@ -506,6 +549,12 @@ ALTER TABLE `comment`
 -- Indexes for table `deposit`
 --
 ALTER TABLE `deposit`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `limit_setting`
+--
+ALTER TABLE `limit_setting`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -557,6 +606,12 @@ ALTER TABLE `team`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tickets`
+--
+ALTER TABLE `tickets`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `website`
 --
 ALTER TABLE `website`
@@ -601,6 +656,12 @@ ALTER TABLE `comment`
 --
 ALTER TABLE `deposit`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `limit_setting`
+--
+ALTER TABLE `limit_setting`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `mail`
@@ -649,6 +710,12 @@ ALTER TABLE `slider`
 --
 ALTER TABLE `team`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `tickets`
+--
+ALTER TABLE `tickets`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `website`

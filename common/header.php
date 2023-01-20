@@ -44,6 +44,10 @@ $cr_url = substr($cr_url,strrpos($cr_url,'/')+1);
     rel="stylesheet">
 
   <script src="https://code.jquery.com/jquery-3.2.1.js" crossorigin="anonymous"></script>
+
+  <!-- SUMMERNOTE TEXTAREA -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js" crossorigin="anonymous"></script>    
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet" />
  
   <!-- FONT-AWESOME -->
   <script src="https://kit.fontawesome.com/6788eb3be6.js" crossorigin="anonymous"></script>

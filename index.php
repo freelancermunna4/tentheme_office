@@ -6,8 +6,7 @@
 <?php include("common/slider.php");?>
 <!-- Slider -->
 </header>
-<?php
-  // unset($_SESSION['cart']);  
+<?php 
 if(isset($_SESSION['cart'])){
   $my_cart = $_SESSION['cart'];
   if(isset($_GET['cart'])){

@@ -41,7 +41,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js" crossorigin="anonymous"></script>    
   <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet" />
 
-
   <!-- Sweet Alert-->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 

@@ -70,7 +70,15 @@
                       <tr>
                         <th
                           class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                          Ticket No.
+                        </th>
+                        <th
+                          class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                           Subject
+                        </th>
+                        <th
+                          class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                          Service
                         </th>
                         <th
                           class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
@@ -84,115 +92,144 @@
                     </thead>
                     <tbody>
 
+                    <?php 
+                      $pagination = "ON";
+                      if (isset($_GET['page_no']) && $_GET['page_no']!="") {
+                      $page_no = $_GET['page_no'];} else {$page_no = 1;}
+                      $total_records_per_page = 10;
+                      $offset = ($page_no-1) * $total_records_per_page;
+                      $previous_page = $page_no - 1;
+                      $next_page = $page_no + 1;
+                      $adjacents = "2";          
+                      $tickets = _get("tickets","pid=$id ORDER BY id DESC LIMIT $offset, $total_records_per_page");
+                      $total_records = mysqli_num_rows(_get("tickets","pid=$id"));
+                      $total_no_of_pages = ceil($total_records / $total_records_per_page);
+                      $second_last = $total_no_of_pages - 1;
+
+                      while($data = mysqli_fetch_assoc($tickets)){
+                        $service_id = $data['service_id'];
+                        $service = _fetch("service","id=$service_id");
+                      ?>
                       <tr>
                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p class="text-gray-900 whitespace-no-wrap">Lorem, ipsum dolor.</p>
+                            <p class="text-gray-900 whitespace-no-wrap"><?php echo $data['ticket_id']?></p>
                         </td>
                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <p class="text-gray-900 whitespace-no-wrap">
-                            Jan 21, 2020
+                            <a href="chat.php?ticket_id=<?php echo $data['id']?>">
+                              <?php sort_str($data['subject']);?>
+                            </a>
+                          </p>
+                        </td>
+                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p class="text-gray-900 whitespace-no-wrap">
+                          <?php sort_str($service['title']);?>
+                          </p>
+                        </td>
+                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p class="text-gray-900 whitespace-no-wrap">
+                          <?php $time = $data['time'];echo date("d/M/y",$time)?>
                           </p>
                         </td>
                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                             <span aria-hidden class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                            <span class="relative">Activo</span>
+                            <span class="relative"><?php echo $data['status']?></span>
                           </span>
                         </td>
                       </tr>
+                      <?php }?>
 
-                      <tr>
-                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p class="text-gray-900 whitespace-no-wrap">Lorem, ipsum dolor.</p>
-                        </td>
-                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p class="text-gray-900 whitespace-no-wrap">
-                            Jan 21, 2020
-                          </p>
-                        </td>
-                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                            <span aria-hidden class="absolute inset-0 bg-red-400 opacity-50 rounded-full"></span>
-                            <span class="relative">Closed</span>
-                          </span>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p class="text-gray-900 whitespace-no-wrap">Lorem, ipsum dolor.</p>
-                        </td>
-                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p class="text-gray-900 whitespace-no-wrap">
-                            Jan 21, 2020
-                          </p>
-                        </td>
-                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                            <span aria-hidden class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                            <span class="relative">Activo</span>
-                          </span>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p class="text-gray-900 whitespace-no-wrap">Lorem, ipsum dolor.</p>
-                        </td>
-                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p class="text-gray-900 whitespace-no-wrap">
-                            Jan 21, 2020
-                          </p>
-                        </td>
-                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                            <span aria-hidden class="absolute inset-0 bg-red-400 opacity-50 rounded-full"></span>
-                            <span class="relative">Closed</span>
-                          </span>
-                        </td>
-                      </tr>
 
                     </tbody>
                   </table>
 
                   <!-- Paginations -->
-                  <div class="flex flex-col-reverse xl:flex-row gap-6 xl:gap-0 items-center justify-between p-6">
-                    <div class="flex items-center justify-center flex-wrap gap-1 w-fit">
-                      <a href="#"
-                        class="px-4 py-2 text-gray-500 bg-gray-300 hover:bg-[#f75389] hover:text-white rounded-l-sm">
-                        <i class="fa-solid fa-arrow-left"></i>
-                      </a>
+                  <?php if(isset($pagination)){?>
+                <style>
+                .paginations{width:900px;}
+                .paginations>ul>li{list-style: none;display: inline-block;line-height: 2.5;}
+                .paginations>ul>li>a{padding: 5px 10px;margin:5px;background: #fff;font-weight: bolder;box-shadow: 0px 0px 2px gray;}
+                .paginations>ul>li>a:hover{background: #4ade80;color: #fff;}
+                .active>a{background: #4ade80 !important;color: #fff !important;}
+                .page_of{padding-top: 10px;}
+                @media only screen and (max-width: 850px){.page_of{display: none;}}
+              </style>
+                  <div class="paginations">
+                    <ul>
+                      <?php // if($page_no > 1){ echo "<li><a href='?page_no=1'>First Page</a></li>"; } ?>
+                        
+                      <li <?php if($page_no <= 1){ echo "class=''"; } ?>>
+                      <a <?php if($page_no > 1){ echo "href='?page_no=$previous_page'"; } ?>>Previous</a>
+                      </li>
+                          
+                        <?php 
+                      if ($total_no_of_pages <= 10){  	 
+                        for ($counter = 1; $counter <= $total_no_of_pages; $counter++){
+                          if ($counter == $page_no) {
+                          echo "<li class=''><a>$counter</a></li>";	
+                            }else{
+                              echo "<li><a href='?page_no=$counter'>$counter</a></li>";
+                            }
+                            }
+                      }
+                      elseif($total_no_of_pages > 10){
+                        
+                      if($page_no <= 4) {			
+                      for ($counter = 1; $counter < 8; $counter++){		 
+                          if ($counter == $page_no) {
+                          echo "<li class='active'><a>$counter</a></li>";	
+                            }else{
+                              echo "<li><a href='?page_no=$counter'>$counter</a></li>";
+                            }
+                            }
+                        echo "<li><a>...</a></li>";
+                        echo "<li><a href='?page_no=$second_last'>$second_last</a></li>";
+                        echo "<li><a href='?page_no=$total_no_of_pages'>$total_no_of_pages</a></li>";
+                        }
 
-                      <a href="#" class="px-4 py-2 text-gray-700 bg-gray-200 hover:bg-[#f75389] hover:text-white">
-                        1
-                      </a>
-                      <a href="#" class="px-4 py-2 text-gray-700 bg-gray-200 hover:bg-[#f75389] hover:text-white">
-                        2
-                      </a>
-                      <a href="#" class="px-4 py-2 text-gray-700 bg-gray-200 hover:bg-[#f75389] hover:text-white">
-                        3
-                      </a>
-                      <a href="#" class="px-4 py-2 text-gray-700 bg-gray-200 hover:bg-[#f75389] hover:text-white">
-                        4
-                      </a>
-                      <a href="#" class="px-4 py-2 text-gray-700 bg-gray-200 hover:bg-[#f75389] hover:text-white">
-                        5
-                      </a>
-                      <a href="#" class="px-4 py-2 text-gray-700 bg-gray-200 hover:bg-[#f75389] hover:text-white">
-                        ...
-                      </a>
-                      <a href="#" class="px-4 py-2 text-gray-700 bg-gray-200 hover:bg-[#f75389] hover:text-white">
-                        11
-                      </a>
-                      <a href="#"
-                        class="px-4 py-2 text-gray-500 bg-gray-300 hover:bg-[#f75389] hover:text-white rounded-r-sm">
-                        <i class="fa-solid fa-arrow-right"></i>
-                      </a>
-                    </div>
+                      elseif($page_no > 4 && $page_no < $total_no_of_pages - 4) {		 
+                        echo "<li><a href='?page_no=1'>1</a></li>";
+                        echo "<li><a href='?page_no=2'>2</a></li>";
+                            echo "<li><a>...</a></li>";
+                            for ($counter = $page_no - $adjacents; $counter <= $page_no + $adjacents; $counter++) {			
+                              if ($counter == $page_no) {
+                          echo "<li class='active'><a>$counter</a></li>";	
+                            }else{
+                              echo "<li><a href='?page_no=$counter'>$counter</a></li>";
+                            }                  
+                          }
+                          echo "<li><a>...</a></li>";
+                        echo "<li><a href='?page_no=$second_last'>$second_last</a></li>";
+                        echo "<li><a href='?page_no=$total_no_of_pages'>$total_no_of_pages</a></li>";      
+                                }
+                        
+                        else {
+                            echo "<li><a href='?page_no=1'>1</a></li>";
+                        echo "<li><a href='?page_no=2'>2</a></li>";
+                            echo "<li><a>...</a></li>";
 
-                    <div>Page 1 of 12</div>
+                            for ($counter = $total_no_of_pages - 6; $counter <= $total_no_of_pages; $counter++) {
+                              if ($counter == $page_no) {
+                          echo "<li class='active'><a>$counter</a></li>";	
+                            }else{
+                              echo "<li><a href='?page_no=$counter'>$counter</a></li>";
+                            }                   
+                          }
+                        }
+                      }
+                    ?>
+                        
+                      <li <?php if($page_no >= $total_no_of_pages){ echo "class='disabled'"; } ?>>
+                      <a <?php if($page_no < $total_no_of_pages) { echo "href='?page_no=$next_page'"; } ?>>Next</a>
+                      </li>
+                        <?php if($page_no < $total_no_of_pages){
+                        echo "<li><a href='?page_no=$total_no_of_pages'>Last</a></li>";
+                        } ?>
+                    </ul>
                   </div>
-                  <!-- Paginations -->
+                <?php }?>
+          <!-- Paginations -->
 
                 </div>
               </div>
@@ -207,101 +244,6 @@
   </main>
 
 
-  <!-- Footer -->
-  <footer class="bg-white pt-[74px]">
-    <div class="container grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-12">
-
-      <div class="space-y-6">
-        <img class="w-36" src="assets/images/logo.png" alt="">
-        <div class="flex space-x-5">
-          <a href="https://www.facebook.com/bangladeshisoftware"
-            class="bg-blue-600 text-white px-4 py-1 rounded shadow-sm">
-            <i class="fa-brands fa-facebook"></i>
-            <small>Facebook</small>
-          </a>
-          <a href="https://www.facebook.com/bangladeshisoftware"
-            class="bg-red-600 text-white px-4 py-1 rounded shadow-sm">
-            <i class="fa-brands fa-youtube"></i>
-            <small>Youtube</small>
-          </a>
-        </div>
-      </div>
-
-      <div>
-        <p>Bangladeshi Software is the biggest Software Company In Bangladesh. We provide any Desktop & Android
-          Software.
-          We Provide 100 Percent Customer Satisfaction Copyright © by SHAMIMLEM.</p>
-      </div>
-
-      <div class="2xl:pl-20">
-        <ul class="w-fit 2xl:mx-auto space-y-4">
-          <li class="space-x-2 text-sm font-medium hover:text-gray-600">
-            <small class="text-xs"><i class="fa-solid fa-chevron-right"></i></small>
-            <a href="dmca.php">DMCA</a>
-          </li>
-
-          <li class="space-x-2 text-sm font-medium hover:text-gray-600">
-            <small class="text-xs"><i class="fa-solid fa-chevron-right"></i></small>
-            <a href="contact.php">Contact US</a>
-          </li>
-          <li class="space-x-2 text-sm font-medium hover:text-gray-600">
-            <small class="text-xs"><i class="fa-solid fa-chevron-right"></i></small>
-            <a href="cookies-policy.php">Cookies Policy</a>
-          </li>
-          <li class="space-x-2 text-sm font-medium hover:text-gray-600">
-            <small class="text-xs"><i class="fa-solid fa-chevron-right"></i></small>
-            <a href="privacy-policy.php">Privacy Policy</a>
-          </li>
-
-        </ul>
-      </div>
-
-      <div class="2xl:pl-20">
-        <ul class="w-fit 2xl:mx-auto space-y-4">
-          <li class="space-x-2 text-sm font-medium hover:text-gray-600">
-            <small class="text-xs"><i class="fa-solid fa-chevron-right"></i></small>
-            <a href="investor.php">Join Investor</a>
-          </li>
-
-
-          <li class="space-x-2 text-sm font-medium hover:text-gray-600">
-            <small class="text-xs"><i class="fa-solid fa-chevron-right"></i></small>
-            <a href="reseller.php">Join Reseller</a>
-          </li>
-
-          <li class="space-x-2 text-sm font-medium hover:text-gray-600">
-            <small class="text-xs"><i class="fa-solid fa-chevron-right"></i></small>
-            <a href="mailto:shamimlem@yahoo.com">shamimlem@yahoo.com</a>
-          </li>
-
-          <li class="space-x-2 text-sm font-medium hover:text-gray-600">
-            <small class="text-xs"><i class="fa-solid fa-chevron-right"></i></small>
-            <a href="tel:+08801719182586">+08801719182586</a>
-          </li>
-
-        </ul>
-      </div>
-    </div>
-
-
-    <div class="container flex flex-col xl:flex-row w-full justify-between items-center gap-y-4 xl:gap-y-0 py-12">
-      <ul class="flex items-center justify-start w-full xl:w-[400px] gap-x-4 flex-wrap">
-        <li> <a href="index.php" class="hover:text-blue-600 hover:underline">Products</a> </li>
-        <li> <a href="services.php" class="hover:text-blue-600 hover:underline">Services</a> </li>
-        <li> <a href="investor.php" class="hover:text-blue-600 hover:underline">Investor</a> </li>
-        <li> <a href="reseller.php" class="hover:text-blue-600 hover:underline">Reseller</a> </li>
-      </ul>
-
-      <p class="w-full xl:text-right">
-        <span class="text-gray-700 text-base"> All Rights Reserved © Bangladeshi Software 2022 <span>SHAMIMLEM.</span>
-      </p>
-    </div>
-
-  </footer>
-  <!-- Footer -->
-
-
-  <script src="assets/js/app.js"></script>
-</body>
-
-</html>
+<!-- Header area -->
+  <?php include("common/footer.php");?>
+<!-- Header area -->

@@ -94,7 +94,7 @@
             </div>
           </div>
 
-          <?php if(isset($pagination)){?>
+                <?php if(isset($pagination)){?>
                 <style>
                 .paginations{width:900px;}
                 .paginations>ul>li{list-style: none;display: inline-block;line-height: 2.5;}
