@@ -43,26 +43,11 @@
           <div class="px-5 py-4 text-blue-600 border-b flex justify-between items-center">
             <span class="text-2xl font-medium tracking-wide">Add new ticket!</span>
           </div>
-
-          <?php 
-          if(isset($_POST['submit'])){
-            $subject = $_POST['subject'];
-            $service_id = $_POST['select'];
-            $message = $_POST['textarea'];
-            $ticket_id = rand(1000,10000000);
-
-            $file_name = $_FILES['file']['name'];
-            $file_tmp = $_FILES['file']['tmp_name'];            
-
-            $insert = _insert("tickets","ticket_id,pid,service_id,subject,message,time","'$ticket_id','$id','$service_id','$subject','$message','$time'");
-            if($insert){
-              $msg = "Successfully Created a new Ticket";
-              header("location:tickets.php?msg=$msg");
-            }            
-          }
-          ?>
+          
           <div class="chat_area col-12 p-5">
+            
           <div class="chatting">
+
             <div class="person">
                 <div class="img">
                     <img src="admin/upload/avatar.jpg" alt="">
@@ -73,23 +58,21 @@
                       Lorem ipsum dolot.
                     </div>
                     <p>11-22-33</p>
-                </div>
+                </div>                
             </div>
 
-<!--            
             <div class="me">
                 <div class="img">
                     <img src="admin/upload/avatar.jpg" alt="">
-                    <p>Moderator</p>
+                    <p>User</p>
                 </div>
                 <div class="message">
                     <div class="content">
-                      Lorem ipsum dolot.
+                    Lorem ot. . LoremLore
                     </div>
                     <p>11-22-33</p>
-                </div>
-            </div> -->
-
+                </div>                
+            </div>
 
           </div>
           </div>
