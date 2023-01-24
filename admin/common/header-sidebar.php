@@ -44,6 +44,7 @@
 
   <!--=== Styles ===-->
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/custom.css">
 </head>
 
 <body>

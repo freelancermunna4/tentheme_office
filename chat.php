@@ -52,7 +52,7 @@ if(isset($_GET['ticket_id'])){
 
 
           <form id="chat_user_form" class="grid grid-cols-12 gap-y-6 p-5" action="" method="POST" enctype="multipart/form-data">
-            <div class="col-span-12"><label class="mb-2 block" for="message">Your Message</label>
+            <div class="col-span-12">
               <textarea name="textarea" required="" type="text" placeholder="Message..."
                 class="w-full min-h-[100px] p-3 flex items-center rounded bg-white outline-none ring-2 ring-gray-200 disabled:bg-gray-200 disabled:cursor-not-allowed focus:ring-blue-600 text-gray-800 px-4 summernote messages"
                 value="" id="message"></textarea>
@@ -62,7 +62,7 @@ if(isset($_GET['ticket_id'])){
               <div class="w-fit">
                 <button type="submit" name="submit" id="submit"
                   class="flex items-center justify-center px-4 gap-x-4 bg-blue-600 text-white focus:ring rounded w-full h-11 tracking-wider font-medium text-base">
-                  Submit
+                  Send
                 </button>
               </div>
             </div>

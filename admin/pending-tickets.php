@@ -1,5 +1,28 @@
 <?php include("common/header-sidebar.php");?>
+<?php
 
+if(isset($_GET['action'])){
+  $action = $_GET['action'];
+  $ticket_id = $_GET['ticket_id'];
+  if($action == 'solved'){
+    $update = _update("tickets","status='Solved'","ticket_id=$ticket_id");
+    if($ticket_id){
+      $msg = "Successfully Solved Ticket";
+      header("location:pending-tickets.php?msg=$msg");      
+    }
+  }elseif($action == 'delete'){
+    $delete = _delete("tickets","ticket_id=$ticket_id");
+    if($delete){
+      $msg = "Successfully Deleted Ticket";
+      header("location:pending-tickets.php?msg=$msg");      
+    }
+  }else{
+    header("location:pending-tickets.php");
+  }
+}
+
+
+?>
 <div class="x_container space-y-10 py-10">
     <div class="flex flex-col rounded-lg shadow-md border border-[
         ] shadow-gray-200 bg-white">
@@ -28,10 +51,10 @@
                     if(isset($_POST['check_list'])){
                       $check_list = $_POST['check_list'];
                       for($i=0;$i<count($check_list);$i++){
-                        $delete = _delete("deposit","id=$check_list[$i]");
+                        $delete = _delete("tickets","id=$check_list[$i]");
                       }
                       $msg = "Delete Successfully";
-                      header("location:pending-deposits.php?msg=$msg");
+                      header("location:pending-tickets.php?msg=$msg");
                     }
                   }
                   ?>
@@ -43,6 +66,7 @@
                       <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5">
                         <input name="check" style="background:red;padding:5px 10px;color:#fff;border-radius:2px;" type="submit" value="Delete">
                       </th>
+                      <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5">Ticket Id</th>
                       <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5">Image</th>
                       <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5">Name</th>
                       <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5">Phone</th>
@@ -58,7 +82,15 @@
                     <?php
                     if(isset($_GET['src'])){
                       $src = trim($_GET['src']); 
-                      $deposit = _query("SELECT deposit.*,person.* FROM deposit INNER JOIN person ON deposit.pid=person.id WHERE deposit.status='Pending' AND (person.name='$src' OR person.phone='$src' OR deposit.method='$src' OR deposit.pmn_address='$src' OR  deposit.tr_id='$src' OR  deposit.amount='$src')");
+                      $tickets = _query("SELECT * FROM tickets INNER JOIN person ON tickets.pid=person.id INNER JOIN service ON tickets.service_id = service.id
+                       WHERE tickets.status='Pending' AND subject !='' AND (
+                          person.name='$src'  
+                       OR person.phone='$src'
+                       OR tickets.ticket_id='$src'
+                       OR tickets.subject='$src'
+                       OR service.title='$src'                       
+                       )
+                       ");
                     }else{
                     
                     $pagination = "ON";
@@ -71,7 +103,7 @@
                     $adjacents = "2";
 
                     $tickets =_query("SELECT * FROM tickets WHERE status='Pending' AND subject !='' ORDER BY id DESC LIMIT $offset, $total_records_per_page");
-                    $total_records = mysqli_num_rows(_get("tickets","status='Pending' AND subject !='' ")); 
+                    $total_records = mysqli_num_rows(_get("tickets","status='Pending' AND subject !='' "));
 
                     $total_no_of_pages = ceil($total_records / $total_records_per_page);
                     $second_last = $total_no_of_pages - 1;
@@ -88,6 +120,7 @@
                         <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap lg:p-5">
                           <input name="check_list[]" type="checkbox" value="<?php echo $data['id']?>">
                         </td>
+                        <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap lg:p-5"><?php echo $data['ticket_id']?></td>
                         <td><img style="margin:0 auto;width:100;height:50px;object-fit:cover" src="upload/<?php echo $person_info['file_name']?>"></td>
                         <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap lg:p-5"><?php echo $person_info['name']?></td>
                         <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap lg:p-5"><?php echo $person_info['phone']?></td>
@@ -102,9 +135,9 @@
                           <td class="p-4 text-sm font-normal text-green-500 whitespace-nowrap lg:p-5"><?php echo $data['status']?></td>
                         <?php }?>
                         <td class="text-center p-4 space-x-2 whitespace-nowrap lg:p-5">
-                          <a href="edit-ticket.php?ticket_id=<?php echo $data['id']?>" class="popup_show btn bg-red-500 w-fit text-white" style="background:#4ade80;">Edit</a>
-                          <a href="delete.php?src=pending-deposits&&table=deposit&&id=<?php echo $data['id']?>" class="popup_show btn bg-red-500 w-fit text-white">Delete</a>                          
-                          <a href="approve-deposit.php?id=<?php echo $data['id']?>" class="popup_show btn bg-red-500 w-fit text-white" style="background:#4ade80;">Solved</a>
+                          <a href="view-ticket.php?ticket_id=<?php echo $data['ticket_id']?>" class="popup_show btn bg-red-500 w-fit text-white" style="background:#4ade80;">View</a>
+                          <a href="pending-tickets.php?action=delete&&ticket_id=<?php echo $data['ticket_id']?>" class="popup_show btn bg-red-500 w-fit text-white">Delete</a>                          
+                          <a href="pending-tickets.php?action=solved&&ticket_id=<?php echo $data['ticket_id']?>" class="popup_show btn bg-red-500 w-fit text-white" style="background:#4ade80;">Solved</a>
                         </td>
                       </tr>
                       <?php }?>
