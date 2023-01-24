@@ -1,7 +1,12 @@
 <!-- Header area -->
 <?php include("common/header.php");?>
 <!-- Header area -->
+<?php
+if(isset($_GET['ticket_id'])){
+  $ticket_id = $_GET['ticket_id'];
+}
 
+?>
     <!-- Sub Header -->
     <div class="container space-y-6 pt-6 pb-12 lg:py-24">
 
@@ -44,75 +49,24 @@
             <span class="text-2xl font-medium tracking-wide">Add new ticket!</span>
           </div>
 
-          <?php 
-          if(isset($_POST['submit'])){
-            $subject = $_POST['subject'];
-            $service_id = $_POST['select'];
-            $message = $_POST['textarea'];
-            $ticket_id = rand(1000,10000000);
-
-            $file_name = $_FILES['file']['name'];
-            $file_tmp = $_FILES['file']['tmp_name'];            
-
-            $insert = _insert("tickets","ticket_id,pid,service_id,subject,message,time","'$ticket_id','$id','$service_id','$subject','$message','$time'");
-            if($insert){
-              $msg = "Successfully Created a new Ticket";
-              header("location:tickets.php?msg=$msg");
-            }            
-          }
-          ?>
+         
           <div class="chat_area col-12 p-5">
           <div class="chatting">
-            <div class="person">
-                <div class="img">
-                    <img src="admin/upload/avatar.jpg" alt="">
-                    <p>Moderator</p>
-                </div>
-                <div class="message">
-                    <div class="content">
-                      Lorem ipsum dolot.
-                    </div>
-                    <p>11-22-33</p>
-                </div>
-            </div>
-
-<!--            
-            <div class="me">
-                <div class="img">
-                    <img src="admin/upload/avatar.jpg" alt="">
-                    <p>Moderator</p>
-                </div>
-                <div class="message">
-                    <div class="content">
-                      Lorem ipsum dolot.
-                    </div>
-                    <p>11-22-33</p>
-                </div>
-            </div> -->
-
-
+            
           </div>
-          </div>
-
-   
+          </div>  
 
 
-          <form class="grid grid-cols-12 gap-y-6 p-5" action="" method="POST" enctype="multipart/form-data">
+          <form id="chat_user_form" class="grid grid-cols-12 gap-y-6 p-5" action="" method="POST" enctype="multipart/form-data">
             <div class="col-span-12"><label class="mb-2 block" for="message">Your Message</label>
               <textarea name="textarea" required="" type="text" placeholder="Message..."
                 class="w-full min-h-[100px] p-3 flex items-center rounded bg-white outline-none ring-2 ring-gray-200 disabled:bg-gray-200 disabled:cursor-not-allowed focus:ring-blue-600 text-gray-800 px-4 summernote"
                 value="" id="message"></textarea>
             </div>
 
-
-            <div class="col-span-12"><label class="mb-2 block" for="photo">Choose File</label><input name="file"
-                class="w-full flex items-center rounded bg-white outline-none ring-2 ring-gray-200 focus:ring-blue-600 text-gray-800 px-4 py-2 disabled:bg-gray-200 disabled:cursor-not-allowed"
-                id="photo" type="file">
-            </div>
-
             <div class="col-span-12">
               <div class="w-fit">
-                <button type="submit" name="submit"
+                <button type="submit" name="submit" id="submit"
                   class="flex items-center justify-center px-4 gap-x-4 bg-blue-600 text-white focus:ring rounded w-full h-11 tracking-wider font-medium text-base">
                   Submit
                 </button>
@@ -126,6 +80,109 @@
     </div>
   </main>
 
+
+<script>
+  $(document).ready(function(){
+
+    function load(){
+        $.ajax({
+            url:"admin/config/ajax.php",
+            type:"POST",
+            data:
+            {
+              chat_load:1,
+              ticket_id: <?php echo $ticket_id;?>,
+              uid:<?php echo $id;?>
+            },
+            success:function(data){
+                $(".chatting").html(data);
+            }
+        });
+    }
+    load();
+    
+    $("#submit").on("click",function(e){
+      e.preventDefault();
+      $.ajax({
+          url:"admin/config/ajax.php",
+          type:"POST",
+          data:
+          {
+            chat_insert:1,            
+            ticket_id : <?php echo $ticket_id;?>,
+            uid:<?php echo $id;?>,
+            msg:$("#message").val(),        
+          },         
+          success:function(data){
+            load();
+            }
+          });
+      })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  })
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   <script>
   $('.summernote').summernote({
         placeholder: 'Write Something About Service',

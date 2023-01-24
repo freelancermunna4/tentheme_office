@@ -101,8 +101,8 @@
                       $previous_page = $page_no - 1;
                       $next_page = $page_no + 1;
                       $adjacents = "2";          
-                      $tickets = _get("tickets","pid=$id ORDER BY id DESC LIMIT $offset, $total_records_per_page");
-                      $total_records = mysqli_num_rows(_get("tickets","pid=$id"));
+                      $tickets = _get("tickets","pid=$id GROUP BY ticket_id HAVING COUNT(ticket_id)>1 ORDER BY id DESC LIMIT $offset, $total_records_per_page");
+                      $total_records = mysqli_num_rows(_get("tickets","pid=$id GROUP BY ticket_id HAVING COUNT(ticket_id)>1"));
                       $total_no_of_pages = ceil($total_records / $total_records_per_page);
                       $second_last = $total_no_of_pages - 1;
 
@@ -112,11 +112,13 @@
                       ?>
                       <tr>
                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <a href="chat.php?ticket_id=<?php echo $data['ticket_id']?>">
                             <p class="text-gray-900 whitespace-no-wrap"><?php echo $data['ticket_id']?></p>
+                          </a>
                         </td>
                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <p class="text-gray-900 whitespace-no-wrap">
-                            <a href="chat.php?ticket_id=<?php echo $data['id']?>">
+                            <a href="chat.php?ticket_id=<?php echo $data['ticket_id']?>">
                               <?php sort_str($data['subject']);?>
                             </a>
                           </p>

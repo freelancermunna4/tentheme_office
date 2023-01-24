@@ -89,12 +89,13 @@
 }
 
 .chatting {
-    border: 1px solid #8080807c;
-    border-radius: 5px;
-    padding: 10px;
 }
 
 .person {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #8080807c;
     display: flex;
     justify-content: space-between;
     /* gap: 20px; */
@@ -118,31 +119,6 @@
     margin-top: 10px;
     opacity: .5;
 }
-
-
-
-.me {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    bottom:0 ;
-}
-.me>.img {
-    width: 10%;
-}
-.me>.img>img {
-    width: 50px;
-    border-radius: 50%;
-    margin: 0 auto;
-}
-.me>.img p {
-    text-align: center;
-    margin-top: 10px;
-}
-.message {
-    width: 88%;
-}
-.message> p {
-    margin-top: 10px;
-    opacity: .5;
+.user_chat{
+    background: #48474715;
 }

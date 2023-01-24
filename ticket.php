@@ -49,10 +49,7 @@
             $subject = $_POST['subject'];
             $service_id = $_POST['select'];
             $message = $_POST['textarea'];
-            $ticket_id = rand(1000,10000000);
-
-            $file_name = $_FILES['file']['name'];
-            $file_tmp = $_FILES['file']['tmp_name'];            
+            $ticket_id = rand(1000,10000000);                   
 
             $insert = _insert("tickets","ticket_id,pid,service_id,subject,message,time","'$ticket_id','$id','$service_id','$subject','$message','$time'");
             if($insert){
@@ -88,12 +85,6 @@
               <textarea name="textarea" required="" type="text" placeholder="Message..."
                 class="w-full min-h-[100px] p-3 flex items-center rounded bg-white outline-none ring-2 ring-gray-200 disabled:bg-gray-200 disabled:cursor-not-allowed focus:ring-blue-600 text-gray-800 px-4 summernote"
                 value="" id="message"></textarea>
-            </div>
-
-
-            <div class="col-span-12"><label class="mb-2 block" for="photo">Choose File</label><input name="file"
-                class="w-full flex items-center rounded bg-white outline-none ring-2 ring-gray-200 focus:ring-blue-600 text-gray-800 px-4 py-2 disabled:bg-gray-200 disabled:cursor-not-allowed"
-                id="photo" type="file">
             </div>
 
             <div class="col-span-12">
