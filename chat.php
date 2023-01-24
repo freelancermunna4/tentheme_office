@@ -4,33 +4,27 @@
 <?php
 if(isset($_GET['ticket_id'])){
   $ticket_id = $_GET['ticket_id'];
+  $ticket = _fetch("tickets","ticket_id=$ticket_id limit 1");
 }
 
 ?>
     <!-- Sub Header -->
     <div class="container space-y-6 pt-6 pb-12 lg:py-24">
-
       <!-- Page Name Title -->
       <h3 class="text-4xl font-medium tracking-wide">
         Ticket
       </h3>
-
       <!-- Page Tree Links -->
       <div class="items-center justify-start space-x-2 text-gray-500">
-
         <a style="background-image: conic-gradient(from 1turn, #0e9479, #16a085)"
           class="text-white px-4 py-1.5 rounded shadow-sm" href="index.php">
           <i class="fa-solid fa-house"></i>
         </a>
-
         <small class="text-xs"> <i class="fa-solid fa-chevron-right"></i></small>
-
         <a style="background-image: conic-gradient(from 1turn, #0e9479, #16a085)"
           class="text-white px-4 py-1.5 rounded shadow-sm" href="ticket.php"> ticket
         </a>
-
       </div>
-
     </div>
   </header>
 
@@ -46,7 +40,7 @@ if(isset($_GET['ticket_id'])){
         <div class="w-full bg-white shadow rounded-sm">
 
           <div class="px-5 py-4 text-blue-600 border-b flex justify-between items-center">
-            <span class="text-2xl font-medium tracking-wide">Add new ticket!</span>
+            <span class="text-2xl font-medium tracking-wide"><?php echo $ticket['subject']?></span>
           </div>
 
          
@@ -60,7 +54,7 @@ if(isset($_GET['ticket_id'])){
           <form id="chat_user_form" class="grid grid-cols-12 gap-y-6 p-5" action="" method="POST" enctype="multipart/form-data">
             <div class="col-span-12"><label class="mb-2 block" for="message">Your Message</label>
               <textarea name="textarea" required="" type="text" placeholder="Message..."
-                class="w-full min-h-[100px] p-3 flex items-center rounded bg-white outline-none ring-2 ring-gray-200 disabled:bg-gray-200 disabled:cursor-not-allowed focus:ring-blue-600 text-gray-800 px-4 summernote"
+                class="w-full min-h-[100px] p-3 flex items-center rounded bg-white outline-none ring-2 ring-gray-200 disabled:bg-gray-200 disabled:cursor-not-allowed focus:ring-blue-600 text-gray-800 px-4 summernote messages"
                 value="" id="message"></textarea>
             </div>
 
@@ -83,7 +77,6 @@ if(isset($_GET['ticket_id'])){
 
 <script>
   $(document).ready(function(){
-
     function load(){
         $.ajax({
             url:"admin/config/ajax.php",
@@ -118,28 +111,6 @@ if(isset($_GET['ticket_id'])){
             }
           });
       })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   })
 </script>

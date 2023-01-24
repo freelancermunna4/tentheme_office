@@ -101,7 +101,7 @@
                       $previous_page = $page_no - 1;
                       $next_page = $page_no + 1;
                       $adjacents = "2";          
-                      $tickets = _get("tickets","pid=$id GROUP BY ticket_id HAVING COUNT(ticket_id)>1 ORDER BY id DESC LIMIT $offset, $total_records_per_page");
+                      $tickets = _get("tickets","pid=$id AND subject != '' ORDER BY id DESC LIMIT $offset, $total_records_per_page");
                       $total_records = mysqli_num_rows(_get("tickets","pid=$id GROUP BY ticket_id HAVING COUNT(ticket_id)>1"));
                       $total_no_of_pages = ceil($total_records / $total_records_per_page);
                       $second_last = $total_no_of_pages - 1;

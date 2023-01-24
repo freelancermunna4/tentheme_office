@@ -51,7 +51,7 @@
             $message = $_POST['textarea'];
             $ticket_id = rand(1000,10000000);                   
 
-            $insert = _insert("tickets","ticket_id,pid,service_id,subject,message,time","'$ticket_id','$id','$service_id','$subject','$message','$time'");
+            $insert = _insert("tickets","ticket_id,uid,pid,service_id,subject,message,time","'$ticket_id','$id','$id','$service_id','$subject','$message','$time'");
             if($insert){
               $msg = "Successfully Created a new Ticket";
               header("location:tickets.php?msg=$msg");

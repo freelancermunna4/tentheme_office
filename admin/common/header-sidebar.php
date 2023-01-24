@@ -9,9 +9,6 @@
     }else{
     $id = 0;
     }
-    if(isset($_SESSION['person_id'])){
-    $id = $_SESSION['person_id'];
-    }
     if($id<1){
     header("location:login.php");
     }
@@ -99,7 +96,32 @@
       <hr class="my-0">    
       
 
-      <!-- Sidebar Item -> products -->
+      <!-- Sidebar Item -> Ticket -->
+      <div class="sidebar_item overflow-hidden">
+        <button class="ds_title" data-ref="Ticket"><span class="text-xs transition-all text-pink-600"><i
+              class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">Tickets</span><span
+            class="text-xs opacity-50 transition-all"><i class="fa-solid fa-chevron-up"></i></span>
+        </button>
+        <ul class="ds_ul transition-all" data-ref="Ticket">
+          <li>
+            <a href="./pending-tickets.php">
+              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
+              <span>Pending Tickets</span>
+            </a>
+          </li>
+          <li>
+            <a href="./success-tickets.php">
+              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
+              <span>Published Tickets</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <hr class="my-0">    
+      
+      
+
+      <!-- Sidebar Item -> Deposit -->
       <div class="sidebar_item overflow-hidden">
         <button class="ds_title" data-ref="deposits"><span class="text-xs transition-all text-pink-600"><i
               class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">Deposits</span><span
@@ -122,7 +144,7 @@
       </div>
       <hr class="my-0">      
 
-      <!-- Sidebar Item -> products -->
+      <!-- Sidebar Item -> Withdraw -->
       <div class="sidebar_item overflow-hidden">
         <button class="ds_title" data-ref="withdraw"><span class="text-xs transition-all text-pink-600"><i
               class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">Withdraw</span><span
