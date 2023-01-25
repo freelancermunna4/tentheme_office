@@ -71,7 +71,7 @@
                     Lorem ot. . LoremLore
                     </div>
                     <p>11-22-33</p>
-                </div>                
+                </div>
             </div>
 
           </div>
