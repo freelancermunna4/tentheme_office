@@ -3,6 +3,7 @@
 if(isset($_GET['ticket_id'])){
   $ticket_id = $_GET['ticket_id'];
   $ticket = _fetch("tickets","ticket_id=$ticket_id limit 1");
+  $uid = $ticket['uid'];
 }
 
 ?>
@@ -60,9 +61,10 @@ if(isset($_GET['ticket_id'])){
           {
             chat_insert_admin:1,            
             ticket_id : <?php echo $ticket_id;?>,
-            uid:<?php echo $id;?>,
+            uid:<?php echo $uid;?>,
+            pid:<?php echo $id;?>,
             msg:$("#message").val(),        
-          },         
+          },
           success:function(data){
             loads();
             }

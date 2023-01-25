@@ -4,7 +4,7 @@
 <?php 
   if(isset($_POST['service_id'])){
     $service_id = $_POST['service_id'];
-    $service = _fetch("service","pid=$id AND id=$service_id");
+    $service = _fetch("service","id=$service_id");
   }  
 
 ?>
