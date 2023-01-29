@@ -33,7 +33,6 @@ if(isset($_POST['chat_insert']) && isset($_POST['ticket_id']) && isset($_POST['u
           $ticket_id = $_POST['ticket_id'];
           $uid = $_POST['uid'];
           $message = $_POST['msg'];
-          // $file_name = $_POST['file'];
 
           $insert = _insert("tickets","ticket_id,uid,pid,message,time","$ticket_id,$uid,$uid,'$message',$time");
           if($insert){
@@ -78,12 +77,13 @@ if(isset($_POST['chat_insert']) && isset($_POST['ticket_id']) && isset($_POST['u
 
 
 
-if(isset($_POST['chat_insert_admin']) && isset($_POST['ticket_id']) && isset($_POST['uid']) && isset($_POST['msg'])){ 
+if(isset($_POST['chat_insert_admin']) && isset($_POST['ticket_id']) && isset($_POST['uid']) && isset($_POST['pid']) && isset($_POST['msg'])){ 
   $ticket_id = $_POST['ticket_id'];
   $uid = $_POST['uid'];
+  $pid = $_POST['pid'];
   $message = $_POST['msg'];
 
-  $insert = _insert("tickets","ticket_id,uid,pid,message,time","$ticket_id,1,$uid,'$message',$time");
+  $insert = _insert("tickets","ticket_id,uid,pid,message,time","$ticket_id,$uid,$pid,'$message',$time");
   if($insert){
     echo $msg = "Message Sent";
   }else{
