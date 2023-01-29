@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2023 at 07:44 PM
+-- Generation Time: Jan 29, 2023 at 04:29 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -80,7 +80,9 @@ INSERT INTO `cart` (`id`, `pid`, `cart_id`, `type`, `duration`, `status`, `time`
 (20, 1, 48, 'product', '', 1, 1673947545),
 (21, 1, 58, 'product', '', 1, 1674060175),
 (22, 1, 9, 'service', '', 0, 0),
-(23, 1, 8, 'service', '', 0, 1674062944);
+(23, 1, 8, 'service', '', 0, 1674062944),
+(24, 1, 10, 'service', '', 0, 1674665745),
+(25, 1, 6, 'product', '', 0, 1674666576);
 
 -- --------------------------------------------------------
 
@@ -162,7 +164,8 @@ CREATE TABLE `deposit` (
 
 INSERT INTO `deposit` (`id`, `pid`, `method`, `pmn_address`, `tr_id`, `amount`, `status`, `time`) VALUES
 (16, 1, '3333332', 'sdfsdfsdf', '3343', 800, 'Success', 1672894705),
-(17, 1, '3333332', 'sdfsdfsdf', '3343', 1000, 'Pending', 1672894705);
+(17, 1, '3333332', 'sdfsdfsdf', '3343', 1000, 'Pending', 1672894705),
+(18, 1, '', 'hbhjghg', 'bhjghugy', 5000, 'Success', 1674665653);
 
 -- --------------------------------------------------------
 
@@ -284,7 +287,7 @@ CREATE TABLE `person` (
 --
 
 INSERT INTO `person` (`id`, `name`, `phone`, `address`, `email`, `password`, `role`, `file_name`, `balance`, `terms`, `time`) VALUES
-(1, 'Admin', '1234558', 'Sirajganj, Dhaka, Bangladesh', 'admin@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', '634af2216fb544.83705756.jpg', 189, 'Desline', 1670579900),
+(1, 'Admin', '1234558', 'Sirajganj, Dhaka, Bangladesh', 'admin@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', '634af2216fb544.83705756.jpg', 4589, 'Desline', 1670579900),
 (2, 'munna', '1234558', 'Sirajganj, Dhaka, Bangladesh', 'munna@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', 'avatar.jpg', 200, '', 1674106983);
 
 -- --------------------------------------------------------
@@ -475,7 +478,11 @@ INSERT INTO `tickets` (`id`, `ticket_id`, `uid`, `pid`, `service_id`, `subject`,
 (72, 3451266, 1, 2, 0, '', '<p>dfd</p>', '', 'Pending', 1674585581),
 (73, 3451266, 1, 2, 0, '', '<p>dfdf</p>', '', 'Pending', 1674585621),
 (74, 3451266, 1, 2, 0, '', '<p>sdfsdf</p>', '', 'Pending', 1674585774),
-(75, 3451266, 1, 2, 0, '', '<p>dsfdsf</p>', '', 'Pending', 1674585814);
+(75, 3451266, 1, 2, 0, '', '<p>dsfdsf</p>', '', 'Pending', 1674585814),
+(76, 3451266, 1, 2, 0, '', '<p>jhbnjh</p>', '', 'Pending', 1674665556),
+(77, 3451266, 1, 1, 0, '', '<p>jkhhuhuh</p>', '', 'Pending', 1674665780),
+(78, 5183789, 1, 1, 10, 'gygy', '<p>hujghgygg</p>', '', 'Pending', 1674666119),
+(79, 5183789, 1, 1, 0, '', '<p>bhjghuyg</p>', '', 'Pending', 1674666128);
 
 -- --------------------------------------------------------
 
@@ -652,7 +659,7 @@ ALTER TABLE `blog`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -670,7 +677,7 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT for table `deposit`
 --
 ALTER TABLE `deposit`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `limit_setting`
@@ -730,7 +737,7 @@ ALTER TABLE `team`
 -- AUTO_INCREMENT for table `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT for table `website`
