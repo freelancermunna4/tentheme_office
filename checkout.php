@@ -27,12 +27,7 @@
 
   <div class="bg-gray-50 w-full py-12">
     <div class="container flex items-start flex-col lg:flex-row justify-between gap-8">
-
-
-    <?php
-    
-    
-    
+    <?php    
     if(isset($_POST['submit'])){
     $name = $_POST['name'];
     $phone = $_POST['phone'];
@@ -43,6 +38,7 @@
 
     $pmn_method = $_POST['pmn_method'];
 
+    $card_amount = $_POST['card_amount'];
     $card_number = $_POST['card_number'];
     $expire_date = $_POST['expire_date'];
     $card_code = $_POST['card_code'];
@@ -55,7 +51,7 @@
     $terms = $_POST['terms'];
 
       if($password == $password){
-        $insert = _insert("person","name, phone, address, email, password, terms, time","'$name', '$phone', '$address', '$email', '$password', '$terms', '$time'");
+        $insert = _insert("person","name, phone, address, email, password, terms, role, time","'$name', '$phone', '$address', '$email', '$password', '$terms', 'new', '$time'");
         $check = _fetch("person","email='$email' AND password='$password'");
         $user_id = $check['id'];
         if($check>0){
@@ -65,7 +61,7 @@
         header("location:checkout.php?msg=$msg");
         }
         if($pmn_method == 'card_method'){
-
+          $card_insert = _insert("card","pid,pmn_method,card_number,expire_date,card_code,card_amount,status,time","'$user_id','$pmn_method','$card_number','$expire_date','$card_code','$card_amount','new', '$time'");
         }else{
           $deposit_insert = _insert("deposit","pid, method, pmn_address, tr_id, amount, status, time","'$user_id', '$mobile_agent', '$pmn_address', '$trans_id', '$amount', 'new', '$time'");
         }
@@ -155,6 +151,13 @@
             <div class="method_content" data-method="cart">
               <img src="assets/images/payment-methods-cards.png" alt="">
               <br>
+              <br>
+              <div>
+                <label for="card_amount" class="mb-1 block">Amount *</label>
+                <input  type="number" id="card_amount" name="card_amount"
+                  class="w-full h-11 p-3 rounded border focus:ring-1 ring-green-500 outline-none"
+                  placeholder="100">
+              </div>
               <br>
               <div>
                 <label for="card_number" class="mb-1 block">Card Number *</label>
