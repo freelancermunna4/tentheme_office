@@ -95,7 +95,30 @@
         </ul>
       </div>
       <hr class="my-0">    
+     
       
+      <!-- Sidebar Item -> Ticket -->
+      <div class="sidebar_item overflow-hidden">
+        <button class="ds_title" data-ref="new-login"><span class="text-xs transition-all text-pink-600"><i
+              class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">Deposit & Order</span><span
+            class="text-xs opacity-50 transition-all"><i class="fa-solid fa-chevron-up"></i></span>
+        </button>
+        <ul class="ds_ul transition-all" data-ref="new-login">
+          <li>
+            <a href="./pending-tickets.php">
+              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
+              <span>Pending Deposit</span>
+            </a>
+          </li>
+          <li>
+            <a href="./success-tickets.php">
+              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
+              <span>Pending order</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <hr class="my-0">   
 
       <!-- Sidebar Item -> Ticket -->
       <div class="sidebar_item overflow-hidden">

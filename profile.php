@@ -52,7 +52,7 @@
 
               $file_name = $_FILES['file']['name'];
               $file_tmp = $_FILES['file']['tmp_name'];
-              move_uploaded_file($file_tmp,"upload/$file_name");
+              move_uploaded_file($file_tmp,"admin/upload/$file_name");
 
               if(empty($file_name)){
                 $insert = _update("person","name='$name',phone='$phone',email='$email',address='$address'","id=$id");

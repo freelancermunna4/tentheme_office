@@ -249,7 +249,7 @@
           <input type="hidden" name="total_amount" value="<?php echo $service['sell_price'];?>">
           <input type="hidden" name="service_id" value="<?php echo $service['id'];?>">
           <button type="submit" name="submit" class="w-full py-3 shadow-lg rounded bg-blue-600 text-white focus:ring-2 ring-blue-600 ring-offset-1">Pay Now</button>
-        </form>     
+        </form>
         
         
         <div class="py-5 text-center flex items-center gap-x-2 justify-center text-gray-500">
