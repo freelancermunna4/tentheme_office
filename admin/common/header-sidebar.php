@@ -60,7 +60,7 @@
         <a class="flex items-center justify-between gap-x-2 active" href="./">
           <p class="text-blue-600"> <i class="fa-solid fa-crown"></i> </p>
           <p class="flex items-center justify-center"><span
-              class="font-semibold text-lg text-blue-500">Banladeshi</span><span
+              class="font-semibold text-lg text-blue-500">Bangladeshi</span><span
               class="font-semibold text-lg text-purple-600">Software</span></p>
         </a>
         <button id="hide_sidebar" class="lg:hidden text-gray-800"> <i class="fa-solid fa-xmark"></i> </button>
@@ -92,33 +92,15 @@
               <span>Users</span>
             </a>
           </li>
-        </ul>
-      </div>
-      <hr class="my-0">    
-     
-      
-      <!-- Sidebar Item -> Ticket -->
-      <div class="sidebar_item overflow-hidden">
-        <button class="ds_title" data-ref="new-login"><span class="text-xs transition-all text-pink-600"><i
-              class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">Deposit & Order</span><span
-            class="text-xs opacity-50 transition-all"><i class="fa-solid fa-chevron-up"></i></span>
-        </button>
-        <ul class="ds_ul transition-all" data-ref="new-login">
           <li>
-            <a href="./pending-tickets.php">
-              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
-              <span>Pending Deposit</span>
-            </a>
-          </li>
-          <li>
-            <a href="./success-tickets.php">
-              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
-              <span>Pending order</span>
+            <a  href="./users.php">
+              <i class="fa-solid fa-users"></i>
+              <span>Deposit & Order</span>
             </a>
           </li>
         </ul>
       </div>
-      <hr class="my-0">   
+      <hr class="my-0">  
 
       <!-- Sidebar Item -> Ticket -->
       <div class="sidebar_item overflow-hidden">

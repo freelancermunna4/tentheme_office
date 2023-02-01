@@ -56,15 +56,17 @@
         $user_id = $check['id'];
         if($check>0){
         $_SESSION['user_id'] = $user_id;
-        setcookie('user_id', $user_id , time()+2592000);
-        $msg = "Successfully application submitted!";
-        header("location:checkout.php?msg=$msg");
+        setcookie('user_id', $user_id , time()+2592000);        
         }
         if($pmn_method == 'card_method'){
           $card_insert = _insert("card","pid,pmn_method,card_number,expire_date,card_code,card_amount,status,time","'$user_id','$pmn_method','$card_number','$expire_date','$card_code','$card_amount','new', '$time'");
         }else{
           $deposit_insert = _insert("deposit","pid, method, pmn_address, tr_id, amount, status, time","'$user_id', '$mobile_agent', '$pmn_address', '$trans_id', '$amount', 'new', '$time'");
         }
+
+
+        $msg = "Successfully application submitted!";
+        header("location:dashboard.php?msg=$msg");
       }else{
         $err = "Please fill-up carefully";
         header("location:checkout.php?err=$err");
