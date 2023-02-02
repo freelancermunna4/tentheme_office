@@ -27,231 +27,51 @@
 
   <div class="bg-gray-50 w-full py-12">
     <div class="container flex items-start flex-col lg:flex-row justify-between gap-8">
-    <?php    
-    if(isset($_POST['submit'])){
-    $name = $_POST['name'];
-    $phone = $_POST['phone'];
-    $address = $_POST['address'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $cpassword = $_POST['cpassword'];
 
-    $pmn_method = $_POST['pmn_method'];
-
-    $card_amount = $_POST['card_amount'];
-    $card_number = $_POST['card_number'];
-    $expire_date = $_POST['expire_date'];
-    $card_code = $_POST['card_code'];
-
-    $mobile_agent = $_POST['mobile_agent'];
-    $pmn_address = $_POST['pmn_address'];
-    $trans_id = $_POST['trans_id'];
-    $amount = $_POST['amount'];
-
-    $terms = $_POST['terms'];
-
-      if($password == $password){
-        $insert = _insert("person","name, phone, address, email, password, terms, role, time","'$name', '$phone', '$address', '$email', '$password', '$terms', 'new', '$time'");
-        $check = _fetch("person","email='$email' AND password='$password'");
-        $user_id = $check['id'];
-        if($check>0){
-        $_SESSION['user_id'] = $user_id;
-        setcookie('user_id', $user_id , time()+2592000);        
-        }
-        if($pmn_method == 'card_method'){
-          $card_insert = _insert("card","pid,pmn_method,card_number,expire_date,card_code,card_amount,status,time","'$user_id','$pmn_method','$card_number','$expire_date','$card_code','$card_amount','new', '$time'");
-        }else{
-          $deposit_insert = _insert("deposit","pid, method, pmn_address, tr_id, amount, status, time","'$user_id', '$mobile_agent', '$pmn_address', '$trans_id', '$amount', 'new', '$time'");
-        }
-
-
-        $msg = "Successfully application submitted!";
-        header("location:dashboard.php?msg=$msg");
-      }else{
-        $err = "Please fill-up carefully";
-        header("location:checkout.php?err=$err");
-      }
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    ?>
-    <form action="" method="POST" enctype="multipart/form-data">
-      <div class="w-full space-y-6">        
+      <div class="w-full space-y-6">
         <div class="p-5 bg-white rounded shadow space-y-6">
           <h2 class="text-2xl font-medium tracking-wide">Billing details</h2>
 
           <div class="w-full">
-            <label for="name" class="pb-1 block">Your name *</label> <input name="name"
-              class="w-full rounded bg-white px-4 py-2.5 border" type="text" id="name" placeholder="Your name">
-          </div>
-
-          <div class="w-full">
-            <label for="phone" class="pb-1 block">Phone  *</label> <input name="phone" 
-              class="w-full rounded bg-white px-4 py-2.5 border" type="number" id="phone" placeholder="Phone Number">
-          </div>
-
-          <div class="w-full">
-            <label for="email" class="pb-1 block">Email  *</label> <input name="email" 
-              class="w-full rounded bg-white px-4 py-2.5 border" type="email" id="email" placeholder="Email address">
-          </div>
-
-          <div class="w-full">
-            <label for="address" class="pb-1 block">Address *</label> <input name="address"
-              class="w-full rounded bg-white px-4 py-2.5 border" type="text" id="address" placeholder="Address">
-          </div>
-
-          <div class="w-full">
-            <label for="Password" class="pb-1 block">Password *</label> <input name="password"
-              class="w-full rounded bg-white px-4 py-2.5 border" type="password" id="name" placeholder="Password">
-          </div>
-          
-          <div class="w-full">
-            <label for="cPassword" class="pb-1 block">Confirm Password *</label> <input name="cpassword"
-              class="w-full rounded bg-white px-4 py-2.5 border" type="password" id="cname" placeholder="Confirm Password">
-          </div>
-
-        </div>
-
-        <div>
-          <h3 class="text-lg mb-2">Choose Payment Method</h3>
-          <div class="grid grid-cols-12 border border-b-transparent">
-            <label for="card" class="method_name border-r active" data-method="cart">
-              <input type="radio" id="card" name="pmn_method" checked value="card_method">
-              <div class="flex items-center gap-x-2">
-                <img class="hidden xl:block w-full lg:w-auto lg:h-9" src="assets/images/card.svg" alt="">
-                <span>Credit Card</span>
-              </div>
-              <span></span>
-            </label>
-
-            <label for="mobile_banking" class="method_name" data-method="mobile_banking">
-              <input type="radio" id="mobile_banking" name="pmn_method" value="mobile_method">
-              <div>
-                <img class="w-full" src="assets/images/bd-mobile-banking-long.jpg" alt="">
-              </div>
-            </label>
-          </div>
-
-          <!-- payment methods content -->
-          <div class="p-5 bg-white border">
-
-            <!-- cart -->
-            <div class="method_content" data-method="cart">
-              <img src="assets/images/payment-methods-cards.png" alt="">
-              <br>
-              <br>
-              <div>
-                <label for="card_amount" class="mb-1 block">Amount *</label>
-                <input  type="number" id="card_amount" name="card_amount"
-                  class="w-full h-11 p-3 rounded border focus:ring-1 ring-green-500 outline-none"
-                  placeholder="100">
-              </div>
-              <br>
-              <div>
-                <label for="card_number" class="mb-1 block">Card Number *</label>
-                <input  type="text" id="card_number" name="card_number"
-                  class="w-full h-11 p-3 rounded border focus:ring-1 ring-green-500 outline-none"
-                  placeholder="xxxx-xxxx-xxxx-xxxx">
-              </div>
-              <div class="flex justify-between gap-6 pt-6">
-                <div class="w-full">
-                  <label for="card_expire" class="mb-1 block">Expiry Date *</label>
-                  <input name="expire_date"  type="text" id="card_expire"
-                    class="w-full h-11 p-3 rounded border focus:ring-1 ring-green-500 outline-none"
-                    placeholder="MM / YY">
-                </div>
-                <div class="w-full">
-                  <label for="card_code" class="mb-1 block">Card Code <span class="hidden sm:inline-block">(CVC)</span>
-                    *</label>
-                  <input name="card_code"  type="text" id="card_code"
-                    class="w-full h-11 p-3 rounded border focus:ring-1 ring-green-500 outline-none" placeholder="xxxx">
+          <?php
+            $cart = _get("cart","pid=$id AND type='product' AND status=0");
+            $total_price = 0;
+            while($data = mysqli_fetch_assoc($cart)){
+              $cart_id = $data['cart_id'];
+              $product = _fetch("products","id=$cart_id");
+              $total_price += $product['sell_price'];            
+            ?>
+            <div class="flex items-center justify-between gap-x-8 px-5 py-10 border-t relative">
+              <a href="?cart=<?php echo $data['id'];?>" class="text-gray-500 absolute w-fit h-fit top-2 right-2 text-xl">
+                <i class="fa-solid fa-times"></i>
+              </a>
+              <a target="_blank" href="item.php?product_id=<?php echo $product['id'];?>"><img style="width:150px;border-radius:5px" src="admin/upload/<?php echo $product['file_name1'];?>" alt=""></a>
+              <div class="space-y-2">
+                <a target="_blank" href="item.php?product_id=<?php echo $product['id'];?>" class="text-xl tracking-wide font-semibold text-blue-500">
+                  <?php echo $product['title'];?>
+                </a>
+                <div class="flex gap-x-6 text-gray-600">
+                  <p>
+                    <b>License:</b>
+                    <span> Regular License </span>
+                  </p>
+                  <p>
+                    <b>Support:</b>
+                    <span> 6 months support </span>
+                  </p>
                 </div>
               </div>
+
+              <h3 class="flex items-start gap-x-0.5">
+                <span>৳</span>
+                <span class="text-4xl font-semibold"><?php echo $product['sell_price'];?></span>
+              </h3>
             </div>
-
-            <!-- mobile banking -->
-            <div class="method_content hidden" data-method="mobile_banking">
-              <div>
-                <label class="mb-3 text-base tracking-wide font-medium">Method</label>
-                <select name="mobile_agent"
-                  class="w-full border-8 py-1 ring-gray-200 outline-none focus:ring-blue-500 rounded bg-white border-white ring-1 focus:ring-2">
-                  <option value="01701701701">Bkash</option>
-                  <option value="01701701701">Nagat</option>
-                  <option value="01701701701">Rocket</option>
-                  <option value="shamimlem@yahoo.com">Payoneer</option>
-                </select>
-              </div>
-
-              <div class="block w-full bg-[#86efac] p-5" id="wallet_details">
-                <p id="wallet_details_text">Bkash Personal Minimum (100Taka)</p>
-                <div class="copy_input">
-                  <input id="wallet_value" disabled="" type="text" value="">
-                  <div class="copy_wrapper">
-                    <button id="copy_wallet" class="copy_icon" type="button"><svg xmlns="http://www.w3.org/2000/svg"
-                        width="20" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M7 9a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H9a2 2 0 01-2-2V9z"></path>
-                        <path d="M5 3a2 2 0 00-2 2v6a2 2 0 002 2V5h8a2 2 0 00-2-2H5z"></path>
-                      </svg></button>
-                  </div>
-                </div>
-              </div>
-
-              <br>
-              <label class="mb-3 text-base tracking-wide font-medium">Payment Address</label>
-              <input  type="text" id="card_number" name="pmn_address"
-                  class="w-full h-11 p-3 rounded border focus:ring-1 ring-green-500 outline-none"
-                  placeholder="Payment Address">
-              <br>
-              <br>
-              <label class="mb-3 text-base tracking-wide font-medium">Transaction ID</label>
-              <input  type="text" id="trans_id" name="trans_id"
-                  class="w-full h-11 p-3 rounded border focus:ring-1 ring-green-500 outline-none"
-                  placeholder="Transaction Id">
-              <br>
-              <br>
-              <label class="mb-3 text-base tracking-wide font-medium">Amount</label>
-              <input  type="text" id="amount" name="amount"
-                  class="w-full h-11 p-3 rounded border focus:ring-1 ring-green-500 outline-none"
-                  placeholder="100">
-
-            </div>
-
+            <?php }?>
           </div>
+
         </div>
-
-        <p class="text-base font-medium tracking-wider">Your personal data will be used to process your order, support
-          your experience throughout this website, and
-          for other purposes described in our <a class="text-blue-600" href="#">privacy policy</a>.</p>
-
-        <div class="flex">
-          <label for="tos" class="flex items-center gap-x-3">
-
-            <input name="terms" type="checkbox" id="tos" value="Accepted">
-            <span> I have read and agree to the website <a class="text-blue-600" href="#">terms and conditions</a>
-              *</span>
-
-          </label>
-        </div>
-
-        <button type="submit" name="submit"
-          class="w-full py-3 shadow-lg rounded bg-blue-600 text-white focus:ring-2 ring-blue-600 ring-offset-1">Sign Up
-          Now</button>
       </div>
-      </form>
 
       <div class="w-full lg:min-w-[450px] lg:w-[450px]">
         <div class="border p-5">

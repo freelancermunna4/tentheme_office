@@ -92,12 +92,6 @@
               <span>Users</span>
             </a>
           </li>
-          <li>
-            <a  href="./users.php">
-              <i class="fa-solid fa-users"></i>
-              <span>Deposit & Order</span>
-            </a>
-          </li>
         </ul>
       </div>
       <hr class="my-0">  

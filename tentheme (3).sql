@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 01, 2023 at 05:15 PM
+-- Generation Time: Feb 02, 2023 at 04:59 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -53,34 +53,6 @@ INSERT INTO `blog` (`id`, `pid`, `file_name`, `title`, `category`, `summery`, `c
 INSERT INTO `blog` (`id`, `pid`, `file_name`, `title`, `category`, `summery`, `content`, `status`, `time`) VALUES
 (9, 1, 'image.png', 'amar sonar bangla ami tom', 'HTML', ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam quae dignissimos, atque, error commodi reiciendis obcaecati rem, sequi nisi ex magnam soluta. Optio maxime, fugiat cum id architecto autem ea. Unde quos optio alias eum, accusamus repellat labore cum iusto id nam sit. Consectetur quos reiciendis facilis ab pariatur ratione, delectus quibusdam corporis et cupiditate magni doloribus illo voluptatem! Distinctio, aut ipsa. Quod expedita iste similique neque laborum distinctio suscipit adipisci sunt dolores ratione. Maxime saepe eius reiciendis unde, libero optio beatae earum? Ut amet vero veniam in dolorem? Inventore quam neque, iste, assumenda voluptas eos id dolorem ullam harum suscipit hic dolorum similique modi eaque reiciendis atque, esse ad est magnam nobis consequuntur! Fugiat impedit tenetur blanditiis facilis harum quisquam, quidem praesentium sequi ullam, nulla consequatur soluta incidunt molestiae voluptate pariatur distinctio velit iste deserunt vitae illum laborum deleniti eligendi! Itaque sunt consequuntur provident laudantium quod. Cumque earum sapiente illum ullam veritatis. Ex natus nesciunt architecto, fugit, nostrum voluptas amet ab consequatur ratione aspernatur excepturi, maxime dolor officia quaerat ipsam atque aut? Consequatur, officia. Voluptate molestias nobis, sapiente quod excepturi aperiam voluptatem dolores magnam repudiandae? Inventore iusto ipsa doloremque earum, tempora at architecto, non quo cumque dolor, repudiandae quas!', ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam quae dignissimos, atque, error commodi reiciendis obcaecati rem, sequi nisi ex magnam soluta. Optio maxime, fugiat cum id architecto autem ea. Unde quos optio alias eum, accusamus repellat labore cum iusto id nam sit. Consectetur quos reiciendis facilis ab pariatur ratione, delectus quibusdam corporis et cupiditate magni doloribus illo voluptatem! Distinctio, aut ipsa. Quod expedita iste similique neque laborum distinctio suscipit adipisci sunt dolores ratione. Maxime saepe eius reiciendis unde, libero optio beatae earum? Ut amet vero veniam in dolorem? Inventore quam neque, iste, assumenda voluptas eos id dolorem ullam harum suscipit hic dolorum similique modi eaque reiciendis atque, esse ad est magnam nobis consequuntur! Fugiat impedit tenetur blanditiis facilis harum quisquam, quidem praesentium sequi ullam, nulla consequatur soluta incidunt molestiae voluptate pariatur distinctio velit iste deserunt vitae illum laborum deleniti eligendi! Itaque sunt consequuntur provident laudantium quod. Cumque earum sapiente illum ullam veritatis. Ex natus nesciunt architecto, fugit, nostrum voluptas amet ab consequatur ratione aspernatur excepturi, maxime dolor officia quaerat ipsam atque aut? Consequatur, officia. Voluptate molestias nobis, sapiente quod excepturi aperiam voluptatem dolores magnam repudiandae? Inventore iusto ipsa doloremque earum, tempora at architecto, non quo cumque dolor, repudiandae quas!Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam quae dignissimos, atque, error commodi reiciendis obcaecati rem, sequi nisi ex magnam soluta. Optio maxime, fugiat cum id architecto autem ea. Unde quos optio alias eum, accusamus repellat labore cum iusto id nam sit. Consectetur quos reiciendis facilis ab pariatur ratione, delectus quibusdam corporis et cupiditate magni doloribus illo voluptatem! Distinctio, aut ipsa. Quod expedita iste similique neque laborum distinctio suscipit adipisci sunt dolores ratione. Maxime saepe eius reiciendis unde, libero optio beatae earum? Ut amet vero veniam in dolorem? Inventore quam neque, iste, assumenda voluptas eos id dolorem ullam harum suscipit hic dolorum similique modi eaque reiciendis atque, esse ad est magnam nobis consequuntur! Fugiat impedit tenetur blanditiis facilis harum quisquam, quidem praesentium sequi ullam, nulla consequatur soluta incidunt molestiae voluptate pariatur distinctio velit iste deserunt vitae illum laborum deleniti eligendi! Itaque sunt consequuntur provident laudantium quod. Cumque earum sapiente illum ullam veritatis. Ex natus nesciunt architecto, fugit, nostrum voluptas amet ab consequatur ratione aspernatur excepturi, maxime dolor officia quaerat ipsam atque aut? Consequatur, officia. Voluptate molestias nobis, sapiente quod excepturi aperiam voluptatem dolores magnam repudiandae? Inventore iusto ipsa doloremque earum, tempora at architecto, non quo cumque dolor, repudiandae quas!Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam quae dignissimos, atque, error commodi reiciendis obcaecati rem, sequi nisi ex magnam soluta. Optio maxime, fugiat cum id architecto autem ea. Unde quos optio alias eum, accusamus repellat labore cum iusto id nam sit. Consectetur quos reiciendis facilis ab pariatur ratione, delectus quibusdam corporis et cupiditate magni doloribus illo voluptatem! Distinctio, aut ipsa. Quod expedita iste similique neque laborum distinctio suscipit adipisci sunt dolores ratione. Maxime saepe eius reiciendis unde, libero optio beatae earum? Ut amet vero veniam in dolorem? Inventore quam neque, iste, assumenda voluptas eos id dolorem ullam harum suscipit hic dolorum similique modi eaque reiciendis atque, esse ad est magnam nobis consequuntur! Fugiat impedit tenetur blanditiis facilis harum quisquam, quidem praesentium sequi ullam, nulla consequatur soluta incidunt molestiae voluptate pariatur distinctio velit iste deserunt vitae illum laborum deleniti eligendi! Itaque sunt consequuntur provident laudantium quod. Cumque earum sapiente illum ullam veritatis. Ex natus nesciunt architecto, fugit, nostrum voluptas amet ab consequatur ratione aspernatur excepturi, maxime dolor officia quaerat ipsam atque aut? Consequatur, officia. Voluptate molestias nobis, sapiente quod excepturi aperiam voluptatem dolores magnam repudiandae? Inventore iusto ipsa doloremque earum, tempora at architecto, non quo cumque dolor, repudiandae quas!Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam quae dignissimos, atque, error commodi reiciendis obcaecati rem, sequi nisi ex magnam soluta. Optio maxime, fugiat cum id architecto autem ea. Unde quos optio alias eum, accusamus repellat labore cum iusto id nam sit. Consectetur quos reiciendis facilis ab pariatur ratione, delectus quibusdam corporis et cupiditate magni doloribus illo voluptatem! Distinctio, aut ipsa. Quod expedita iste similique neque laborum distinctio suscipit adipisci sunt dolores ratione. Maxime saepe eius reiciendis unde, libero optio beatae earum? Ut amet vero veniam in dolorem? Inventore quam neque, iste, assumenda voluptas eos id dolorem ullam harum suscipit hic dolorum similique modi eaque reiciendis atque, esse ad est magnam nobis consequuntur! Fugiat impedit tenetur blanditiis facilis harum quisquam, quidem praesentium sequi ullam, nulla consequatur soluta incidunt molestiae voluptate pariatur distinctio velit iste deserunt vitae illum laborum deleniti eligendi! Itaque sunt consequuntur provident laudantium quod. Cumque earum sapiente illum ullam veritatis. Ex natus nesciunt architecto, fugit, nostrum voluptas amet ab consequatur ratione aspernatur excepturi, maxime dolor officia quaerat ipsam atque aut? Consequatur, officia. Voluptate molestias nobis, sapiente quod excepturi aperiam voluptatem dolores magnam repudiandae? Inventore iusto ipsa doloremque earum, tempora at architecto, non quo cumque dolor, repudiandae quas!', 'Publish', 1670694428),
 (10, 1, 'Lionel_Messi(7).jpg', 'sdfdf', 'HTML', '   <p>sdfsdf</p>', '   <p>sdfdsf</p>', 'Publish', 1670694422);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `card`
---
-
-CREATE TABLE `card` (
-  `id` int(255) NOT NULL,
-  `pid` int(255) NOT NULL,
-  `pmn_method` varchar(255) NOT NULL,
-  `card_number` int(255) NOT NULL,
-  `expire_date` varchar(255) NOT NULL,
-  `card_code` int(255) NOT NULL,
-  `card_amount` int(255) NOT NULL,
-  `status` varchar(255) NOT NULL,
-  `time` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `card`
---
-
-INSERT INTO `card` (`id`, `pid`, `pmn_method`, `card_number`, `expire_date`, `card_code`, `card_amount`, `status`, `time`) VALUES
-(1, 11, 'card_method', 11, '11', 22, 0, '', 1675264953),
-(2, 12, 'card_method', 55, '55', 55, 0, 'new', 1675265072),
-(3, 13, 'card_method', 44, '44', 44, 44, 'new', 1675265424),
-(4, 10, 'card_method', 222, '222', 22, 222, 'new', 1675265765);
 
 -- --------------------------------------------------------
 
@@ -318,16 +290,7 @@ CREATE TABLE `person` (
 
 INSERT INTO `person` (`id`, `name`, `phone`, `address`, `email`, `password`, `role`, `file_name`, `balance`, `terms`, `time`) VALUES
 (1, 'Admin', '1234558', 'Sirajganj, Dhaka, Bangladesh', 'admin@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', '634af2216fb544.83705756.jpg', 4589, 'Desline', 1670579900),
-(2, 'munna', '1234558', 'Sirajganj, Dhaka, Bangladesh', 'munna@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', 'ingo-tessmann-1b7dedce.jpg', 200, 'Accepted', 1674106983),
-(7, 'name', '1234', 'sirajganj', 'mail@mail.com', '1234', 'User', 'avatar.jpg', 0, 'Accepted', 1675261695),
-(8, 'aa', '11', 'aa', 'aa@ss', 'aa', 'User', 'avatar.jpg', 0, 'Accepted', 1675261877),
-(9, 'aa', '22', 'aa', 'aa@ss', '22', 'User', 'avatar.jpg', 0, '', 1675261937),
-(10, 'aa', '11', 'aa', 'aa@aa', 'aa', 'User', 'avatar.jpg', 0, 'Accepted', 1675263148),
-(11, 'aa', '22', 'asfd', 'ssd@dfdf', 'ss', 'User', 'avatar.jpg', 0, 'Accepted', 1675264953),
-(12, '', '', '', '', 'ss', 'User', 'avatar.jpg', 0, 'Accepted', 1675265072),
-(13, '', '', '', '', 'dd', 'User', 'avatar.jpg', 0, 'Accepted', 1675265345),
-(14, '', '', '', '', 'dd', 'User', 'avatar.jpg', 0, '', 1675265424),
-(15, 'aa', '33', 'aa', 'aa@aa', 'aa', 'new', 'avatar.jpg', 0, 'Accepted', 1675265765);
+(2, 'munna', '1234558', 'Sirajganj, Dhaka, Bangladesh', 'munna@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', 'ingo-tessmann-1b7dedce.jpg', 5000, 'Accepted', 1674106983);
 
 -- --------------------------------------------------------
 
@@ -589,12 +552,6 @@ ALTER TABLE `blog`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `card`
---
-ALTER TABLE `card`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `cart`
 --
 ALTER TABLE `cart`
@@ -699,12 +656,6 @@ ALTER TABLE `withdraw`
 --
 ALTER TABLE `blog`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `card`
---
-ALTER TABLE `card`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `cart`
