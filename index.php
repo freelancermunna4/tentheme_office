@@ -7,35 +7,26 @@
 <!-- Slider -->
 </header>
 <?php 
-if(isset($_SESSION['cart'])){
-  $my_cart = $_SESSION['cart'];
-  if(isset($_GET['cart'])){
-    $cart_id = $_GET['cart'];
-
+   if(isset($_GET['cart'])){
     if($id<1){
-        $check_cart = array_search($cart_id,$my_cart); 
-        if(!empty($check_cart)){
-        $err = "Already added this item";
-        header("location:index.php?err=$err");
-      }else{
-        $cart_arr = $_SESSION['cart'][] = $cart_id;
-        header("location:index.php");
-      }
+      $err = "Please Login First";
+      header("location:index.php?err=$err");
     }else{
+      $cart_id = $_GET['cart'];
       $check = _fetch("cart","pid=$id AND type='product' AND cart_id=$cart_id AND status=0");
       if($check){
       $err = "Already Added. Please Add New.";
-      }else{
-        $insert = _insert("cart","pid,cart_id,type,time","$id,$cart_id,'product',$time");
-        if($insert){
-          $msg = "Successfully Added in Cart. Please Checkout";
-          header("location:index.php?msg=$msg");
-        }
+      header("location:index.php?err=$err");
+    }else{
+      $insert = _insert("cart","pid,cart_id,type,time","$id,$cart_id,'product',$time");
+      if($insert){
+        $msg = "Successfully Added in Cart. Please Checkout";
+        header("location:index.php?msg=$msg");
       }
     }
   }
 }
-?>
+  ?>
 
 
   <main style="min-height: calc(100vh - 80px)">

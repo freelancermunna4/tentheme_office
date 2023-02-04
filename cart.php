@@ -2,22 +2,16 @@
 <?php include("common/header.php");?>
 <!-- Header area -->
 <?php 
-$array = [1=>'one', 2=>'two', 3=>'there'];
-$array = array_flip($array);
+
+if($id<1){
+  $err = "Please Login First";
+  header("location:index.php?err=$err");
+  exit;
+}
+
 
 if(isset($_GET['cart'])){
-  $cart_id = $_GET['cart'];
-  if($id<1){
-    if(isset($_SESSION['cart'])){
-      $cart_arr = array_flip($_SESSION['cart']);      
-      if($cart_id == "All"){
-        unset($_SESSION['cart']);
-      }else{
-        $cart_id = $cart_arr[$cart_id];
-        unset($_SESSION['cart'][$cart_id]);
-      }
-    }
-    }else{
+  $cart_id = $_GET['cart'];  
     if($cart_id == "All"){
       $delete = _delete("cart","pid=$id AND status=0 ");
     }else{
@@ -25,13 +19,12 @@ if(isset($_GET['cart'])){
     }
   
     if($delete){
-      $msg = "Cart Unset Successfull";
+      $msg = "Item Deleted Successful";
       header("location:cart.php?msg=$msg");
     }else{
       echo "somethings error;";
     }
   }
-}
 ?>
     <!-- Sub Header -->
     <div class="container space-y-6 py-24">

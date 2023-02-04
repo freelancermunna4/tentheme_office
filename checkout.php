@@ -1,7 +1,13 @@
 <!-- Header area -->
 <?php include("common/header.php");?>
 <!-- Header area -->
-
+<?php 
+if($id<1){
+  $err = "Please Login First";
+  header("location:index.php?err=$err");
+  exit;
+}
+?>
     <!-- Sub Header -->
     <div class="container space-y-6 py-24">
 
@@ -75,8 +81,7 @@
 
       <div class="w-full lg:min-w-[450px] lg:w-[450px]">
         <div class="border p-5">
-          <h2 class="text-2xl font-semibold text-gray-700 pb-4 border-b">Order Summary</h2>
-
+          <h2 class="text-2xl text-center font-semibold text-gray-700 pb-4 border-b">Your Balance: <b style="color:#000;">৳<?php echo $person['balance']?></b></h2>
           <div class="py-5 space-y-4">
 
             <?php

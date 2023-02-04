@@ -354,15 +354,14 @@ $data = _fetch("service","id=$id");
 
               <?php 
               $category = $data['category'];
-              $similars = _get("products","category='$category' LIMIT 10");
-              while($similar = mysqli_fetch_assoc($similars)){
+              $similar = _get("products","category='$category' LIMIT 10");
+              while($similar = mysqli_fetch_assoc($similar)){
               ?>
                 <a href="service.php?id=<?php echo $similar['id']?>" class="block px-4 py-6 pb-0 hover:bg-green-100">
                   <div class="flex items-start gap-x-4">
                     <h2 class="text-base font-semibold text-gray-700 text-left w-7/12"><?php echo $similar['title']?></h2>
                     <img class="w-5/12" src="admin/upload/<?php echo $similar['file_name1']?>">
                   </div>
-                  <!-- <p class="text-gray-500 py-5 border-b">Lorem ipsum dolor sit amet consectetur.</p> -->
                 </a>
                 <?php }?>
 
