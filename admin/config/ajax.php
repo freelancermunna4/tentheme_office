@@ -84,6 +84,7 @@ if(isset($_POST['chat_insert_admin']) && isset($_POST['ticket_id']) && isset($_P
   $message = $_POST['msg'];
 
   $insert = _insert("tickets","ticket_id,uid,pid,message,time","$ticket_id,$uid,$pid,'$message',$time");
+  $update = _update("tickets","status='Open'","ticket_id=$ticket_id");
   if($insert){
     echo $msg = "Message Sent";
   }else{
