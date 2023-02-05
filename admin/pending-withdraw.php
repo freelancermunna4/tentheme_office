@@ -1,5 +1,11 @@
 <?php include("common/header-sidebar.php");?>
-
+<?php
+$notify_check = mysqli_num_rows(_get("withdraw","status='Pending' AND notify='New'"));
+if($notify_check>0){
+  $update_notify = _update("withdraw","notify='Old'","notify='New'");
+  header("location:pending-withdraw.php");
+}
+?>
 <div class="x_container space-y-10 py-10">
     <div class="flex flex-col rounded-lg shadow-md border border-[
         ] shadow-gray-200 bg-white">

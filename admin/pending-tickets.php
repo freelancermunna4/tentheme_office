@@ -1,5 +1,12 @@
 <?php include("common/header-sidebar.php");?>
 <?php
+$notify_check = mysqli_num_rows(_get("tickets","status='Pending' AND notify='New'"));
+if($notify_check>0){
+  $update_notify = _update("tickets","notify='Old'","notify='New'");
+  header("location:pending-tickets.php");
+}
+
+
 
 if(isset($_GET['action'])){
   $action = $_GET['action'];

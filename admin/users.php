@@ -1,4 +1,11 @@
 <?php include("common/header-sidebar.php");?>
+<?php 
+  $notify_check = mysqli_num_rows(_get("person","notify='New'"));
+  if($notify_check>0){
+    $update_notify = _update("person","notify='Old'","notify='New'");
+    header("location:users.php");
+  }
+?>
 
 <div class="x_container space-y-10 py-10">
     <div class="flex flex-col rounded-lg shadow-md border border-[

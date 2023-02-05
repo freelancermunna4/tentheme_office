@@ -12,8 +12,12 @@
     if($id<1){
     header("location:login.php");
     }
-
     $person = _fetch("person","id=$id");
+
+    $notify_person = mysqli_num_rows(_get("person","notify='new'"));
+    $notify_tickets = mysqli_num_rows(_get("tickets","status='Pending' AND notify='new'"));
+    $notify_deposit = mysqli_num_rows(_get("deposit","status='Pending' AND notify='new'"));
+    $notify_withdraw = mysqli_num_rows(_get("withdraw","status='Pending' AND notify='new'"));
 
 ?>
 <!DOCTYPE html>
@@ -90,6 +94,7 @@
             <a  href="./users.php">
               <i class="fa-solid fa-users"></i>
               <span>Users</span>
+              <?php if($notify_person>0){ ?><span style="background:#ff3a10;color:#fff;padding:5px;border-radius:50%">0<?php echo $notify_person?></span><?php }?>
             </a>
           </li>
         </ul>
@@ -98,15 +103,17 @@
 
       <!-- Sidebar Item -> Ticket -->
       <div class="sidebar_item overflow-hidden">
-        <button class="ds_title" data-ref="Ticket"><span class="text-xs transition-all text-pink-600"><i
-              class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">Tickets</span><span
+        <button class="ds_title" data-ref="Ticket"><span class="text-xs transition-all text-pink-600">
+          <i class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">Tickets</span><span
             class="text-xs opacity-50 transition-all"><i class="fa-solid fa-chevron-up"></i></span>
+            <?php if($notify_tickets>0){ ?><span style="background:#ff3a10;color:#fff;padding:5px;border-radius:50%">0<?php echo $notify_tickets?></span><?php }?>
         </button>
         <ul class="ds_ul transition-all" data-ref="Ticket">
           <li>
             <a href="./pending-tickets.php">
               <h4> <i class="fa-solid fa-briefcase"></i> </h4>
               <span>Pending Tickets</span>
+              <?php if($notify_tickets>0){ ?><span style="background:#ff3a10;color:#fff;padding:5px;border-radius:50%">0<?php echo $notify_tickets?></span><?php }?>
             </a>
           </li>
           <li>
@@ -132,12 +139,14 @@
         <button class="ds_title" data-ref="deposits"><span class="text-xs transition-all text-pink-600"><i
               class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">Deposits</span><span
             class="text-xs opacity-50 transition-all"><i class="fa-solid fa-chevron-up"></i></span>
+            <?php if($notify_deposit>0){ ?><span style="background:#ff3a10;color:#fff;padding:5px;border-radius:50%">0<?php echo $notify_deposit?></span><?php }?>
         </button>
         <ul class="ds_ul transition-all" data-ref="deposits">
           <li>
             <a href="./pending-deposits.php">
               <h4> <i class="fa-solid fa-briefcase"></i> </h4>
               <span>Pending Deposit</span>
+              <?php if($notify_deposit>0){ ?><span style="background:#ff3a10;color:#fff;padding:5px;border-radius:50%">0<?php echo $notify_deposit?></span><?php }?>
             </a>
           </li>
           <li>
@@ -155,12 +164,14 @@
         <button class="ds_title" data-ref="withdraw"><span class="text-xs transition-all text-pink-600"><i
               class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">Withdraw</span><span
             class="text-xs opacity-50 transition-all"><i class="fa-solid fa-chevron-up"></i></span>
+            <?php if($notify_withdraw>0){ ?><span style="background:#ff3a10;color:#fff;padding:5px;border-radius:50%">0<?php echo $notify_withdraw?></span><?php }?>
         </button>
         <ul class="ds_ul transition-all" data-ref="withdraw">
           <li>
             <a href="./pending-withdraw.php">
               <h4> <i class="fa-solid fa-briefcase"></i> </h4>
               <span>Pending Request</span>
+              <?php if($notify_withdraw>0){ ?><span style="background:#ff3a10;color:#fff;padding:5px;border-radius:50%">0<?php echo $notify_withdraw?></span><?php }?>
             </a>
           </li>
           <li>
@@ -177,7 +188,7 @@
       <!-- Sidebar Item -> products -->
       <div class="sidebar_item overflow-hidden">
         <button class="ds_title" data-ref="product"><span class="text-xs transition-all text-pink-600"><i
-              class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">productS</span><span
+              class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">Products</span><span
             class="text-xs opacity-50 transition-all"><i class="fa-solid fa-chevron-up"></i></span>
         </button>
         <ul class="ds_ul transition-all" data-ref="product">
