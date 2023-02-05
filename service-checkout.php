@@ -95,23 +95,30 @@
         if(isset($_POST['submit'])){
           $total_amount = $_POST['total_amount'];
           $service_id = $_POST['service_id'];
+          $service = _fetch("service","id=$service_id");
 
           if($person['balance']>$total_amount){
             $check = _fetch("cart","pid=$id AND cart_id=$service_id AND type='service'");
             if(!$check){
               $balance = _update("person","balance=balance-$total_amount","id=$id");
-              $update = _insert("cart","pid,cart_id,type,time","$id,$service_id,'service',$time");
-              if($update){
+              $insert = _insert("cart","pid,cart_id,type,time","$id,$service_id,'service',$time");
+
+              $ticket_id = rand(1000,99999999);
+              $subject = $service['title'];
+              $message = "New Chat started";
+              $ticket = _insert("tickets","ticket_id,uid,pid,service_id,subject,message,time","'$ticket_id','$id','$id','$service_id','$subject','$message','$time'");
+
+              if($balance && $insert && $ticket){
                 $msg = "Congratulations for Purchase.";
-                header("location:dashboard.php?msg=$msg");
+                header("location:my-services.php?msg=$msg");
                 }
               }else{
                 $err = "Already Purchased";
-                header("location:dashboard.php?err=$err");
+                header("location:my-services.php?err=$err");
               }          
           }else{
             $err = "Your Balance is low. Please Deposit now";
-            header("location:dashboard.php?err=$err");
+            header("location:deposit.php?err=$err");
         }
         }
         ?>

@@ -1,10 +1,16 @@
 <!-- Header area -->
 <?php include("common/header.php");?>
 <!-- Header area -->
-
+      <?php 
+          if(isset($_GET['cart_id'])){
+              $cart_id = $_GET['cart_id'];
+              $tickets = _fetch("tickets","service_id=$cart_id");
+              $ticket_id = $tickets['ticket_id'];
+                header("location:chat.php?ticket_id=$ticket_id");              
+            }
+          ?>
     <!-- Sub Header -->
     <div class="container space-y-6 pt-6 pb-12 lg:py-24">
-
       <!-- Page Name Title -->
       <h3 class="text-4xl font-medium tracking-wide">
         Order
@@ -105,7 +111,7 @@
                           <div class="flex itmes-center justify-start gap-x-1">
                             <a class="block text-sm font-semibold tracking-wide text-[#f75389]" href="#">View</a>
                             <span>|</span>
-                            <a class="block text-sm font-semibold tracking-wide text-[#f75389]" href="#">Open Ticket</a>
+                            <a class="block text-sm font-semibold tracking-wide text-[#f75389]" href="?cart_id=<?php echo $data['cart_id']?>">Open Ticket</a>
                           </div>
                         </td>
                       </tr>
