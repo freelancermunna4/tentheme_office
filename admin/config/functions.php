@@ -87,7 +87,7 @@
     }
 
     $time = time();
-
+    //$website = _fetch("website","id=1");
     
     function sort_str($string, $word_count = 10) {
       $string = explode(' ', $string);
@@ -98,8 +98,5 @@
       $string = implode(' ', $string);
       echo $string;
   }
-
-
-
     require('plugins.php');
 ?>

@@ -163,8 +163,8 @@
             class="flex items-center justify-center px-4 gap-x-4 bg-blue-600 text-white focus:ring rounded w-full h-11 tracking-wider font-medium text-base">Register</button>
         </div>
       </form>
-      <p class="text-base mb-6 text-[#adadad]">Connect With</p>
 
+      <!-- <p class="text-base mb-6 text-[#adadad]">Connect With</p>
       <div class="flex gap-x-2 justify-center">
         <button type=" button"
           class="text-white bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 mr-2 mb-2">
@@ -186,7 +186,7 @@
             </path>
           </svg>
           Sign in with Google
-        </button></div>
+        </button></div> -->
 
       <br>
       <span class="mx-1">Already have an account?</span>

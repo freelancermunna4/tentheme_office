@@ -1,3 +1,4 @@
+<?php include("admin/config/functions.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -110,7 +111,7 @@
       <div class="mb-12 text-center">
         <h3 class="text-xl font-semibold tracking-wide">Reset Your Password</h3>
       </div>
-      <form>
+      <form action="" method="POST">
         <div class="mb-6"><input required="" name="email" type="email" placeholder="Email Address"
             class="w-full h-11 flex items-center rounded bg-white outline-none ring-2 ring-gray-200 disabled:bg-gray-200 disabled:cursor-not-allowed focus:ring-blue-600 text-gray-800 px-4">
         </div>
@@ -120,10 +121,7 @@
           class="flex items-center justify-center px-4 gap-x-4 bg-blue-600 text-white focus:ring rounded w-full h-11 tracking-wider font-medium text-base">
           Reset Password
         </button>
-
-
         <a class="mt-5 hover:underline text-blue-500 block" href="login.php">Let's Signin</a>
-
       </form>
 
       <br>
