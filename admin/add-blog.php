@@ -17,14 +17,12 @@ if(isset($_POST['submit'])){
     move_uploaded_file($file_tmp,"upload/$file_name");
 
     $insert = _insert("blog","pid, title, category, summery, content, status, file_name, time","'$pid', '$title', '$category', '$summery', '$content','$status','$file_name', '$time'");
-
     if($insert){
       $msg = "Successfully Inserted";
       header("Location:add-blog.php?msg=$msg");
     }else{
-      $err = "Something is error.";
+    echo  $err = "Something is error.";
     }
-
 }
 
 ?>

@@ -110,9 +110,15 @@
             </a>
           </li>
           <li>
-            <a href="./success-tickets.php">
+            <a href="./open-tickets.php">
               <h4> <i class="fa-solid fa-briefcase"></i> </h4>
-              <span>Published Tickets</span>
+              <span>Open Tickets</span>
+            </a>
+          </li>
+          <li>
+            <a href="./solved-tickets.php">
+              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
+              <span>Solved Tickets</span>
             </a>
           </li>
         </ul>

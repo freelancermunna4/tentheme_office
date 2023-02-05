@@ -110,11 +110,17 @@ if($id<1){
         <?php 
         if(isset($_POST['submit'])){
           $total_amount = $_POST['total_amount'];
-          $balance = _update("person","balance=balance-$total_amount","id=$id");
-          $update = _update("cart","status=1","pid=$id");
-          if($update && $balance){
-            $msg = "Congratulations for Purchase.";
-            header("location:dashboard.php?msg=$msg");
+          $old_balance = $person['balance'];
+          if($old_balance>$total_amount){
+            $balance = _update("person","balance=balance-$total_amount","id=$id");
+            $update = _update("cart","status=1","pid=$id");
+            if($update && $balance){
+              $msg = "Congratulations for Purchase.";
+              header("location:dashboard.php?msg=$msg");
+            }
+          }else{
+            $err = "Please Deposit First";
+            header("location:checkout.php?err=$err");
           }
         }
         ?>

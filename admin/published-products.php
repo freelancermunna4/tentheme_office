@@ -143,7 +143,7 @@
                         <td class="text-center p-4 space-x-2 whitespace-nowrap lg:p-5">
                           <a href="edit.php?src=published-products&&table=products&&id=<?php echo $data['id']?>" class="popup_show btn bg-red-500 w-fit text-white" style="background:#4ade80;">Edit</a>
                           <a href="delete.php?src=published-products&&table=products&&id=<?php echo $data['id']?>" class="popup_show btn bg-red-500 w-fit text-white">Delete</a>
-                          <a href="delete.php?src=published-products&&table=products&&id=<?php echo $data['id']?>" class="popup_show btn bg-red-500 w-fit text-white" style="background:#4ade80;">View</a> 
+                          <a target="_blank" href="../item.php?product_id=<?php echo $data['id']?>" class="popup_show btn bg-red-500 w-fit text-white" style="background:#4ade80;">View</a> 
                         </td>
                       </tr>
                       <?php }?>
