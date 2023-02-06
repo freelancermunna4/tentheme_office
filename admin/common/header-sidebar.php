@@ -84,56 +84,85 @@
               <span>Dashboard</span>
             </a>
           </li>
-          <li>
+          <!-- <li>
             <a  href="./category.php">
               <i class="fa-brands fa-squarespace"></i>
               <span>Category</span>
             </a>
-          </li>
-          <li>
+          </li> -->
+          <!-- <li>
             <a  href="./users.php">
               <i class="fa-solid fa-users"></i>
               <span>Users</span>
               <?php if($notify_person>0){ ?><span style="background:#ff3a10;color:#fff;padding:5px;border-radius:50%">0<?php echo $notify_person?></span><?php }?>
             </a>
-          </li>
+          </li> -->
         </ul>
       </div>
       <hr class="my-0">  
 
-      <!-- Sidebar Item -> Ticket -->
-      <div class="sidebar_item overflow-hidden">
-        <button class="ds_title" data-ref="Ticket"><span class="text-xs transition-all text-pink-600">
-          <i class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">Tickets</span><span
+           <!-- Sidebar Item -> Ticket -->
+           <div class="sidebar_item overflow-hidden">
+        <button class="ds_title" data-ref="tentheme"><span class="text-xs transition-all text-pink-600">
+          <i class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">Tentheme 2.0</span><span
             class="text-xs opacity-50 transition-all"><i class="fa-solid fa-chevron-up"></i></span>
             <?php if($notify_tickets>0){ ?><span style="background:#ff3a10;color:#fff;padding:5px;border-radius:50%">0<?php echo $notify_tickets?></span><?php }?>
         </button>
-        <ul class="ds_ul transition-all" data-ref="Ticket">
+        <ul class="ds_ul transition-all" data-ref="tentheme">
           <li>
-            <a href="./pending-tickets.php">
+            <a href="./open-tickets.php">
               <h4> <i class="fa-solid fa-briefcase"></i> </h4>
-              <span>Pending Tickets</span>
-              <?php if($notify_tickets>0){ ?><span style="background:#ff3a10;color:#fff;padding:5px;border-radius:50%">0<?php echo $notify_tickets?></span><?php }?>
+              <span>General Setting</span>
             </a>
           </li>
           <li>
             <a href="./open-tickets.php">
               <h4> <i class="fa-solid fa-briefcase"></i> </h4>
-              <span>Open Tickets</span>
+              <span>Advance Setting</span>
             </a>
           </li>
           <li>
-            <a href="./solved-tickets.php">
+            <a href="./home-slider.php">
               <h4> <i class="fa-solid fa-briefcase"></i> </h4>
-              <span>Solved Tickets</span>
+              <span>Home Page Slider</span>
+            </a>
+          </li>
+          <li>
+            <a href="./service-slider.php">
+              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
+              <span>Service Page Slider</span>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+      <hr class="my-0">  
+      
+        <!-- Sidebar Item -> products -->
+        <div class="sidebar_item overflow-hidden">
+        <button class="ds_title" data-ref="user"><span class="text-xs transition-all text-pink-600"><i
+              class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">Users</span><span
+            class="text-xs opacity-50 transition-all"><i class="fa-solid fa-chevron-up"></i></span>
+        </button>
+        <ul class="ds_ul transition-all" data-ref="user">
+         
+          <li>
+            <a href="./home-slider.php">
+              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
+              <span>All Users</span>
+            </a>
+          </li>
+          <li>
+            <a href="./service-slider.php">
+              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
+              <span>Add User</span>
             </a>
           </li>
         </ul>
       </div>
-      <hr class="my-0">    
-      
-      
+      <hr class="my-0">
 
+      
       <!-- Sidebar Item -> Deposit -->
       <div class="sidebar_item overflow-hidden">
         <button class="ds_title" data-ref="deposits"><span class="text-xs transition-all text-pink-600"><i
@@ -182,8 +211,68 @@
           </li>
         </ul>
       </div>
+      <hr class="my-0">    
+
+      <!-- Sidebar Item -> products -->
+      <div class="sidebar_item overflow-hidden">
+        <button class="ds_title" data-ref="blog"><span class="text-xs transition-all text-pink-600"><i
+              class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">Blogs</span><span
+            class="text-xs opacity-50 transition-all"><i class="fa-solid fa-chevron-up"></i></span>
+        </button>
+        <ul class="ds_ul transition-all" data-ref="blog">
+          <li>
+            <a href="./add-blog.php">
+              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
+              <span>All Category</span>
+            </a>
+          </li>
+          <li>
+            <a href="./add-blog.php">
+              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
+              <span>Add Blog</span>
+            </a>
+          </li>
+          <li>
+            <a href="./pending-blogs.php">
+              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
+              <span>Pending Blogs</span>
+            </a>
+          </li>
+          <li>
+            <a href="./published-blogs.php">
+              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
+              <span>Published Blogs</span>
+            </a>
+          </li>
+        </ul>
+      </div>
       <hr class="my-0">
-      
+
+            
+
+      <!-- Sidebar Item -> products -->
+      <div class="sidebar_item overflow-hidden">
+        <button class="ds_title" data-ref="category"><span class="text-xs transition-all text-pink-600"><i
+              class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">All Category</span><span
+            class="text-xs opacity-50 transition-all"><i class="fa-solid fa-chevron-up"></i></span>
+        </button>
+        <ul class="ds_ul transition-all" data-ref="category">
+          <li>
+            <a href="./category.php">
+              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
+              <span>All category</span>
+            </a>
+          </li>
+          <li>
+            <a href="./pending-products.php">
+              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
+              <span>Add category</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <hr class="my-0">
+            
 
       <!-- Sidebar Item -> products -->
       <div class="sidebar_item overflow-hidden">
@@ -245,64 +334,29 @@
 
       <!-- Sidebar Item -> products -->
       <div class="sidebar_item overflow-hidden">
-        <button class="ds_title" data-ref="blog"><span class="text-xs transition-all text-pink-600"><i
-              class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">Blogs</span><span
+        <button class="ds_title" data-ref="page"><span class="text-xs transition-all text-pink-600"><i
+              class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">Pages</span><span
             class="text-xs opacity-50 transition-all"><i class="fa-solid fa-chevron-up"></i></span>
         </button>
-        <ul class="ds_ul transition-all" data-ref="blog">
+        <ul class="ds_ul transition-all" data-ref="page">
           <li>
-            <a href="./add-blog.php">
+            <a href="./add-service.php">
               <h4> <i class="fa-solid fa-briefcase"></i> </h4>
-              <span>Add Blog</span>
+              <span>All Page</span>
             </a>
           </li>
           <li>
-            <a href="./pending-blogs.php">
+            <a href="./pending-service.php">
               <h4> <i class="fa-solid fa-briefcase"></i> </h4>
-              <span>Pending Blogs</span>
-            </a>
-          </li>
-          <li>
-            <a href="./published-blogs.php">
-              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
-              <span>Published Blogs</span>
+              <span>Add New</span>
             </a>
           </li>
         </ul>
       </div>
       <hr class="my-0">
 
-      <!-- Sidebar Item -> products -->
-      <div class="sidebar_item overflow-hidden">
-        <button class="ds_title" data-ref="slider"><span class="text-xs transition-all text-pink-600"><i
-              class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">Slider</span><span
-            class="text-xs opacity-50 transition-all"><i class="fa-solid fa-chevron-up"></i></span>
-        </button>
-        <ul class="ds_ul transition-all" data-ref="slider">
-          <!-- <li>
-            <a href="./add-slider.php">
-              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
-              <span>Add Slider</span>
-            </a>
-          </li> -->
-          <li>
-            <a href="./home-slider.php">
-              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
-              <span>Home Page Slider</span>
-            </a>
-          </li>
-          <li>
-            <a href="./service-slider.php">
-              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
-              <span>Service Page Slider</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-      <hr class="my-0">
-
-      <!-- Sidebar Item -> products -->
-      <div class="sidebar_item overflow-hidden">
+            <!-- Sidebar Item -> products -->
+            <div class="sidebar_item overflow-hidden">
         <button class="ds_title" data-ref="team"><span class="text-xs transition-all text-pink-600"><i
               class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">Team</span><span
             class="text-xs opacity-50 transition-all"><i class="fa-solid fa-chevron-up"></i></span>
@@ -324,6 +378,62 @@
       </div>
       <hr class="my-0">
 
+      
+            <!-- Sidebar Item -> products -->
+            <div class="sidebar_item overflow-hidden">
+        <button class="ds_title" data-ref="order"><span class="text-xs transition-all text-pink-600"><i
+              class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">Order & Service</span><span
+            class="text-xs opacity-50 transition-all"><i class="fa-solid fa-chevron-up"></i></span>
+        </button>
+        <ul class="ds_ul transition-all" data-ref="order">
+          <li>
+            <a href="./pending-service.php">
+              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
+              <span>Orders</span>
+            </a>
+          </li>
+          <li>
+            <a href="./published-service.php">
+              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
+              <span>Services</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <hr class="my-0">    
+
+
+
+      <!-- Sidebar Item -> Ticket -->
+      <div class="sidebar_item overflow-hidden">
+        <button class="ds_title" data-ref="Ticket"><span class="text-xs transition-all text-pink-600">
+          <i class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">Tickets</span><span
+            class="text-xs opacity-50 transition-all"><i class="fa-solid fa-chevron-up"></i></span>
+            <?php if($notify_tickets>0){ ?><span style="background:#ff3a10;color:#fff;padding:5px;border-radius:50%">0<?php echo $notify_tickets?></span><?php }?>
+        </button>
+        <ul class="ds_ul transition-all" data-ref="Ticket">
+          <li>
+            <a href="./pending-tickets.php">
+              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
+              <span>Pending Tickets</span>
+              <?php if($notify_tickets>0){ ?><span style="background:#ff3a10;color:#fff;padding:5px;border-radius:50%">0<?php echo $notify_tickets?></span><?php }?>
+            </a>
+          </li>
+          <li>
+            <a href="./open-tickets.php">
+              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
+              <span>Open Tickets</span>
+            </a>
+          </li>
+          <li>
+            <a href="./solved-tickets.php">
+              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
+              <span>Solved Tickets</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <hr class="my-0">       
       
       <!-- Sidebar Item -> Settings -->
       <div class="sidebar_item overflow-hidden">
