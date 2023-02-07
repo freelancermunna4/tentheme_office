@@ -16,7 +16,7 @@
                           <option value="DESC">DESC</option>
                       </select>
 
-                      <a style="margin:15px;display:block;text-align:center;padding-top:12px;" class="input" href="purchased-orders.php"> <i class="fa-solid fa-rotate-right"></i> Refresh</a>
+                      <a style="margin:15px;display:block;text-align:center;padding-top:12px;" class="input" href="purchased-services.php"> <i class="fa-solid fa-rotate-right"></i> Refresh</a>
 
                       <script type="text/javascript">
                           $(function () {
@@ -49,7 +49,7 @@
                         $delete = _delete("cart","id=$check_list[$i]");
                       }
                       $msg = "Delete Successfully";
-                      header("location:purchased-orders.php?msg=$msg");
+                      header("location:purchased-services.php?msg=$msg");
                     }
                   }
                   ?>
@@ -76,12 +76,12 @@
                     if(isset($_GET['src'])){
                       $src = trim($_GET['src']);
                       // $cart = _get("cart","id !='' AND (name='$src' OR qualification='$src')");
-                      $cart = _query("SELECT cart.*,person.*,products.* FROM cart JOIN person ON cart.pid=person.id JOIN products ON cart.cart_id = products.id
+                      $cart = _query("SELECT cart.*,person.*,service.* FROM cart JOIN person ON cart.pid=person.id JOIN service ON cart.cart_id = service.id
                        WHERE (
                           person.name='$src'
                        OR person.email='$src'
-                       OR products.title='$src'
-                       OR products.sell_price='$src'
+                       OR service.title='$src'
+                       OR service.sell_price='$src'
                        )
                        ");
                     }elseif(isset($_GET['sort'])){
@@ -97,7 +97,7 @@
                     $next_page = $page_no + 1;
                     $adjacents = "2";
 
-                    $cart =_get("cart","status=1 AND type='product' ORDER BY id DESC LIMIT $offset, $total_records_per_page");
+                    $cart =_get("cart","status=1 AND type='service' ORDER BY id DESC LIMIT $offset, $total_records_per_page");
                     $total_records = mysqli_num_rows(_get("cart","status=1"));
 
                     $total_no_of_pages = ceil($total_records / $total_records_per_page);
@@ -106,7 +106,7 @@
                     while($data = mysqli_fetch_assoc($cart)){
                       $product_id = $data['cart_id'];
                       $person_id = $data['pid'];
-                      $product = _fetch("products","id=$product_id");
+                      $product = _fetch("service","id=$product_id");
                       $person = _fetch("person","id=$person_id");
                     ?>
                       <tr class="hover:bg-gray-100">

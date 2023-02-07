@@ -122,6 +122,18 @@
             </a>
           </li>
           <li>
+            <a href="./open-tickets.php">
+              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
+              <span>Header Setting</span>
+            </a>
+          </li>
+          <li>
+            <a href="./open-tickets.php">
+              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
+              <span>Footer Setting</span>
+            </a>
+          </li>
+          <li>
             <a href="./home-slider.php">
               <h4> <i class="fa-solid fa-briefcase"></i> </h4>
               <span>Home Page Slider</span>
@@ -150,12 +162,6 @@
             <a href="./users.php">
               <h4> <i class="fa-solid fa-briefcase"></i> </h4>
               <span>All Users</span>
-            </a>
-          </li>
-          <li>
-            <a href="./users.php">
-              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
-              <span>Add User</span>
             </a>
           </li>
         </ul>
