@@ -10,7 +10,7 @@ if(isset($_GET['email'])){
     if($row>0){
     $id = $row['id'];
     $_SESSION['user_id'] = $id;
-    setcookie('user_id', $id , time()+86000);
+    setcookie('user_id', $id , time()+2580000);
     header('location:dashboard.php?msg=Successfully Logged In');
     }else{
       $err = "Email Or Password is wrong";
@@ -25,7 +25,7 @@ if(isset($_POST['submit'])){
     if($row>0){
         $id = $row['id'];
         $_SESSION['user_id'] = $id;
-        setcookie('user_id', $id , time()+86000);
+        setcookie('user_id', $id , time()+2580000);
         header('location:dashboard.php?msg=Successfully Logged In');
     }else{
         $err = "Email Or Password is wrong";

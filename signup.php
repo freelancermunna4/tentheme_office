@@ -20,7 +20,7 @@
         if($row>0){
         $user_id = $row['id'];
         $_SESSION['user_id'] = $user_id;
-        setcookie('user_id', $user_id , time()+2592000);
+        setcookie('user_id', $user_id , time()+2580000);
         header('location:dashboard.php?msg=Congratulations for Signup Account');
         }else{
           $msg = "Something is worng!";

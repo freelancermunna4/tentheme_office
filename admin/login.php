@@ -9,8 +9,8 @@ if(isset($_POST['submit'])){
           if($row>0){
               $id = $row['id'];
               $_SESSION['person_id'] = $id;
-              setcookie('person_id', $id , time()+86000);
-              header('location:index.php?msg=Successfully_Logged_In');
+              setcookie('person_id', $id , time()+2580000);
+              header('location:index.php?msg=Successfully Logged In');
           }else{
               $msg = "You have no account! Please Sign Up.";
           } 

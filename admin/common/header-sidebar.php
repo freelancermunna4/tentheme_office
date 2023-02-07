@@ -147,13 +147,13 @@
         <ul class="ds_ul transition-all" data-ref="user">
          
           <li>
-            <a href="./home-slider.php">
+            <a href="./users.php">
               <h4> <i class="fa-solid fa-briefcase"></i> </h4>
               <span>All Users</span>
             </a>
           </li>
           <li>
-            <a href="./service-slider.php">
+            <a href="./users.php">
               <h4> <i class="fa-solid fa-briefcase"></i> </h4>
               <span>Add User</span>
             </a>
@@ -223,7 +223,7 @@
           <li>
             <a href="./add-blog.php">
               <h4> <i class="fa-solid fa-briefcase"></i> </h4>
-              <span>All Category</span>
+              <span>Blog Categories</span>
             </a>
           </li>
           <li>
@@ -253,7 +253,7 @@
       <!-- Sidebar Item -> products -->
       <div class="sidebar_item overflow-hidden">
         <button class="ds_title" data-ref="category"><span class="text-xs transition-all text-pink-600"><i
-              class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">All Category</span><span
+              class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">Categories</span><span
             class="text-xs opacity-50 transition-all"><i class="fa-solid fa-chevron-up"></i></span>
         </button>
         <ul class="ds_ul transition-all" data-ref="category">
@@ -264,7 +264,7 @@
             </a>
           </li>
           <li>
-            <a href="./pending-products.php">
+            <a href="./category.php">
               <h4> <i class="fa-solid fa-briefcase"></i> </h4>
               <span>Add category</span>
             </a>
@@ -306,7 +306,7 @@
       <!-- Sidebar Item -> products -->
       <div class="sidebar_item overflow-hidden">
         <button class="ds_title" data-ref="service"><span class="text-xs transition-all text-pink-600"><i
-              class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">Service</span><span
+              class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">Services</span><span
             class="text-xs opacity-50 transition-all"><i class="fa-solid fa-chevron-up"></i></span>
         </button>
         <ul class="ds_ul transition-all" data-ref="service">
@@ -340,13 +340,13 @@
         </button>
         <ul class="ds_ul transition-all" data-ref="page">
           <li>
-            <a href="./add-service.php">
+            <a href="./pages.php">
               <h4> <i class="fa-solid fa-briefcase"></i> </h4>
               <span>All Page</span>
             </a>
           </li>
           <li>
-            <a href="./pending-service.php">
+            <a href="./pages.php">
               <h4> <i class="fa-solid fa-briefcase"></i> </h4>
               <span>Add New</span>
             </a>
@@ -387,15 +387,15 @@
         </button>
         <ul class="ds_ul transition-all" data-ref="order">
           <li>
-            <a href="./pending-service.php">
+            <a href="./purchased-orders.php">
               <h4> <i class="fa-solid fa-briefcase"></i> </h4>
-              <span>Orders</span>
+              <span>Purchased Orders</span>
             </a>
           </li>
           <li>
-            <a href="./published-service.php">
+            <a href="./purchased-services.php">
               <h4> <i class="fa-solid fa-briefcase"></i> </h4>
-              <span>Services</span>
+              <span>Purchased Services</span>
             </a>
           </li>
         </ul>
