@@ -66,8 +66,8 @@
           $second_last = $total_no_of_pages - 1;
           }         
           while($data = mysqli_fetch_assoc($service)){
-            $autor_id = $data['pid'];
-            $autor = _fetch("person","id=$autor_id");
+            $author_id = $data['pid'];
+            $author = _fetch("person","id=$author_id");
           ?>
           <div class="grid grid-cols-12 gap-x-6 p-6 bg-white item_shadow">
             <div class="col-span-5">

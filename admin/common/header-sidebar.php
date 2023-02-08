@@ -197,16 +197,10 @@
         </button>
         <ul class="ds_ul transition-all" data-ref="withdraw">
           <li>
-            <a href="./pending-withdraw.php">
+            <a href="./withdraw.php">
               <h4> <i class="fa-solid fa-briefcase"></i> </h4>
-              <span>Pending Request</span>
+              <span>All Withdraw</span>
               <?php if($notify_withdraw>0){ ?><span style="background:#ff3a10;color:#fff;padding:5px;border-radius:50%">0<?php echo $notify_withdraw?></span><?php }?>
-            </a>
-          </li>
-          <li>
-            <a href="./success-withdraw.php">
-              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
-              <span>Published Request</span>
             </a>
           </li>
         </ul>
@@ -216,40 +210,32 @@
 
       <!-- Sidebar Item -> products -->
       <div class="sidebar_item overflow-hidden">
-        <button class="ds_title" data-ref="blog"><span class="text-xs transition-all text-pink-600"><i
-              class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">Blogs</span><span
+        <button class="ds_title" data-ref="post"><span class="text-xs transition-all text-pink-600"><i
+              class="fa-solid fa-briefcase"></i></span><span class="tracking-wider block">posts</span><span
             class="text-xs opacity-50 transition-all"><i class="fa-solid fa-chevron-up"></i></span>
         </button>
-        <ul class="ds_ul transition-all" data-ref="blog">
+        <ul class="ds_ul transition-all" data-ref="post">          
           <li>
-            <a href="./add-blog.php">
+            <a href="./all-posts.php">
               <h4> <i class="fa-solid fa-briefcase"></i> </h4>
-              <span>Blog Categories</span>
+              <span>All Post</span>
             </a>
           </li>
           <li>
-            <a href="./add-blog.php">
+            <a href="./add-posts.php">
               <h4> <i class="fa-solid fa-briefcase"></i> </h4>
-              <span>Add Blog</span>
+              <span>Add Post</span>
             </a>
           </li>
           <li>
-            <a href="./pending-blogs.php">
+            <a href="./post-category.php">
               <h4> <i class="fa-solid fa-briefcase"></i> </h4>
-              <span>Pending Blogs</span>
-            </a>
-          </li>
-          <li>
-            <a href="./published-blogs.php">
-              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
-              <span>Published Blogs</span>
+              <span>Categories</span>
             </a>
           </li>
         </ul>
       </div>
-      <hr class="my-0">
-
-            
+      <hr class="my-0">            
 
       <!-- Sidebar Item -> products -->
       <div class="sidebar_item overflow-hidden">

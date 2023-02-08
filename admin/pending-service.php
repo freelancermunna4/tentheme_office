@@ -88,7 +88,7 @@
                       <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5">Sell Price</th>
                       <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5">Category</th>
                       <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5">Date</th>
-                      <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5">Autor</th>
+                      <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5">author</th>
                       <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5">Status</th>
                       <th scope="col" class="text-center p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5"> Actions</th>
 

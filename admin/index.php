@@ -16,10 +16,10 @@ $pending_service = mysqli_num_rows(_get("service","status='Pending'"));
 $success_service = mysqli_num_rows(_get("service","status='Publish'"));
 $total_service = mysqli_num_rows(_getAll("service"));
 
-//blog
-$pending_blog = mysqli_num_rows(_get("blog","status='Pending'"));
-$success_blog = mysqli_num_rows(_get("blog","status='Publish'"));
-$total_blog = mysqli_num_rows(_getAll("blog"));
+//post
+$pending_post = mysqli_num_rows(_get("post","status='Pending'"));
+$success_post = mysqli_num_rows(_get("post","status='Publish'"));
+$total_post = mysqli_num_rows(_getAll("post"));
 
 //cart
 $pending_cart = mysqli_num_rows(_get("cart","status=0"));
@@ -186,28 +186,28 @@ $success_withdraw = $success_withdraw['SUM(amount)'];
           </div>
         </div>
 
-        <!-- Blog Stats -->
+        <!-- post Stats -->
         <div class="shadow bg-white rounded w-fulls overflow-hidden">
           <h3 class="p-4 gap-x-3 flex border-b border-gray-100 items-center font-semibold text-cyan-900">
             <i class="fa-solid fa-briefcase"></i>
-            <span>Blog Stats</span>
+            <span>post Stats</span>
           </h3>
           <div class="p-5 flex flex-wrap gap-5">
 
             <div
               class="bg-cyan-700 text-white p-4 rounded shadow w-full sm:w-64 flex flex-col items-center justify-center gap-2">
-              <h3 class="text-xl font-bold"><?php echo $total_blog;?></h3>
-              <h5 class="text-base">Total Blog</h5>
+              <h3 class="text-xl font-bold"><?php echo $total_post;?></h3>
+              <h5 class="text-base">Total post</h5>
             </div>
             <div
               class="bg-green-600 text-white p-4 rounded shadow w-full sm:w-64 flex flex-col items-center justify-center gap-2">
-              <h3 class="text-xl font-bold"><?php echo $success_blog;?></h3>
-              <h5 class="text-base">Success Blog</h5>
+              <h3 class="text-xl font-bold"><?php echo $success_post;?></h3>
+              <h5 class="text-base">Success post</h5>
             </div>
             <div
               class="bg-orange-400 text-white p-4 rounded shadow w-full sm:w-64 flex flex-col items-center justify-center gap-2">
-              <h3 class="text-xl font-bold"><?php echo $pending_blog;?></h3>
-              <h5 class="text-base">Pending Blog</h5>
+              <h3 class="text-xl font-bold"><?php echo $pending_post;?></h3>
+              <h5 class="text-base">Pending post</h5>
             </div>
           </div>
         </div>

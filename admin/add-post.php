@@ -1,16 +1,6 @@
 <?php include("common/header-sidebar.php")?>
 
 <?php 
-
-if(isset($_GET['id'])){
-  $id = $_GET['id'];
-  $table = $_GET['table'];
-  $src = $_GET['src'];
-}
-
-$data = _fetch("$table","id=$id");
-
-
 $err = "";
 if(isset($_POST['submit'])){
     $title = $_POST['title'];
@@ -26,19 +16,13 @@ if(isset($_POST['submit'])){
     $file_tmp = $_FILES['file']['tmp_name'];
     move_uploaded_file($file_tmp,"upload/$file_name");
 
-    if(empty($file_name)){
-      $update = _update("$table","pid='$pid',title='$title',category='$category',summery='$summery',content='$content',status='$status',time='$time'","id=$id");
-    }else{
-      $update = _update("$table","pid='$pid',file_name='$file_name',title='$title',category='$category',summery='$summery',content='$content',status='$status',time='$time'","id=$id");      
-    }
-
-    if($update){
+    $insert = _insert("post","pid, title, category, summery, content, status, file_name, time","'$pid', '$title', '$category', '$summery', '$content','$status','$file_name', '$time'");
+    if($insert){
       $msg = "Successfully Inserted";
-      header("Location:$src.php?msg=$msg");
+      header("Location:add-post.php?msg=$msg");
     }else{
     echo  $err = "Something is error.";
     }
-
 }
 
 ?>
@@ -46,21 +30,20 @@ if(isset($_POST['submit'])){
         <form action="" method="POST" enctype="multipart/form-data">
         <div class="grid grid-cols-2 gap-y-8 gap-x-12">
           <div class="col-span-2">
-            <h2 class="text-xl font-semibold text-cyan-800">Add Blog</h2>
+            <h2 class="text-xl font-semibold text-cyan-800">Add post</h2>
           </div>
 
           <div class="col-span-2 lg:col-span-1 flex flex-col gap-y-1">
             <label for="title">Title</label>
-            <input name="title" class="input" type="text" id="Title" placeholder="Title" required value="<?php echo $data['title']?>"> 
+            <input name="title" class="input" type="text" id="Title" placeholder="Title" required>
           </div>
 
           <div class="col-span-2 lg:col-span-1 flex flex-col gap-y-1">
             <label for="category">Category</label>
             <select name="category" class="input">
-              <option selected value="<?php echo $data['category']?>"><?php echo $data['category']?></option>
-              <?php $category_all = _getAll("category");
+            <?php $category_all = _getAll("category");
               while($ctg = mysqli_fetch_assoc($category_all)){ ?>
-              <option value="<?php echo $ctg['category']?>"><?php echo $ctg['category']?></option>
+              <option value="PHP"><?php echo $ctg['category']?></option>
               <?php }?>
             </select>
           </div>
@@ -68,13 +51,13 @@ if(isset($_POST['submit'])){
           <div class="col-span-2 lg:col-span-1 flex flex-col gap-y-1">
             <label for="summery">Summery</label>
             <textarea name="summery" class="input p-3 min-h-[100px] summernote" type="text" id="summernote" placeholder="Mini Content"
-              required> <?php echo $data['summery']?></textarea>
+              required></textarea>
           </div>
 
           <div class="col-span-2 lg:col-span-1 flex flex-col gap-y-1">
             <label for="content">Content</label>
             <textarea name="content" class="input p-3 min-h-[100px] summernote" type="text" id="summernote" placeholder="Content"
-              required> <?php echo $data['content']?></textarea>
+              required></textarea>
           </div>
 
           <div>
@@ -85,13 +68,8 @@ if(isset($_POST['submit'])){
           <div>
             <label for="status">Status</label>
             <select name="status" class="input">
-              <?php if($data['status']== 'Pending'){ ?>
-                <option selected value="Pending">Pending</option>
-                <option value="Publish">Publish</option>
-               <?php }else{ ?>
-                <option value="Pending">Pending</option>
-                <option selected value="Publish">Publish</option>
-                <?php } ?>
+              <option value="Draft">Draft</option>
+              <option value="Publish">Publish</option>
             </select>
           </div>
 
