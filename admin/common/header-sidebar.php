@@ -178,16 +178,10 @@
         </button>
         <ul class="ds_ul transition-all" data-ref="deposits">
           <li>
-            <a href="./pending-deposits.php">
+            <a href="./deposits.php">
               <h4> <i class="fa-solid fa-briefcase"></i> </h4>
-              <span>Pending Deposit</span>
+              <span>Deposits</span>
               <?php if($notify_deposit>0){ ?><span style="background:#ff3a10;color:#fff;padding:5px;border-radius:50%">0<?php echo $notify_deposit?></span><?php }?>
-            </a>
-          </li>
-          <li>
-            <a href="./success-deposits.php">
-              <h4> <i class="fa-solid fa-briefcase"></i> </h4>
-              <span>Published Deposit</span>
             </a>
           </li>
         </ul>

@@ -158,14 +158,14 @@
 
 
 
-            $("#mtd_number").hide();
-            $("#copy").hide();
-            $("#method").on("change", function() {
-              $("#mtd_number").show();
-              $("#copy").show();
-              var value = $("#method").val();
-              $("#mtd_number").text(value);
-            });
+            // $("#mtd_number").hide();
+            // $("#copy").hide();
+            // $("#method").on("change", function() {
+            //   $("#mtd_number").show();
+            //   $("#copy").show();
+            //   var value = $("#method").val();
+            //   $("#mtd_number").text(value);
+            // });
           </script>
 
           <div class="col-span-12"><label class="mb-2 block" for="new_password">Payment Address</label><input required="" name="pmn_address" type="text" placeholder="Payment Address" class="w-full h-11 flex items-center rounded bg-white outline-none ring-2 ring-gray-200 disabled:bg-gray-200 disabled:cursor-not-allowed focus:ring-blue-600 text-gray-800 px-4" value=""></div>

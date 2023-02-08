@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 05, 2023 at 08:02 PM
+-- Generation Time: Feb 08, 2023 at 07:33 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -74,9 +74,9 @@ CREATE TABLE `cart` (
 
 INSERT INTO `cart` (`id`, `pid`, `cart_id`, `type`, `duration`, `status`, `time`) VALUES
 (46, 2, 24, 'product', '', 1, 1675621445),
-(47, 2, 27, 'product', '', 1, 1675621848),
-(48, 2, 1, 'product', '', 1, 1675622123),
-(49, 2, 15, 'service', '', 0, 1675623146);
+(49, 2, 15, 'service', '', 1, 1675623146),
+(50, 2, 27, 'product', '', 1, 1675708496),
+(51, 2, 23, 'service', '', 0, 1675769729);
 
 -- --------------------------------------------------------
 
@@ -150,6 +150,7 @@ CREATE TABLE `deposit` (
   `tr_id` varchar(255) NOT NULL,
   `amount` int(255) NOT NULL,
   `status` varchar(255) NOT NULL DEFAULT 'Pending',
+  `notify` varchar(255) NOT NULL DEFAULT 'New',
   `time` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -157,12 +158,13 @@ CREATE TABLE `deposit` (
 -- Dumping data for table `deposit`
 --
 
-INSERT INTO `deposit` (`id`, `pid`, `method`, `pmn_address`, `tr_id`, `amount`, `status`, `time`) VALUES
-(16, 1, '3333332', 'sdfsdfsdf', '3343', 800, 'Success', 1672894705),
-(17, 1, '3333332', 'sdfsdfsdf', '3343', 1000, 'Pending', 1672894705),
-(18, 1, '', 'hbhjghg', 'bhjghugy', 5000, 'Success', 1674665653),
-(19, 10, '01701701701', '01234567', 'asdf5sd9f59sf5', 500, 'new', 1675263148),
-(20, 2, '0123456789', '014254642', 'adfsf45sd5f45a5df45', 10000, 'Success', 1675622212);
+INSERT INTO `deposit` (`id`, `pid`, `method`, `pmn_address`, `tr_id`, `amount`, `status`, `notify`, `time`) VALUES
+(16, 1, '3333332', 'sdfsdfsdf', '3343', 800, 'Success', 'Old', 1672894705),
+(17, 1, '3333332', 'sdfsdfsdf', '3343', 1000, 'Pending', 'Old', 1672894705),
+(18, 1, '', 'hbhjghg', 'bhjghugy', 5000, 'Success', 'Old', 1674665653),
+(19, 10, '01701701701', '01234567', 'asdf5sd9f59sf5', 500, 'new', 'Old', 1675263148),
+(20, 2, '0123456789', '014254642', 'adfsf45sd5f45a5df45', 10000, 'Success', 'Old', 1675622212),
+(21, 2, '0123456789', '45353534', 'df4sdf4s5f8s4f', 2000, 'Pending', 'Old', 1675708159);
 
 -- --------------------------------------------------------
 
@@ -257,7 +259,7 @@ INSERT INTO `payment` (`id`, `pmn_method`, `pmn_info`, `status`) VALUES
 (2, 'Paypal', 'paypal@mail.com', 'Enable'),
 (3, 'Bkash', '0123456789', 'Enable'),
 (4, 'Nogod', '0123456789', 'Enable'),
-(5, 'Bank', 'A/C: 121334243312 \r\nbranch: Dinajpur \r\nSwift: DDBBL', 'Enable');
+(5, 'Bank', '<div style=\"background: red;\" class=\"text-gray-200 p-5 rounded shadow\">\r\n              <ul class=\"list-decimal px-5 space-y-3\">\r\n                <li class=\"border-b pb-3 border-b-[#55555555] text-xs md:text-sm\"><b class=\"text-yellow-500 text-lg\"> *247# </', 'Enable');
 
 -- --------------------------------------------------------
 
@@ -276,6 +278,7 @@ CREATE TABLE `person` (
   `file_name` varchar(255) NOT NULL DEFAULT 'avatar.jpg',
   `balance` int(255) NOT NULL,
   `terms` varchar(255) NOT NULL DEFAULT 'Desline',
+  `notify` varchar(255) NOT NULL DEFAULT 'New',
   `time` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -283,9 +286,10 @@ CREATE TABLE `person` (
 -- Dumping data for table `person`
 --
 
-INSERT INTO `person` (`id`, `name`, `phone`, `address`, `email`, `password`, `role`, `file_name`, `balance`, `terms`, `time`) VALUES
-(1, 'Admin', '1234558', 'Sirajganj, Dhaka, Bangladesh', 'admin@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', '634af2216fb544.83705756.jpg', 4589, 'Desline', 1670579900),
-(2, 'munna', '1234558', 'Sirajganj, Dhaka, Bangladesh', 'munna@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', 'ingo-tessmann-1b7dedce.jpg', 8249, 'Accepted', 1674106983);
+INSERT INTO `person` (`id`, `name`, `phone`, `address`, `email`, `password`, `role`, `file_name`, `balance`, `terms`, `notify`, `time`) VALUES
+(1, 'Admin', '1234558', 'Sirajganj, Dhaka, Bangladesh', 'admin@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', '634af2216fb544.83705756.jpg', 4589, 'Desline', 'Old', 1670579900),
+(2, 'munna', '1234558', 'Sirajganj, Dhaka, Bangladesh', 'munna@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin', 'ingo-tessmann-1b7dedce.jpg', 4249, 'Accepted', 'Old', 1674106983),
+(16, 'sohan', '1234558', 'Sirajganj, Dhaka, Bangladesh', 'sohan@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'User', 'ingo-tessmann-1b7dedce.jpg', 8249, 'Accepted', 'Old', 1674106983);
 
 -- --------------------------------------------------------
 
@@ -458,6 +462,7 @@ CREATE TABLE `tickets` (
   `message` longtext NOT NULL,
   `file_name` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL DEFAULT 'Pending',
+  `notify` varchar(255) NOT NULL DEFAULT 'New',
   `time` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -465,12 +470,13 @@ CREATE TABLE `tickets` (
 -- Dumping data for table `tickets`
 --
 
-INSERT INTO `tickets` (`id`, `ticket_id`, `uid`, `pid`, `service_id`, `subject`, `message`, `file_name`, `status`, `time`) VALUES
-(89, 85883420, 2, 2, 9, 'Full WordPress Website Design', 'New Chat started', '', 'Pending', 1675576721),
-(90, 71610275, 2, 2, 8, 'Full WordPress Website Design', 'New Chat started', '', 'Solved', 1675577046),
-(91, 71610275, 2, 2, 0, '', '<p>aaa</p>', '', 'Solved', 1675606975),
-(92, 71610275, 2, 1, 0, '', '<p>cool</p>', '', 'Solved', 1675606990),
-(93, 22292968, 2, 2, 15, 'Managed WordPress Hosting from SiteGround', 'New Chat started', '', 'Pending', 1675623146);
+INSERT INTO `tickets` (`id`, `ticket_id`, `uid`, `pid`, `service_id`, `subject`, `message`, `file_name`, `status`, `notify`, `time`) VALUES
+(89, 85883420, 2, 2, 15, 'Full WordPress Website Design', 'New Chat started', '', 'Pending', 'Old', 1675576721),
+(90, 71610275, 2, 2, 8, 'Full WordPress Website Design', 'New Chat started', '', 'Solved', 'Old', 1675577046),
+(91, 71610275, 2, 2, 15, '', '<p>aaa</p>', '', 'Solved', 'Old', 1675606975),
+(92, 71610275, 2, 1, 15, '', '<p>cool</p>', '', 'Solved', 'Old', 1675606990),
+(93, 22292968, 2, 2, 15, 'Managed WordPress Hosting from SiteGround', 'New Chat started', '', 'Pending', 'Old', 1675623146),
+(94, 48402517, 2, 2, 23, 'Managed WordPress Hosting from SiteGround', 'New Chat started', '', 'Pending', 'Old', 1675769729);
 
 -- --------------------------------------------------------
 
@@ -516,6 +522,7 @@ CREATE TABLE `withdraw` (
   `pmn_address` varchar(255) NOT NULL,
   `amount` int(255) NOT NULL,
   `status` varchar(255) NOT NULL DEFAULT 'Pending',
+  `notify` varchar(255) NOT NULL DEFAULT 'New',
   `time` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -523,9 +530,9 @@ CREATE TABLE `withdraw` (
 -- Dumping data for table `withdraw`
 --
 
-INSERT INTO `withdraw` (`id`, `pid`, `method`, `pmn_address`, `amount`, `status`, `time`) VALUES
-(19, 1, 'paypal@mail.com', '34343', 111, 'Success', 1674123130),
-(20, 1, 'Bkash', '45454', 2432, 'Pending', 1674123198);
+INSERT INTO `withdraw` (`id`, `pid`, `method`, `pmn_address`, `amount`, `status`, `notify`, `time`) VALUES
+(19, 1, 'paypal@mail.com', '34343', 111, 'Success', 'Old', 1674123130),
+(20, 1, 'Bkash', '45454', 2432, 'Pending', 'Old', 1674123198);
 
 --
 -- Indexes for dumped tables
@@ -647,7 +654,7 @@ ALTER TABLE `blog`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -665,7 +672,7 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT for table `deposit`
 --
 ALTER TABLE `deposit`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `limit_setting`
@@ -695,7 +702,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `person`
 --
 ALTER TABLE `person`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -725,7 +732,7 @@ ALTER TABLE `team`
 -- AUTO_INCREMENT for table `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT for table `website`

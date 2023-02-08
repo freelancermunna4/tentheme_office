@@ -3,7 +3,7 @@
 $notify_check = mysqli_num_rows(_get("deposit","status='Pending' AND notify='New'"));
 if($notify_check>0){
   $update_notify = _update("deposit","notify='Old'","notify='New'");
-  header("location:pending-deposits.php");
+  header("location:deposits.php");
 }
 ?>
 <div class="x_container space-y-10 py-10">
@@ -14,14 +14,44 @@ if($notify_check>0){
                 <div class="overflow-auto bg-white">
                   <div style="display:flex;justify-content:space-between">
                     <div style="display:flex">
-                      <a style="margin:15px;display:block;text-align:center;padding-top:12px;" class="input" href="pending-deposits.php">Refresh <i  class="fa-solid fa-rotate-right"></i></a>
+
+                    <select style="margin: 15px;width:300px;" name="sort" class="input" id="sort">
+                          <?php if(isset($_GET['sort'])){?>
+                          <option style="display:none" selected value="<?php echo $_GET['sort']?>"><?php echo $_GET['sort']?></option>
+                          <?php }else{?>
+                          <option style="display:none" selected>Status</option>
+                          <?php }?>
+                          <option value="Pending">Pending</option>
+                          <option value="Published">Published</option>
+                      </select>
+
+                      <script type="text/javascript">
+                          $(function () {
+                              $('#sort').on('change', function () {
+                                  var val = $(this).find("option:selected").val();
+                                  var url = self.location.href.split('?')[0] + '?status=' +val;
+                                  if (url != "") {
+                                      window.location.href = url;
+                                  }
+                              });
+                          });
+                      </script>
+
+
+
+                      <a style="margin:15px;display:block;text-align:center;padding-top:12px;" class="input" href="deposits.php">Refresh <i  class="fa-solid fa-rotate-right"></i></a>
                     </div>
 
                     <div>
                     <form action="" method="GET">
                         <div style="text-align: right;margin: 5px;padding-top: 10px;">
-                            <input name="src" type="search" id="srcvalue" placeholder="Search Here..." style="padding: 8px;border: 2px solid #ddd;border-radius:5px;">
-                            <button type="submit" name="search" style="padding: 9px 15px;margin-right: 12px;background: #0e33f78a;color:#fff;box-sizing: border-box;border-radius: 2px;">Search</button>
+                        <?php 
+                        if(isset($_GET['src'])){ ?>
+                        <input name="src" type="search" id="srcvalue" placeholder="Search Here..." style="padding: 8px;border: 2px solid #ddd;border-radius:5px;" value="<?php echo $_GET['src'];?>">
+                       <?php }else{?>
+                        <input name="src" type="search" id="srcvalue" placeholder="Search Here..." style="padding: 8px;border: 2px solid #ddd;border-radius:5px;">
+                       <?php }?>
+                            <button type="submit" style="padding: 9px 15px;margin-right: 12px;background: #0e33f78a;color:#fff;box-sizing: border-box;border-radius: 2px;">Search</button>
                         </div>
                     </form>
                     </div>
@@ -38,7 +68,7 @@ if($notify_check>0){
                         $delete = _delete("deposit","id=$check_list[$i]");
                       }
                       $msg = "Delete Successfully";
-                      header("location:pending-deposits.php?msg=$msg");
+                      header("location:deposits.php?msg=$msg");
                     }
                   }
                   ?>
@@ -66,9 +96,14 @@ if($notify_check>0){
                     <?php
                     if(isset($_GET['src'])){
                       $src = trim($_GET['src']); 
-                      $deposit = _query("SELECT deposit.*,person.* FROM deposit INNER JOIN person ON deposit.pid=person.id WHERE deposit.status='Pending' AND (person.name='$src' OR person.phone='$src' OR deposit.method='$src' OR deposit.pmn_address='$src' OR  deposit.tr_id='$src' OR  deposit.amount='$src')");
-                    }else{
-                    
+                      $deposit = _query("SELECT * FROM deposit INNER JOIN person ON deposit.pid=person.id WHERE (person.name='$src' OR person.phone='$src' OR deposit.method='$src' OR deposit.pmn_address='$src' OR  deposit.tr_id='$src' OR  deposit.amount='$src')");
+                    }elseif(isset($_GET['status'])){
+                      if($_GET['status']== 'Pending'){
+                        $deposit =_get("deposit","status='Pending'");
+                      }else{
+                        $deposit =_get("deposit","status='Success'");
+                      }
+                    }else{                    
                     $pagination = "ON";
                     if (isset($_GET['page_no']) && $_GET['page_no']!="") {
                     $page_no = $_GET['page_no'];} else {$page_no = 1;}
@@ -78,7 +113,7 @@ if($notify_check>0){
                     $next_page = $page_no + 1;
                     $adjacents = "2";
 
-                    $deposit =_query("SELECT * FROM deposit WHERE status='Pending' ORDER BY id DESC LIMIT $offset, $total_records_per_page");
+                    $deposit =_query("SELECT * FROM deposit WHERE id!='' ORDER BY id DESC LIMIT $offset, $total_records_per_page");
                     $total_records = mysqli_num_rows(_get("deposit","status='Pending'")); 
 
                     $total_no_of_pages = ceil($total_records / $total_records_per_page);
@@ -107,7 +142,7 @@ if($notify_check>0){
                         <?php }?>
                         <td class="text-center p-4 space-x-2 whitespace-nowrap lg:p-5">
                           <a id="add_bank" href="approve-deposit.php?src=edit-deposit&&table=deposit&&id=<?php echo $data['id']?>" class="popup_show btn bg-red-500 w-fit text-white" style="background:#4ade80;">Approve</a>
-                          <a href="delete.php?src=pending-deposits&&table=deposit&&id=<?php echo $data['id']?>" class="popup_show btn bg-red-500 w-fit text-white">Delete</a>                          
+                          <a href="delete.php?src=deposits&&table=deposit&&id=<?php echo $data['id']?>" class="popup_show btn bg-red-500 w-fit text-white">Delete</a>                          
                         </td>
                       </tr>
                       <?php }?>
