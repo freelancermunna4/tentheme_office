@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 08, 2023 at 07:33 AM
+-- Generation Time: Feb 08, 2023 at 12:20 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -159,12 +159,10 @@ CREATE TABLE `deposit` (
 --
 
 INSERT INTO `deposit` (`id`, `pid`, `method`, `pmn_address`, `tr_id`, `amount`, `status`, `notify`, `time`) VALUES
-(16, 1, '3333332', 'sdfsdfsdf', '3343', 800, 'Success', 'Old', 1672894705),
-(17, 1, '3333332', 'sdfsdfsdf', '3343', 1000, 'Pending', 'Old', 1672894705),
-(18, 1, '', 'hbhjghg', 'bhjghugy', 5000, 'Success', 'Old', 1674665653),
-(19, 10, '01701701701', '01234567', 'asdf5sd9f59sf5', 500, 'new', 'Old', 1675263148),
-(20, 2, '0123456789', '014254642', 'adfsf45sd5f45a5df45', 10000, 'Success', 'Old', 1675622212),
-(21, 2, '0123456789', '45353534', 'df4sdf4s5f8s4f', 2000, 'Pending', 'Old', 1675708159);
+(16, 1, 'Bkash', 'sdfsdfsdf', '3343', 800, 'Success', 'Old', 1672894705),
+(17, 1, 'Nogod', 'sdfsdfsdf', '3343', 1000, 'Pending', 'Old', 1672894705),
+(20, 2, 'Rocket', '014254642', 'adfsf45sd5f45a5df45', 10000, 'Success', 'Old', 1675622212),
+(21, 2, 'Bank', '45353534', 'df4sdf4s5f8s4f', 2000, 'Pending', 'Old', 1675708159);
 
 -- --------------------------------------------------------
 

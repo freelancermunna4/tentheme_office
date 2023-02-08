@@ -180,7 +180,7 @@
           <li>
             <a href="./deposits.php">
               <h4> <i class="fa-solid fa-briefcase"></i> </h4>
-              <span>Deposits</span>
+              <span>All Deposits</span>
               <?php if($notify_deposit>0){ ?><span style="background:#ff3a10;color:#fff;padding:5px;border-radius:50%">0<?php echo $notify_deposit?></span><?php }?>
             </a>
           </li>
@@ -211,7 +211,8 @@
           </li>
         </ul>
       </div>
-      <hr class="my-0">    
+      <hr class="my-0">  
+
 
       <!-- Sidebar Item -> products -->
       <div class="sidebar_item overflow-hidden">
